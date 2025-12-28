@@ -1,10 +1,6 @@
-/**
- * Platform Page - How Kasparro Works
- * URL: /platform
- * 
- * Displays how the Kasparro platform processes audits and delivers insights
- */
+'use client';
 
+import { PlatformHero } from '@/components/features/platform/PlatformHero';
 import { PipelineFlow } from '@/components/features/platform/PipelineFlow';
 import { DataInputs } from '@/components/features/platform/DataInputs';
 import { Outputs } from '@/components/features/platform/Outputs';
@@ -12,22 +8,23 @@ import { Comparison } from '@/components/features/platform/Comparison';
 
 export default function PlatformPage() {
   return (
-    <main className="min-h-screen bg-white">
-      <section className="py-20 md:py-32 px-4 md:px-6 border-b">
-        <div className="max-w-4xl mx-auto">
-          <h1 className="text-4xl md:text-5xl font-bold mb-6">
-            How Kasparro Works
-          </h1>
-          <p className="text-xl text-muted-foreground">
-            From input to actionable intelligence in minutes, not months.
-          </p>
-        </div>
-      </section>
+    <main className="w-full bg-background transition-colors pt-20 pb-32">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        {/* Product Description */}
+        <PlatformHero />
 
-      <PipelineFlow />
-      <DataInputs />
-      <Outputs />
-      <Comparison />
+        {/* Audit Pipeline */}
+        <PipelineFlow />
+
+        {/* Detailed Input/Output */}
+        <section className="grid lg:grid-cols-2 gap-px bg-border mb-32 border border-border overflow-hidden">
+          <DataInputs />
+          <Outputs />
+        </section>
+
+        {/* Statistical Comparison */}
+        <Comparison />
+      </div>
     </main>
   );
 }

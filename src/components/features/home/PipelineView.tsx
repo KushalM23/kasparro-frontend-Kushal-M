@@ -1,55 +1,56 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
-import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function PipelineView() {
+  const steps = [
+    {
+      title: 'Signal Ingestion',
+      description: 'Harvesting raw brand signatures and semantic footprints across the web.',
+    },
+    {
+      title: 'Neural Auditing',
+      description: 'Executing high-concurrency diagnostic modules across LLM architectures.',
+    },
+    {
+      title: 'Synthesis Output',
+      description: 'technical roadmaps and predictive citation probability matrices.',
+    },
+  ];
+
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6 bg-muted/50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          How Kasparro Works
-        </h2>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-          {/* Input */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">🔗</div>
-              <h3 className="font-bold">Input</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Brand domain & content structure
-              </p>
-            </CardContent>
-          </Card>
-
-          <ArrowRight className="w-5 h-5 text-muted-foreground hidden md:block" />
-
-          {/* Processing */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">⚙️</div>
-              <h3 className="font-bold">Processing</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Run 7 specialized AI modules
-              </p>
-            </CardContent>
-          </Card>
-
-          <ArrowRight className="w-5 h-5 text-muted-foreground hidden md:block" />
-
-          {/* Output */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">📊</div>
-              <h3 className="font-bold">Output</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Scores, insights & recommendations
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+    <div className="space-y-8">
+      <div className="space-y-8">
+        <h2 className="text-3xl md:text-3.5xl font-heading tracking-tighter uppercase">Product <span className="text-primary tracking-normal">Architecture</span></h2>
+        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">System Workflow Pipeline</p>
       </div>
-    </section>
+
+      <div className="relative space-y-8">
+        {/* Connection Line */}
+        <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-border/50" />
+
+        {steps.map((step, index) => (
+          <motion.div
+            key={step.title}
+            initial={{ opacity: 0, x: -20 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            viewport={{ once: true }}
+            className="relative flex items-center gap-8 pl-14"
+          >
+            {/* Step Number with Square Indicator */}
+            <div className="absolute left-0 top-1/2 -translate-y-1/2 w-12 h-12 bg-background border border-border flex items-center justify-center font-bold text-xs z-10 transition-colors group">
+              <div className="absolute inset-0 bg-primary/5 transition-opacity opacity-0 group-hover:opacity-100" />
+              0{index + 1}
+            </div>
+
+            <div className="space-y-1">
+              <h4 className="font-bold text-sm uppercase tracking-widest">{step.title}</h4>
+              <p className="text-sm text-muted-foreground font-medium">{step.description}</p>
+            </div>
+          </motion.div>
+        ))}
+      </div>
+    </div>
   );
 }

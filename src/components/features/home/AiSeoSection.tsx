@@ -1,47 +1,82 @@
 'use client';
 
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
+import { motion } from 'framer-motion';
 
 export function AiSeoSection() {
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6 bg-muted/50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          Why AI-Native SEO Matters
+    <div className="w-full">
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        transition={{ duration: 0.6 }}
+        viewport={{ once: true }}
+        className="text-left mb-8"
+      >
+        <h2 className="text-3xl md:text-3.5xl font-heading mb-4 leading-[0.9] uppercase">
+          Traditional SEO vs AI-Native SEO
         </h2>
+      </motion.div>
 
-        <div className="grid md:grid-cols-2 gap-8">
-          <Card>
-            <CardHeader>
-              <CardTitle className="text-lg">Traditional SEO</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground">
-              <p>✗ Optimizes for search engine algorithms</p>
-              <p>✗ Focuses on keyword density and backlinks</p>
-              <p>✗ Limited visibility into AI model understanding</p>
-              <p>✗ Reactive approach to ranking changes</p>
-            </CardContent>
-          </Card>
+      <div className="grid sm:grid-cols-2 gap-4">
+        {/* Traditional SEO */}
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="p-6 border border-border flex flex-col"
+        >
+          <h3 className="text-sm font-bold mb-6 uppercase tracking-widest border-b border-border pb-4">Traditional SEO</h3>
+          <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">
+            <li className="flex gap-3">
+              <span className="text-destructive shrink-0">×</span>
+              <span>Optimizes for heuristic-based search crawlers</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-destructive shrink-0">×</span>
+              <span>Prioritizes keyword frequency and backlink volume</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-destructive shrink-0">×</span>
+              <span>Zero visibility into LLM comprehension or reasoning</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-destructive shrink-0">×</span>
+              <span>Reactive strategy based on ranking volatility</span>
+            </li>
+          </ul>
+        </motion.div>
 
-          <Card className="border-primary/50 bg-primary/5">
-            <CardHeader>
-              <CardTitle className="text-lg">AI-Native SEO</CardTitle>
-            </CardHeader>
-            <CardContent className="space-y-3 text-sm text-muted-foreground">
-              <p>✓ Optimizes for AI understanding and reasoning</p>
-              <p>✓ Focuses on E-E-A-T, context, and structured knowledge</p>
-              <p>✓ Direct signals for AI model comprehension</p>
-              <p>✓ Proactive optimization for the AI-first era</p>
-            </CardContent>
-          </Card>
-        </div>
-
-        <div className="mt-12 p-6 bg-background border rounded-lg">
-          <p className="text-center text-muted-foreground">
-            As search evolves toward AI-driven results, brands that understand how AI reads, understands, and ranks content will win in organic search.
-          </p>
-        </div>
+        {/* AI-Native SEO */}
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true }}
+          className="p-6 border border-primary/50 dark:border-accent/50 bg-primary/5 flex flex-col"
+        >
+          <h3 className="text-sm font-bold mb-6 text-primary dark:text-accent uppercase tracking-widest border-b border-primary/20 pb-4">Kasparro: AI-Native</h3>
+          <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">
+            <li className="flex gap-3">
+              <span className="text-primary dark:text-accent shrink-0">✓</span>
+              <span>Optimizes for LLM entity recognition and neural reasoning</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-primary dark:text-accent shrink-0">✓</span>
+              <span>Prioritizes E-E-A-T signals and Knowledge Graph integrity</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-primary dark:text-accent shrink-0">✓</span>
+              <span>Direct analysis of model citation and reference triggers</span>
+            </li>
+            <li className="flex gap-3">
+              <span className="text-primary dark:text-accent shrink-0">✓</span>
+              <span>Proactive indexing for agentic search workflows</span>
+            </li>
+          </ul>
+        </motion.div>
       </div>
-    </section>
+
+    </div>
   );
 }

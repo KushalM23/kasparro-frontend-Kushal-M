@@ -1,25 +1,17 @@
-# Kasparro Frontend
+# Kasparro | AI-SEO Command Center
 
-A frontend application for the AI-first search era, built with Next.js, TypeScript, and Tailwind CSS.
+Kasparro is a high-fidelity audit platform designed for the neural-web epoch. It assembles fragmented brand signals into a unified context, processing them through 7 parallel intelligence modules to quantify and optimize AI-readiness.
 
-**Live Demo**: [Deployed on Vercel](https://kasparro-frontend.vercel.app) 
+**Project Status**: High-Fidelity UI Revamp Complete.
 
 ---
 
-## Table of Contents
+## Technical Index
 
-- [Overview](#overview)
-- [Architecture & System Design](#architecture--system-design)
-- [Project Structure](#project-structure)
-- [Data Modeling](#data-modeling)
-- [Component Architecture](#component-architecture)
-- [State Management](#state-management)
-- [Routes & Features](#routes--features)
-- [Engineering Decisions](#engineering-decisions)
-- [Setup & Development](#setup--development)
-- [Testing](#testing)
-- [Assumptions & Tradeoffs](#assumptions--tradeoffs)
-- [Future Enhancements](#future-enhancements)
+- [Neural Architecture](#neural-architecture)
+- [Design Philosophy](#design-philosophy)
+- [Command Center Modules](#the-7-intelligence-modules)
+- [Engineering Stack](#tech-stack)
 
 ---
 
@@ -42,7 +34,29 @@ Kasparro is an AI-native SEO platform designed for the modern era of AI-driven s
 
 ---
 
-## Architecture & System Design
+## Theme & Design System
+
+### Color Palette
+
+**Light Mode**
+```css
+--background: #ebf4f5 (near white)
+--foreground: Dark text
+--primary: #9bb2e5 (primary blue)
+--secondary: #698cbf (secondary blue)
+```
+
+**Dark Mode**
+```css
+--background: #08203e (deep navy)
+--foreground: #ebf4f5 (off-white)
+--primary: #9bb2e5 (lighter on dark)
+--secondary: #698cbf (lighter on dark)
+```
+
+All colors use CSS custom properties for zero-cost theme switching.
+
+---
 
 ### Core Design Philosophy
 

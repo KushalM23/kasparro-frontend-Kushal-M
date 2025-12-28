@@ -1,10 +1,22 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { Header } from '@/components/layouts/Header';
 import { Footer } from '@/components/layouts/Footer';
+import { ThemeProvider } from '@/components/providers/ThemeProvider';
 
-const inter = Inter({ subsets: ['latin'] });
+import { Bricolage_Grotesque, Bungee } from 'next/font/google';
+
+const bricolage = Bricolage_Grotesque({
+  subsets: ['latin'],
+  weight: ['200', '300', '400', '500', '600', '700', '800'],
+  variable: '--font-bricolage-grotesque'
+});
+
+const bungee = Bungee({
+  subsets: ['latin'],
+  weight: '400',
+  variable: '--font-bungee-display'
+});
 
 export const metadata: Metadata = {
   title: 'Kasparro - AI-Native SEO & Brand Intelligence',
@@ -27,13 +39,15 @@ export const metadata: Metadata = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
-      <body className={inter.className}>
-        <div className="flex flex-col min-h-screen">
-          <Header />
-          <main className="flex-1">{children}</main>
-          <Footer />
-        </div>
+    <html lang="en" suppressHydrationWarning>
+      <body className={`${bricolage.variable} ${bungee.variable} font-sans`}>
+        <ThemeProvider>
+          <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors">
+            <Header />
+            <main className="flex-1">{children}</main>
+            <Footer />
+          </div>
+        </ThemeProvider>
       </body>
     </html>
   );

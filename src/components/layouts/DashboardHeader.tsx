@@ -1,13 +1,10 @@
 'use client';
 
-import { BrandSelector } from '@/components/features/dashboard/BrandSelector';
-
 export function DashboardHeader() {
   return (
-    <header className="border-b bg-white p-6">
-      <div className="max-w-7xl mx-auto flex items-center justify-between">
-        <h1 className="text-2xl font-bold">Dashboard</h1>
-        <BrandSelector />
+    <header className="border-b border-border bg-background p-4 md:p-6 transition-colors">
+      <div className="flex items-center justify-between">
+        <h1 className="text-xl md:text-2xl font-bold text-foreground">Dashboard</h1>
       </div>
     </header>
   );

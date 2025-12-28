@@ -12,10 +12,9 @@ import { DashboardMetrics } from '@/types/metrics';
 export default function DashboardPage() {
   const { selectedBrand, setSelectedBrand, brands, setBrands } = useBrandStore();
   const [metrics, setMetrics] = useState<DashboardMetrics | null>(null);
-  const [loading, setLoading] = useState(true);
   const [isAuditing, setIsAuditing] = useState(false);
-  const [auditedBrands, setAuditedBrands] = useState<string[]>([]);
-  const [lastScanTime, setLastScanTime] = useState<string | null>(null);
+  const [auditedBrands, setAuditedBrands] = useState<Set<string>>(new Set());
+  const [lastScanTime, setLastScanTime] = useState<string>('');
 
   const loadMetrics = useCallback(async (brandId: string) => {
     try {
@@ -43,7 +42,7 @@ export default function DashboardPage() {
 
   useEffect(() => {
     const saved = localStorage.getItem('kasparro_audited_brands');
-    if (saved) setAuditedBrands(JSON.parse(saved));
+    if (saved) setAuditedBrands(new Set(JSON.parse(saved)));
   }, []);
 
   useEffect(() => {
@@ -53,25 +52,26 @@ export default function DashboardPage() {
         const data = await response.json();
         const brandsList = Array.isArray(data) ? data : (data.brands || []);
         setBrands(brandsList);
-
-        // If a brand is already selected and it's in auditedBrands, load metrics
-        if (selectedBrand && auditedBrands.includes(selectedBrand.id)) {
-          loadMetrics(selectedBrand.id);
-        }
       } catch (error) {
         console.error('Failed to load brands:', error);
-      } finally {
-        setLoading(false);
       }
     };
     fetchBrands();
-  }, [setBrands, selectedBrand, auditedBrands, loadMetrics]);
+  }, [setBrands]);
+
+  useEffect(() => {
+    if (selectedBrand && auditedBrands.has(selectedBrand.id)) {
+      loadMetrics(selectedBrand.id);
+    } else {
+      setMetrics(null);
+    }
+  }, [selectedBrand, auditedBrands, loadMetrics]);
 
   const handleBrandChange = (brandId: string) => {
     const brand = brands.find(b => b.id === brandId);
     if (brand) {
       setSelectedBrand(brand);
-      if (auditedBrands.includes(brandId)) {
+      if (auditedBrands.has(brandId)) {
         loadMetrics(brandId);
       } else {
         setMetrics(null);
@@ -80,28 +80,20 @@ export default function DashboardPage() {
   };
 
   const handleRunAudit = async () => {
+    if (!selectedBrand) return;
+
     setIsAuditing(true);
     await new Promise(resolve => setTimeout(resolve, 2000));
 
-    if (selectedBrand) {
-      await loadMetrics(selectedBrand.id);
-      const newAudited = [...auditedBrands, selectedBrand.id];
-      setAuditedBrands(newAudited);
-      localStorage.setItem('kasparro_audited_brands', JSON.stringify(newAudited));
-    }
+    await loadMetrics(selectedBrand.id);
+    const newAudited = new Set([...auditedBrands, selectedBrand.id]);
+    setAuditedBrands(newAudited);
+    localStorage.setItem('kasparro_audited_brands', JSON.stringify([...newAudited]));
     setIsAuditing(false);
   };
 
-  if (loading) {
-    return (
-      <div className="flex-1 flex items-center justify-center">
-        <div className="w-8 h-8 border-4 border-primary/20 border-t-primary animate-spin" />
-      </div>
-    );
-  }
-
   return (
-    <div className="container mx-auto px-4 md:px-8 py-8 max-w-6xl">
+    <div className="container mx-auto px-4 md:px-6 lg:px-12 py-6 md:py-8 lg:py-12 max-w-6xl">
       <DashboardHeader
         selectedBrand={selectedBrand}
         brands={brands}

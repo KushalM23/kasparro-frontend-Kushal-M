@@ -52,17 +52,17 @@ export function AuditModuleContent({ module, moduleDefinition, brandName }: Audi
             className="max-w-5xl space-y-10"
         >
             {/* Module Header */}
-            <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 border-b border-border pb-8">
+            <div className="flex flex-col gap-4 md:gap-6 border-b border-border pb-6 md:pb-8">
                 <div className="space-y-3 flex-1">
-                    <div className="flex items-center gap-4">
+                    <div className="flex flex-wrap items-center gap-2 md:gap-4">
                         <span className="bg-primary/10 text-primary text-[10px] font-bold px-2 py-0.5 tracking-widest uppercase">{brandName}</span>
-                        <div className="h-px w-4 bg-border" />
+                        <div className="h-px w-4 bg-border hidden md:block" />
                         <div className="flex items-center gap-2">
                             {IconComponent && <IconComponent className="w-4 h-4 text-muted-foreground" />}
                             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/60">Intelligence Layer</span>
                         </div>
                     </div>
-                    <h1 className="text-4xl md:text-5xl tracking-tighter uppercase leading-none">
+                    <h1 className="text-3xl md:text-4xl lg:text-5xl tracking-tighter uppercase leading-none">
                         {module.moduleName}
                     </h1>
                     <p className="text-xs font-medium leading-relaxed text-muted-foreground max-w-xl">

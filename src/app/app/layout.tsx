@@ -27,27 +27,7 @@ export default function AppLayout({
   ];
 
   return (
-    <div className="flex flex-col min-h-[calc(100vh-80px)] bg-background transition-colors">
-      <div className="w-full border-b border-border bg-background py-2">
-        <div className="container mx-auto px-4 flex justify-center">
-          <nav className="flex items-center gap-1 bg-muted/50 p-1 rounded-full px-6">
-            {tabs.map((tab) => (
-              <Link
-                key={tab.href}
-                href={tab.href}
-                className={cn(
-                  "px-6 py-2 text-sm font-medium transition-all hover:text-primary",
-                  pathname === tab.href
-                    ? "text-primary dark:text-accent"
-                    : "text-muted-foreground"
-                )}
-              >
-                {tab.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
-      </div>
+    <div className="flex flex-col flex-1 bg-background transition-colors">
 
       <AnimatePresence mode="wait">
         {isLoading ? (

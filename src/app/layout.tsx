@@ -1,5 +1,4 @@
 import type { Metadata } from 'next';
-import { Inter } from 'next/font/google';
 import '@/styles/globals.css';
 import { Header } from '@/components/layouts/Header';
 import { Footer } from '@/components/layouts/Footer';
@@ -10,13 +9,13 @@ import { Bricolage_Grotesque, Bungee } from 'next/font/google';
 const bricolage = Bricolage_Grotesque({
   subsets: ['latin'],
   weight: ['200', '300', '400', '500', '600', '700', '800'],
-  variable: '--font-bricolage'
+  variable: '--font-bricolage-grotesque'
 });
 
 const bungee = Bungee({
   subsets: ['latin'],
   weight: '400',
-  variable: '--font-bungee'
+  variable: '--font-bungee-display'
 });
 
 export const metadata: Metadata = {

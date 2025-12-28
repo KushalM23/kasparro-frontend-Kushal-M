@@ -1,48 +1,25 @@
 'use client';
 
-
 export function Outputs() {
   const outputs = [
-    {
-      title: 'Scores',
-      desc: 'Numeric scores (0-100) across 7 audit modules showing performance',
-    },
-    {
-      title: 'Insights',
-      desc: 'Positive findings and opportunities you\'re already leveraging',
-    },
-    {
-      title: 'Issues',
-      desc: 'Specific problems ranked by severity with page-level detail',
-    },
-    {
-      title: 'Recommendations',
-      desc: 'Prioritized actions with impact and effort estimates',
-    },
+    { title: 'Visibility Index', items: ['LLM Mention Share', 'Reference Confidence', 'Topic Ownership'] },
+    { title: 'Strategic Roadmap', items: ['Priority fixes', 'Content gaps', 'E-E-A-T signals'] },
+    { title: 'Architecture Export', items: ['SVG system diagrams', 'JSON raw audit data', 'Implementation specs'] }
   ];
 
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          What You Receive
-        </h2>
-
-        <div className="grid md:grid-cols-2 gap-6">
-          {outputs.map((output) => (
-            <div key={output.title} className="p-6 border border-primary/50 dark:border-accent/50 bg-gradient-to-r from-[#9bb2e5]/10 to-[#698cbf]/10 dark:from-[#9bb2e5]/10 dark:to-[#698cbf]/5">
-              <h3 className="text-lg font-bold mb-3">{output.title}</h3>
-              <p className="text-muted-foreground">{output.desc}</p>
-            </div>
-          ))}
-        </div>
-
-        <div className="mt-12 p-6 bg-background border">
-          <p className="text-center text-muted-foreground">
-            All data is presented in an intuitive dashboard where you can drill into any module for detailed analysis.
-          </p>
-        </div>
+    <div className="bg-background p-12 space-y-8">
+      <h2 className="text-2xl font-heading uppercase tracking-tighter">Deliverable Assets (Output)</h2>
+      <div className="space-y-6">
+        {outputs.map((group) => (
+          <div key={group.title} className="space-y-2">
+            <h4 className="text-xs font-bold uppercase tracking-widest text-secondary">{group.title}</h4>
+            <ul className="grid grid-cols-1 gap-1">
+              {group.items.map(item => <li key={item} className="text-sm font-medium border-l border-secondary/20 pl-3">{item}</li>)}
+            </ul>
+          </div>
+        ))}
       </div>
-    </section>
+    </div>
   );
 }

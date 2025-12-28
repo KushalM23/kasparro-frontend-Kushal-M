@@ -12,9 +12,7 @@ export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
-
-  // Hide header on /app routes
-  if (pathname?.startsWith('/app')) return null;
+  const isAppRoute = pathname?.startsWith('/app');
 
   useEffect(() => {
     const isDarkMode = document.documentElement.classList.contains('dark');
@@ -33,7 +31,11 @@ export function Header() {
     }
   };
 
-  const navItems = [
+  const navItems = isAppRoute ? [
+    { label: 'Dashboard', href: ROUTES.DASHBOARD },
+    { label: 'Audit', href: ROUTES.AUDIT },
+    { label: 'Architecture', href: ROUTES.ARCHITECTURE },
+  ] : [
     { label: 'Platform', href: ROUTES.PLATFORM },
     { label: 'About', href: ROUTES.ABOUT },
     { label: 'Our Product', href: ROUTES.DASHBOARD },

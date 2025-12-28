@@ -19,9 +19,9 @@ export function PipelineView() {
   ];
 
   return (
-    <div className="space-y-12">
-      <div className="space-y-4">
-        <h2 className="text-3xl md:text-5xl font-heading tracking-tighter uppercase">Product <span className="text-primary tracking-normal">Architecture</span></h2>
+    <div className="space-y-8">
+      <div className="space-y-8">
+        <h2 className="text-3xl md:text-3.5xl font-heading tracking-tighter uppercase">Product <span className="text-primary tracking-normal">Architecture</span></h2>
         <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">System Workflow Pipeline</p>
       </div>
 

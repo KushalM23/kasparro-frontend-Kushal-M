@@ -139,21 +139,21 @@
 
 ### Dashboard Layout (shared for all /app routes)
 
-- [ ] T042 [P] [US4] Create DashboardSidebar component with navigation links in src/components/layouts/DashboardSidebar.tsx
-- [ ] T043 [P] [US4] Create DashboardHeader component with brand selector in src/components/layouts/DashboardHeader.tsx
-- [ ] T044 [US4] Create dashboard layout wrapping /app routes in src/app/app/layout.tsx
+- [x] T042 [P] [US4] Create DashboardSidebar component with navigation links in src/components/layouts/DashboardSidebar.tsx
+- [x] T043 [P] [US4] Create DashboardHeader component with brand selector in src/components/layouts/DashboardHeader.tsx
+- [x] T044 [US4] Create dashboard layout wrapping /app routes in src/app/app/layout.tsx
 
 ### Dashboard Components
 
-- [ ] T045 [P] [US4] Create BrandSelector component using brandStore in src/components/features/dashboard/BrandSelector.tsx
-- [ ] T046 [P] [US4] Create base MetricCard component in src/components/features/dashboard/MetricCard.tsx
-- [ ] T047 [P] [US4] Create AiVisibilityCard component in src/components/features/dashboard/AiVisibilityCard.tsx
-- [ ] T048 [P] [US4] Create EeatScoreCard component in src/components/features/dashboard/EeatScoreCard.tsx
-- [ ] T049 [P] [US4] Create KeywordCoverageCard component in src/components/features/dashboard/KeywordCoverageCard.tsx
-- [ ] T050 [P] [US4] Create LastAuditTimestamp component in src/components/features/dashboard/LastAuditTimestamp.tsx
-- [ ] T051 [US4] Compose dashboard page loading data from JSON and using brandStore in src/app/app/dashboard/page.tsx
-- [ ] T052 [US4] Implement brand switching - metrics update when brand selection changes
-- [ ] T053 [US4] Add responsive styles for dashboard page
+- [x] T045 [P] [US4] Create BrandSelector component using brandStore in src/components/features/dashboard/BrandSelector.tsx
+- [x] T046 [P] [US4] Create base MetricCard component in src/components/features/dashboard/MetricCard.tsx
+- [x] T047 [P] [US4] Create AiVisibilityCard component in src/components/features/dashboard/AiVisibilityCard.tsx
+- [x] T048 [P] [US4] Create EeatScoreCard component in src/components/features/dashboard/EeatScoreCard.tsx
+- [x] T049 [P] [US4] Create KeywordCoverageCard component in src/components/features/dashboard/KeywordCoverageCard.tsx
+- [x] T050 [P] [US4] Create LastAuditTimestamp component in src/components/features/dashboard/LastAuditTimestamp.tsx
+- [x] T051 [US4] Compose dashboard page loading data from JSON and using brandStore in src/app/app/dashboard/page.tsx
+- [x] T052 [US4] Implement brand switching - metrics update when brand selection changes
+- [x] T053 [US4] Add responsive styles for dashboard page
 
 **Checkpoint**: User Story 4 complete - Dashboard shows brand snapshot with working brand selector
 
@@ -167,16 +167,16 @@
 
 ### Audit Components
 
-- [ ] T054 [P] [US5] Create ModuleSidebar component listing 7 modules with selection state in src/components/features/audit/ModuleSidebar.tsx
-- [ ] T055 [P] [US5] Create ScoreDisplay component showing module score prominently in src/components/features/audit/ScoreDisplay.tsx
-- [ ] T056 [P] [US5] Create InsightsList component rendering insights from data in src/components/features/audit/InsightsList.tsx
-- [ ] T057 [P] [US5] Create IssuesList component rendering issues with severity badges in src/components/features/audit/IssuesList.tsx
-- [ ] T058 [P] [US5] Create RecommendationsList component rendering recommendations in src/components/features/audit/RecommendationsList.tsx
-- [ ] T059 [US5] Create ModuleDetail component composing Score, Insights, Issues, Recommendations in src/components/features/audit/ModuleDetail.tsx
-- [ ] T060 [US5] Compose audit page with two-panel layout (sidebar + main) in src/app/app/audit/page.tsx
-- [ ] T061 [US5] Implement module switching using auditStore - main panel updates on selection
-- [ ] T062 [US5] Verify all audit data driven from JSON (no hard-coded JSX content)
-- [ ] T063 [US5] Add responsive styles for audit page (mobile: stacked layout)
+- [x] T054 [P] [US5] Create ModuleSidebar component listing 7 modules with selection state in src/components/features/audit/ModuleSidebar.tsx
+- [x] T055 [P] [US5] Create ScoreDisplay component showing module score prominently in src/components/features/audit/ScoreDisplay.tsx
+- [x] T056 [P] [US5] Create InsightsList component rendering insights from data in src/components/features/audit/InsightsList.tsx
+- [x] T057 [P] [US5] Create IssuesList component rendering issues with severity badges in src/components/features/audit/IssuesList.tsx
+- [x] T058 [P] [US5] Create RecommendationsList component rendering recommendations in src/components/features/audit/RecommendationsList.tsx
+- [x] T059 [US5] Create ModuleDetail component composing Score, Insights, Issues, Recommendations in src/components/features/audit/ModuleDetail.tsx
+- [x] T060 [US5] Compose audit page with two-panel layout (sidebar + main) in src/app/app/audit/page.tsx
+- [x] T061 [US5] Implement module switching using auditStore - main panel updates on selection
+- [x] T062 [US5] Verify all audit data driven from JSON (no hard-coded JSX content)
+- [x] T063 [US5] Add responsive styles for audit page (mobile: stacked layout)
 
 **Checkpoint**: User Story 5 complete - Audit page shows detailed module results with working module selection
 
@@ -190,13 +190,13 @@
 
 ### Architecture Components
 
-- [ ] T064 [P] [US6] Create InputAssemblerNode component in src/components/features/architecture/InputAssemblerNode.tsx
-- [ ] T065 [P] [US6] Create ContextPackNode component in src/components/features/architecture/ContextPackNode.tsx
-- [ ] T066 [P] [US6] Create ModuleNode component (reusable for 7 modules) in src/components/features/architecture/ModuleNode.tsx
-- [ ] T067 [P] [US6] Create OutputNode component for output surfaces in src/components/features/architecture/OutputNode.tsx
-- [ ] T068 [US6] Create SystemDiagram component composing all nodes with data flow visualization in src/components/features/architecture/SystemDiagram.tsx
-- [ ] T069 [US6] Compose architecture page in src/app/app/architecture/page.tsx
-- [ ] T070 [US6] Add responsive styles for architecture page
+- [x] T064 [P] [US6] Create InputAssemblerNode component in src/components/features/architecture/InputAssemblerNode.tsx
+- [x] T065 [P] [US6] Create ContextPackNode component in src/components/features/architecture/ContextPackNode.tsx
+- [x] T066 [P] [US6] Create ModuleNode component (reusable for 7 modules) in src/components/features/architecture/ModuleNode.tsx
+- [x] T067 [P] [US6] Create OutputNode component for output surfaces in src/components/features/architecture/OutputNode.tsx
+- [x] T068 [US6] Create SystemDiagram component composing all nodes with data flow visualization in src/components/features/architecture/SystemDiagram.tsx
+- [x] T069 [US6] Compose architecture page in src/app/app/architecture/page.tsx
+- [x] T070 [US6] Add responsive styles for architecture page
 
 **Checkpoint**: User Story 6 complete - Architecture page demonstrates system understanding
 
@@ -208,23 +208,23 @@
 
 ### Error Handling & Edge Cases
 
-- [ ] T071 [P] Create styled 404 page with navigation back to home in src/app/not-found.tsx
-- [ ] T072 [P] Create loading skeleton components for dashboard cards in src/components/ui/metric-skeleton.tsx
-- [ ] T073 [P] Create loading skeleton for audit module detail in src/components/ui/module-skeleton.tsx
-- [ ] T074 Add loading states to dashboard page
-- [ ] T075 Add loading states to audit page
+- [x] T071 [P] Create styled 404 page with navigation back to home in src/app/not-found.tsx
+- [x] T072 [P] Create loading skeleton components for dashboard cards in src/components/ui/metric-skeleton.tsx
+- [x] T073 [P] Create loading skeleton for audit module detail in src/components/ui/module-skeleton.tsx
+- [x] T074 Add loading states to dashboard page
+- [x] T075 Add loading states to audit page
 
 ### Responsive Validation
 
-- [ ] T076 Test and fix all pages at 375px (mobile)
-- [ ] T077 Test and fix all pages at 768px (tablet)
-- [ ] T078 Test and fix all pages at 1920px (desktop)
+- [x] T076 Test and fix all pages at 375px (mobile)
+- [x] T077 Test and fix all pages at 768px (tablet)
+- [x] T078 Test and fix all pages at 1920px (desktop)
 
 ### Documentation
 
-- [ ] T079 Create README.md with folder structure explanation
-- [ ] T080 Document architectural decisions in README.md
-- [ ] T081 Document tradeoffs made in README.md
+- [x] T079 Create README.md with folder structure explanation
+- [x] T080 Document architectural decisions in README.md
+- [x] T081 Document tradeoffs made in README.md
 
 ## Phase 5: Deployment
 
@@ -232,9 +232,9 @@
 
 ### Deployment Tasks
 
-- [ ] T082 Configure Vercel deployment
-- [ ] T083 Deploy to Vercel and verify all routes
-- [ ] T084 Validate page load time < 3 seconds on production
+- [x] T082 Configure Vercel deployment
+- [x] T083 Deploy to Vercel and verify all routes
+- [x] T084 Validate page load time < 3 seconds on production
 
 ---
 

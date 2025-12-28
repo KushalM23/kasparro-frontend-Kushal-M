@@ -1,0 +1,20 @@
+[
+  {
+    "id": "brand-1",
+    "name": "TechStartup Co",
+    "domain": "techstartup.com",
+    "url": "https://techstartup.com",
+    "description": "AI-powered analytics platform for enterprise",
+    "favicon": "/images/brand-1-favicon.png",
+    "createdAt": "2024-01-15T10:00:00Z"
+  },
+  {
+    "id": "brand-2",
+    "name": "DesignStudio Inc",
+    "domain": "designstudio.io",
+    "url": "https://designstudio.io",
+    "description": "Creative design and branding agency",
+    "favicon": "/images/brand-2-favicon.png",
+    "createdAt": "2024-02-20T14:30:00Z"
+  }
+]

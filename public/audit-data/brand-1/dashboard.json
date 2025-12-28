@@ -1,0 +1,14 @@
+{
+  "brandId": "brand-1",
+  "aiVisibilityScore": 78,
+  "eeatScore": 82,
+  "keywordCoverageScore": 71,
+  "technicalReadinessScore": 85,
+  "contentQualityScore": 79,
+  "competitorBenchmarkScore": 73,
+  "brandMentionScore": 68,
+  "averageScore": 76.6,
+  "lastAuditDate": "2024-12-15T09:30:00Z",
+  "recommendedActions": 12,
+  "criticalIssues": 2
+}

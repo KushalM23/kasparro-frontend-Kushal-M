@@ -1,42 +1,53 @@
 'use client';
 
+import { motion } from 'framer-motion';
+
 export function Philosophy() {
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6 bg-muted/50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          Our Philosophy
-        </h2>
+    <section className="mb-32">
+      <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <motion.div
+          initial={{ opacity: 0, x: -20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          className="space-y-6 lg:order-2"
+        >
+          <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">02. Product Philosophy</span>
+          <h2 className="text-3xl md:text-5xl tracking-tighter uppercase leading-[0.9]">
+            Systems engineering <span className="text-primary italic">not</span> guessing
+          </h2>
+          <div className="grid grid-cols-2 gap-4 mt-12">
+            <div className="p-8 border border-border bg-muted/20">
+              <span className="text-3xl font-bold tracking-tighter block text-primary">15Y+</span>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 mt-2">Combined Engineering Depth</p>
+            </div>
+            <div className="p-8 border border-border bg-muted/20">
+              <span className="text-3xl font-bold tracking-tighter block text-primary">8.5K</span>
+              <p className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground/80 mt-2">Validated Model Markers</p>
+            </div>
+          </div>
+        </motion.div>
 
-        <div className="space-y-8">
-          <div>
-            <h3 className="text-xl font-bold mb-3">The AI Model is the New Algorithm</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Traditional SEO optimizes for Google's ranking algorithm. Today, brands need to optimize for how AI models—GPT-4, Claude, Gemini—understand and represent their content. These models are transforming how information is discovered, synthesized, and consumed.
+        <motion.div
+          initial={{ opacity: 0, x: 20 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="space-y-8 pt-4 lg:order-1"
+        >
+          <p className="text-lg font-medium leading-relaxed tracking-tight text-foreground/90">
+            Traditional SEO relies on crawling and indexing. AI-SEO requires understanding neural weights and probability. Our philosophy is rooted in evidence-based systems engineering.
+          </p>
+          <div className="space-y-6 text-sm text-muted-foreground leading-relaxed font-medium">
+            <p>
+              Founded by a team of distributed systems engineers and search experts, we believe that brand visibility should be treated as a technical data problem, not a creative guessing game.
+            </p>
+            <p>
+              Every insight in the Kasparro platform is backed by empirical testing across production-scale LLMs. We don't just "hope" for visibility; we verify the citation triggers and authoritative markers that matter to modern neural networks.
             </p>
           </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-3">Data-Driven Decisions Over Guesswork</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Too many digital strategies are based on assumptions rather than evidence. We believe in providing concrete data about your AI-readiness, allowing you to make informed decisions about where to invest your effort.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-3">E-E-A-T is the Foundation</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Experience, Expertise, Authoritativeness, and Trustworthiness matter more than ever. These are the signals AI models rely on to evaluate credibility. Kasparro helps you demonstrate these qualities clearly.
-            </p>
-          </div>
-
-          <div>
-            <h3 className="text-xl font-bold mb-3">Speed and Simplicity</h3>
-            <p className="text-muted-foreground leading-relaxed">
-              Complex tools create analysis paralysis. We deliver quick turnarounds and clear, prioritized insights so you can act fast without getting lost in technical jargon.
-            </p>
-          </div>
-        </div>
+        </motion.div>
       </div>
     </section>
   );

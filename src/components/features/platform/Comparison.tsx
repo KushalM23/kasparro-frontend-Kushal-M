@@ -1,28 +1,27 @@
 'use client';
 
 export function Comparison() {
-  const stats = [
-    { metric: 'Optimization Depth', trad: '85% Keywords', kasp: '100% Entities', diff: '+15%' },
-    { metric: 'Analysis Latency', trad: 'Weeks (Manual)', kasp: '2.4s (Automated)', diff: '-99%' },
-    { metric: 'Reference Accuracy', trad: '42% estimated', kasp: '94% deterministic', diff: '2.2x' },
-    { metric: 'Model Alignment', trad: 'Low (Crawler only)', kasp: 'High (LLM specific)', diff: 'Critical' }
-  ];
 
   return (
-    <section className="mb-32">
+    <section>
       <div className="mb-12">
-        <h2 className="text-3xl md:text-5xl font-heading tracking-tighter uppercase leading-[0.9]">
-          Statistical <span className="text-secondary tracking-normal">Matrix</span>
+        <h2 className="text-3xl md:text-5xl tracking-tighter uppercase leading-[0.9]">
+          How We <span className="text-primary tracking-normal">Compare</span>
         </h2>
-        <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mt-2">Performance Benchmarking vs Traditional SEO</p>
+        <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mt-4">The AI-Native Advantage</p>
       </div>
       <div className="border border-border">
-        {stats.map((row, idx) => (
+        {[
+          { metric: 'Discovery Level', trad: 'Keyword Matching', kasp: 'Context & Intent', diff: 'Superior' },
+          { metric: 'Time to Insight', trad: 'Weeks of Manual Work', kasp: 'Real-time Analysis', diff: 'Immediate' },
+          { metric: 'Citation Trace', trad: 'Limited Estimation', kasp: 'Actual Model Tracking', diff: 'Data-Driven' },
+          { metric: 'Platform Support', trad: 'Search Engines only', kasp: 'GPT, Gemini, Perplexity', diff: 'Universal' }
+        ].map((row, idx) => (
           <div key={idx} className="grid grid-cols-4 border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
-            <div className="p-6 font-bold text-xs uppercase border-r border-border">{row.metric}</div>
-            <div className="p-6 text-sm text-muted-foreground border-r border-border">{row.trad}</div>
-            <div className="p-6 text-sm font-bold border-r border-border">{row.kasp}</div>
-            <div className="p-6 text-sm font-bold text-secondary">{row.diff}</div>
+            <div className="p-6 font-bold text-[10px] uppercase tracking-wider text-muted-foreground border-r border-border self-center">{row.metric}</div>
+            <div className="p-6 text-sm text-foreground/50 border-r border-border self-center">{row.trad}</div>
+            <div className="p-6 text-sm font-bold text-foreground border-r border-border self-center">{row.kasp}</div>
+            <div className="p-6 text-xs font-bold text-primary uppercase tracking-widest self-center">{row.diff}</div>
           </div>
         ))}
       </div>

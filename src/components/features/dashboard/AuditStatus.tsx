@@ -19,9 +19,9 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
                 className="border border-border p-20 flex flex-col items-center justify-center text-center space-y-6"
             >
                 <div className="w-16 h-[1px] bg-border" />
-                <p className="text-muted-foreground font-medium uppercase tracking-widest text-xs">No Brand Context Selected</p>
-                <h2 className="text-2xl font-bold uppercase tracking-tight">Initialize System Audit</h2>
-                <p className="text-xs text-muted-foreground max-w-md mx-auto">
+                <p className="text-muted-foreground font-bold uppercase tracking-widest text-[11px]">No Brand Context Selected</p>
+                <h2 className="text-2xl tracking-tight uppercase">Initialize System Audit</h2>
+                <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
                     Please select a brand from the dropdown above to begin scanning for AI-SEO visibility and model citations.
                 </p>
             </motion.div>
@@ -44,7 +44,7 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
                     </div>
                 </div>
                 <div className="space-y-2">
-                    <h2 className="text-2xl font-bold uppercase tracking-tight">Running Deep Audit</h2>
+                    <h2 className="text-2xl tracking-tight uppercase">Running Deep Audit</h2>
                     <p className="text-xs text-primary font-bold uppercase tracking-[0.2em] animate-pulse">Scanning Neural Networks</p>
                 </div>
             </motion.div>
@@ -59,14 +59,14 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
             className="border border-border p-20 flex flex-col items-center justify-center text-center space-y-8"
         >
             <div className="space-y-4">
-                <h2 className="text-3xl font-heading uppercase tracking-tight">Run your first Kasparro Audit</h2>
-                <p className="text-sm text-muted-foreground max-w-md mx-auto font-medium">
+                <h2 className="text-3xl tracking-tight uppercase">Run your first Kasparro Audit</h2>
+                <p className="text-sm text-muted-foreground max-w-md mx-auto font-medium leading-relaxed">
                     Establish a technical baseline for your brand's AI-era visibility. Initial scan takes approximately 2 seconds.
                 </p>
             </div>
             <Button
                 onClick={onRunAudit}
-                className="rounded-none bg-foreground text-background font-bold uppercase tracking-widest px-12 h-14 hover:bg-primary transition-colors text-xs"
+                className="rounded-none bg-foreground text-primary-foreground font-bold uppercase tracking-widest px-12 h-14 hover:bg-primary transition-colors text-xs"
             >
                 Initialize Audit &rarr;
             </Button>

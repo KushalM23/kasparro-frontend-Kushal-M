@@ -12,22 +12,22 @@ export function PlatformHero() {
                     transition={{ duration: 0.6 }}
                     className="space-y-6"
                 >
-                    <h1 className="text-4xl md:text-6xl font-heading tracking-tighter uppercase leading-[0.9]">
-                        The Intelligent <span className="text-primary tracking-normal">Ecosystem</span>
+                    <h1 className="text-4xl md:text-6xl tracking-tighter uppercase leading-[0.9]">
+                        How the <span className="text-primary tracking-normal">Platform</span> Works
                     </h1>
-                    <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em]">Technical Specifications & Product Topology</p>
+                    <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mb-4">Our Process & Technical Approach</p>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
                     animate={{ opacity: 1, x: 0 }}
                     transition={{ duration: 0.6, delay: 0.2 }}
-                    className="space-y-6 text-sm font-medium leading-relaxed"
+                    className="space-y-6"
                 >
-                    <p>
-                        Kasparro is a deterministic AI-native SEO & Brand Intelligence infrastructure engineered for the generative search paradigm. It transitions the optimization layer from keyword-matching to neural inference alignment.
+                    <p className="text-lg font-medium leading-relaxed text-foreground/90">
+                        Kasparro is an AI-native SEO platform designed to help your brand thrive as search moves toward AI-first discovery. We've built an infrastructure that helps you understand how models like ChatGPT, Gemini, and Claude perceive your content.
                     </p>
-                    <p>
-                        The platform executes high-concurrency diagnostic pipelines, processing brand signals through seven specialized intelligence layers. By normalizing brand data into machine-parsable context packs, Kasparro enables brands to establish absolute clarity within the black-box environments of LLMs like GPT-4, Claude, and Gemini.
+                    <p className="text-sm leading-relaxed text-muted-foreground">
+                        Our platform works through a clear, three-step process: gathering your brand data, analyzing it through seven specialized audit modules, and providing actionable insights. We help you take control of your visibility by ensuring AI models have the right context to represent your brand accurately.
                     </p>
                 </motion.div>
             </div>

@@ -5,24 +5,24 @@ import { motion } from 'framer-motion';
 export function PipelineView() {
   const steps = [
     {
-      title: 'Signal Ingestion',
-      description: 'Harvesting raw brand signatures and semantic footprints across the web.',
+      title: 'Data Collection',
+      description: 'We gather your brand data and mentions from across the web.',
     },
     {
-      title: 'Neural Auditing',
-      description: 'Executing high-concurrency diagnostic modules across LLM architectures.',
+      title: 'Audit Analysis',
+      description: 'Your brand is analyzed through our specialized modules to find visibility gaps.',
     },
     {
-      title: 'Synthesis Output',
-      description: 'technical roadmaps and predictive citation probability matrices.',
+      title: 'Smart Insights',
+      description: 'We provide clear, actionable steps to improve your AI search visibility.',
     },
   ];
 
   return (
     <div className="space-y-8">
       <div className="space-y-8">
-        <h2 className="text-3xl md:text-3.5xl font-heading tracking-tighter uppercase">Product <span className="text-primary tracking-normal">Architecture</span></h2>
-        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">System Workflow Pipeline</p>
+        <h2 className="text-3xl md:text-3.5xl font-heading tracking-tighter uppercase">How It <span className="text-primary tracking-normal">Works</span></h2>
+        <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">Our Three-Step Process</p>
       </div>
 
       <div className="relative space-y-8">

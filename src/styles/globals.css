@@ -12,49 +12,52 @@
     --card-foreground: 213 100% 4%;
     --popover: #ffffff;
     --popover-foreground: 213 100% 4%;
-    --primary: 221 57% 75%;
-    /* #9bb2e5 */
-    --primary-foreground: 213 100% 4%;
-    --secondary: 221 57% 75%;
-    --secondary-foreground: 213 100% 4%;
-    --muted: 188 25% 85%;
-    --muted-foreground: 213 50% 30%;
-    --accent: 221 57% 75%;
-    --accent-foreground: 213 100% 4%;
+    --primary: 221 65% 55%;
+    /* #4a7dcf */
+    --primary-foreground: 0 0% 100%;
+    /* White text for better contrast */
+    --secondary: 221 65% 55%;
+    --secondary-foreground: 0 0% 100%;
+    --muted: 188 25% 92%;
+    --muted-foreground: 213 40% 25%;
+    /* Darker for better contrast in light mode */
+    --accent: 221 65% 55%;
+    --accent-foreground: 0 0% 100%;
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 188 25% 94%;
     --border: 188 25% 80%;
     --input: 188 25% 80%;
-    --ring: 221 57% 75%;
+    --ring: 221 65% 55%;
     --radius: 0px;
 
     /* Gradient colors */
-    --gradient-start: #9bb2e5;
-    --gradient-end: #698cbf;
+    --gradient-start: #2857bc;
+    --gradient-end: #3264b0;
   }
 
   .dark {
-    --background: #000914;
-    --foreground: 188 25% 94%;
-    /* #ebf4f5 */
-    --card: 213 100% 6%;
-    --card-foreground: 188 25% 94%;
-    --popover: 213 100% 6%;
-    --popover-foreground: 188 25% 94%;
-    --primary: 221 57% 75%;
-    /* #9bb2e5 */
+    --background: #020817;
+    --foreground: 188 25% 98%;
+    /* Almost white */
+    --card: 213 100% 4%;
+    --card-foreground: 188 25% 98%;
+    --popover: 213 100% 4%;
+    --popover-foreground: 188 25% 98%;
+    --primary: 221 75% 70%;
+    /* Slightly more vibrant light blue */
     --primary-foreground: 213 100% 4%;
-    --secondary: 188 25% 20%;
-    --secondary-foreground: 188 25% 94%;
-    --muted: 213 100% 10%;
-    --muted-foreground: 188 25% 70%;
-    --accent: 221 57% 75%;
+    --secondary: 188 25% 15%;
+    --secondary-foreground: 188 25% 98%;
+    --muted: 213 100% 8%;
+    --muted-foreground: 188 25% 85%;
+    /* Boosted for readability */
+    --accent: 221 75% 70%;
     --accent-foreground: 213 100% 4%;
     --destructive: 0 62.8% 40%;
-    --destructive-foreground: 188 25% 94%;
-    --border: 213 100% 15%;
-    --input: 213 100% 15%;
-    --ring: 221 57% 75%;
+    --destructive-foreground: 188 25% 98%;
+    --border: 213 100% 18%;
+    --input: 213 100% 18%;
+    --ring: 221 75% 70%;
   }
 }
 
@@ -62,7 +65,6 @@
   * {
     @apply border-border;
     font-style: normal !important;
-    /* Force remove italics unless explicitly needed */
   }
 
   html {
@@ -73,23 +75,52 @@
     @apply bg-background text-foreground;
     font-family: var(--font-bricolage-grotesque), sans-serif;
     font-weight: 400;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
   }
 
+  /* Main Hero Heading only - uses the display font */
   h1,
-  h2,
-  h3,
-  h4,
-  h5,
-  h6,
   .font-heading {
     font-family: var(--font-bungee-display), cursive;
     @apply tracking-tighter uppercase;
     font-weight: normal;
+    line-height: 0.9;
   }
 
-  /* Reset excessive boldness */
-  .font-black {
+  /* Subheadings - use the clean sans-serif but bold/heavy */
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    font-family: var(--font-bricolage-grotesque), sans-serif;
+    @apply tracking-tight;
     font-weight: 800;
+    /* Extra bold for clear hierarchy */
+    line-height: 1.1;
+  }
+
+  h2 {
+    @apply text-3xl md:text-4xl uppercase;
+  }
+
+  h3 {
+    @apply text-xl md:text-2xl uppercase;
+  }
+
+  h4 {
+    @apply text-lg md:text-xl;
+  }
+
+  p {
+    @apply leading-relaxed text-muted-foreground;
+    font-weight: 400;
+  }
+
+  .text-highlight {
+    color: hsl(var(--foreground));
+    font-weight: 700;
   }
 }
 

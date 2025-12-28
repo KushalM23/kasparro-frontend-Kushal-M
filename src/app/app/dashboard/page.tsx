@@ -3,7 +3,7 @@
 import { useEffect, useState } from 'react';
 import { useBrandStore } from '@/stores/brandStore';
 import { motion, AnimatePresence } from 'framer-motion';
-import { DashboardHeader } from '@/components/features/dashboard/DashboardHeader';
+import { DashboardHeader } from '@/components/layouts/DashboardHeader';
 import { AuditStatus } from '@/components/features/dashboard/AuditStatus';
 import { MetricsGrid } from '@/components/features/dashboard/MetricsGrid';
 

@@ -53,16 +53,16 @@ export function Header() {
         </Link>
 
         {/* Navigation Container - Sharp Corners, Opaque */}
-        <nav className="flex items-center gap-1 bg-muted p-1 border border-border shadow-sm">
+        <nav className="flex items-center gap-1 bg-primary p-1 border border-border shadow-sm">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "px-6 py-2 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-background/50",
+                "px-6 py-2 text-[11px] font-bold uppercase tracking-[0.2em] transition-all hover:bg-background/10",
                 pathname === item.href
-                  ? "bg-foreground text-background"
-                  : "text-muted-foreground"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90"
               )}
             >
               {item.label}
@@ -72,10 +72,10 @@ export function Header() {
           {/* Theme Toggle in Header */}
           <button
             onClick={toggleTheme}
-            className="px-4 py-2 text-muted-foreground hover:bg-background/50 border-l border-border transition-all"
+            className="px-4 py-2 text-primary-foreground hover:bg-background/10 border-l border-primary-foreground/20 transition-all flex items-center justify-center"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {isDark ? <Sun className="w-4 h-4 fill-current" /> : <Moon className="w-4 h-4 fill-current" />}
           </button>
         </nav>
 

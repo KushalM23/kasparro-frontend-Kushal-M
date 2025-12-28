@@ -29,11 +29,11 @@ export function ModuleSidebar({ modules }: ModuleSidebarProps) {
   return (
     <aside className="w-80 border-r border-border bg-background flex flex-col h-full">
       <div className="p-8 border-b border-border">
-        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Index</span>
-        <h3 className="text-xl font-heading uppercase tracking-tighter mt-1">Audit <span className="text-primary">Layers</span></h3>
+        <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/80">Index</span>
+        <h3 className="text-xl uppercase tracking-tighter mt-1">Audit <span className="text-primary">Layers</span></h3>
       </div>
 
-      <nav className="flex-1 overflow-y-auto">
+      <nav className="flex-1 overflow-y-auto custom-scrollbar">
         {displayModules.map((module, idx) => {
           const moduleDefinition = getModuleDefinition(module.id as any);
           const IconComponent = moduleDefinition ? (Icons as any)[moduleDefinition.icon] : null;
@@ -47,34 +47,28 @@ export function ModuleSidebar({ modules }: ModuleSidebarProps) {
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
               className={cn(
-                'w-full text-left px-8 py-6 transition-all flex items-center justify-between group border-b border-border last:border-0',
+                'w-full text-left px-8 py-6 transition-all flex items-center justify-between group border-b border-border/50 last:border-0',
                 isSelected
-                  ? 'bg-primary text-primary-foreground'
-                  : 'text-foreground hover:bg-primary/5'
+                  ? 'bg-primary text-white shadow-inner'
+                  : 'text-foreground hover:bg-muted/50'
               )}
             >
               <div className="flex items-center gap-4">
-                {IconComponent && (
-                  <IconComponent className={cn(
-                    'w-4 h-4 shrink-0',
-                    isSelected ? 'text-primary-foreground' : 'text-primary'
-                  )} />
-                )}
-                <div>
-                  <div className="text-[11px] font-bold uppercase tracking-wider leading-tight">
+                <div className="flex flex-col">
+                  <div className="text-xs font-bold uppercase tracking-wider leading-tight">
                     {moduleDefinition?.name || module.name}
                   </div>
                   <div className={cn(
-                    'text-[10px] font-bold uppercase tracking-widest mt-1',
-                    isSelected ? 'opacity-70' : 'text-muted-foreground'
+                    'text-[10px] font-bold uppercase tracking-[0.2em] mt-1',
+                    isSelected ? 'text-white/80' : 'text-muted-foreground/60'
                   )}>
-                    DIMENSION {idx + 1}
+                    DIMENSION 0{idx + 1}
                   </div>
                 </div>
               </div>
               <div className={cn(
-                'text-lg font-heading tracking-tighter',
-                isSelected ? 'text-primary-foreground' : 'text-secondary'
+                'text-2xl font-heading tracking-tighter',
+                isSelected ? 'text-white' : 'text-foreground/20'
               )}>
                 {module.score}
               </div>

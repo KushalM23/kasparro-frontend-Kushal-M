@@ -19,8 +19,7 @@ interface ModuleSidebarProps {
 export function ModuleSidebar({ modules }: ModuleSidebarProps) {
   const { selectedModule, setSelectedModule } = useAuditStore();
 
-  // If modules with scores provided, use them; otherwise use definitions
-  const displayModules = modules || 
+  const displayModules = modules ||
     AUDIT_MODULE_DEFINITIONS.map(def => ({
       id: def.id,
       name: def.name,
@@ -28,13 +27,13 @@ export function ModuleSidebar({ modules }: ModuleSidebarProps) {
     }));
 
   return (
-    <aside className="w-64 border-r border-border bg-background p-4 overflow-y-auto h-full">
-      <div className="mb-6">
-        <h3 className="font-bold px-2 text-foreground">Audit Modules</h3>
-        <p className="text-xs text-muted-foreground px-2 mt-1">Click to view details</p>
+    <aside className="w-80 border-r border-border bg-background flex flex-col h-full">
+      <div className="p-8 border-b border-border">
+        <span className="text-[10px] font-black uppercase tracking-[0.2em] text-muted-foreground">Index</span>
+        <h3 className="text-xl font-heading uppercase tracking-tighter mt-1">Audit <span className="text-primary">Layers</span></h3>
       </div>
-      
-      <nav className="space-y-2">
+
+      <nav className="flex-1 overflow-y-auto">
         {displayModules.map((module, idx) => {
           const moduleDefinition = getModuleDefinition(module.id as any);
           const IconComponent = moduleDefinition ? (Icons as any)[moduleDefinition.icon] : null;
@@ -44,32 +43,40 @@ export function ModuleSidebar({ modules }: ModuleSidebarProps) {
             <motion.button
               key={module.id}
               onClick={() => setSelectedModule(module.id as any)}
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              initial={{ opacity: 0, x: -20 }}
+              initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.3, delay: idx * 0.05 }}
               className={cn(
-                'w-full text-left px-3 py-3 text-sm transition-all flex items-start gap-3 group',
+                'w-full text-left px-8 py-6 transition-all flex items-center justify-between group border-b border-border last:border-0',
                 isSelected
-                  ? 'bg-primary dark:bg-accent text-primary-foreground dark:text-accent-foreground shadow-md'
-                  : 'text-muted-foreground hover:bg-primary/10 dark:hover:bg-accent/10 hover:text-foreground border border-transparent hover:border-primary/30 dark:hover:border-accent/30'
+                  ? 'bg-primary text-primary-foreground'
+                  : 'text-foreground hover:bg-primary/5'
               )}
             >
-              {IconComponent && (
-                <IconComponent className={cn(
-                  'w-4 h-4 mt-0.5 shrink-0',
-                  isSelected ? 'text-current' : 'group-hover:text-primary dark:group-hover:text-accent'
-                )} />
-              )}
-              <div className="flex-1">
-                <div className="font-semibold leading-tight">{moduleDefinition?.shortDescription || module.name}</div>
-                <div className={cn(
-                  'text-xs mt-1',
-                  isSelected ? 'opacity-90' : 'text-muted-foreground'
-                )}>
-                  Score: {module.score}
+              <div className="flex items-center gap-4">
+                {IconComponent && (
+                  <IconComponent className={cn(
+                    'w-4 h-4 shrink-0',
+                    isSelected ? 'text-primary-foreground' : 'text-primary'
+                  )} />
+                )}
+                <div>
+                  <div className="text-[11px] font-bold uppercase tracking-wider leading-tight">
+                    {moduleDefinition?.name || module.name}
+                  </div>
+                  <div className={cn(
+                    'text-[10px] font-bold uppercase tracking-widest mt-1',
+                    isSelected ? 'opacity-70' : 'text-muted-foreground'
+                  )}>
+                    DIMENSION {idx + 1}
+                  </div>
                 </div>
+              </div>
+              <div className={cn(
+                'text-lg font-heading tracking-tighter',
+                isSelected ? 'text-primary-foreground' : 'text-secondary'
+              )}>
+                {module.score}
               </div>
             </motion.button>
           );

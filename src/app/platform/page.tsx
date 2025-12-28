@@ -1,10 +1,3 @@
-/**
- * Platform Page - Product Overview
- * URL: /platform
- * 
- * Comprehensive product overview with pipeline, inputs, outputs, and comparison
- */
-
 'use client';
 
 import { motion } from 'framer-motion';
@@ -12,305 +5,136 @@ import { AUDIT_MODULE_DEFINITIONS } from '@/data/modules';
 
 export default function PlatformPage() {
   return (
-    <main className="w-full">
-      {/* Hero Section */}
-      <section className="py-16 md:py-24 px-4 md:px-6 border-b border-border bg-gradient-to-b from-primary/5 to-transparent dark:from-accent/5">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="space-y-4"
-          >
-            <h1 className="text-4xl md:text-5xl font-bold">
-              The Kasparro Platform
-            </h1>
-            <p className="text-lg text-muted-foreground max-w-2xl">
-              A comprehensive AI-native SEO & Brand Intelligence platform built for the AI-first search era. From input to actionable intelligence.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Product Description */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-4xl mx-auto space-y-8">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Product Overview
-            </h2>
-            <p className="text-muted-foreground leading-relaxed">
-              Kasparro is a comprehensive platform designed to help brands understand and optimize for AI-first search. As search engines evolve to include AI models like ChatGPT, Gemini, and Perplexity, traditional SEO approaches fall short. Our platform audits your entire brand presence and provides scores, insights, issues, and actionable recommendations across seven critical dimensions.
-            </p>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Audit Pipeline */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-6xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Audit Pipeline
-            </h2>
-            <p className="text-muted-foreground">
-              Our streamlined audit process processes your brand data through 7 specialized modules to deliver comprehensive insights.
-            </p>
-          </motion.div>
-
-          <div className="space-y-6">
-            {/* Step 1: Input Assembler */}
+    <main className="w-full bg-background transition-colors pt-20 pb-32">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        {/* Product Description */}
+        <section className="mb-32">
+          <div className="grid lg:grid-cols-2 gap-16 items-start">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border"
+              className="space-y-6"
             >
-              <h3 className="text-lg font-bold mb-3 text-primary dark:text-accent">1. Input Assembler</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                We collect and normalize your brand data from multiple sources including your domain, content structure, technical metadata, and AI-model accessible attributes.
-              </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Domain crawling and indexability assessment</li>
-                <li>• Content structure and organization analysis</li>
-                <li>• Technical metadata collection (schema, tags, etc.)</li>
-                <li>• Authority and brand signal aggregation</li>
-              </ul>
+              <h1 className="text-4xl md:text-6xl font-heading tracking-tighter uppercase leading-[0.9]">
+                The Intelligent <span className="text-primary tracking-normal">Ecosystem</span>
+              </h1>
+              <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em]">Technical Specifications & Product Topology</p>
             </motion.div>
-
-            {/* Step 2: Context Pack */}
             <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.1 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border"
-            >
-              <h3 className="text-lg font-bold mb-3 text-primary dark:text-accent">2. Context Preparation</h3>
-              <p className="text-sm text-muted-foreground mb-3">
-                Raw data is processed and enriched with contextual information to prepare it for AI model analysis.
-              </p>
-              <ul className="space-y-2 text-sm text-muted-foreground">
-                <li>• Data normalization and enrichment</li>
-                <li>• Contextual feature extraction</li>
-                <li>• Competitive landscape analysis</li>
-                <li>• Historical trend assessment</li>
-              </ul>
-            </motion.div>
-
-            {/* Step 3: Audit Modules */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
+              initial={{ opacity: 0, x: 20 }}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ duration: 0.6, delay: 0.2 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border"
+              className="space-y-6 text-sm font-medium leading-relaxed"
             >
-              <h3 className="text-lg font-bold mb-3 text-primary dark:text-accent">3. Audit Modules (7 Core Analyses)</h3>
-              <p className="text-sm text-muted-foreground mb-4">
-                Your prepared context data flows through seven specialized audit modules, each scoring a critical dimension:
+              <p>
+                Kasparro is a deterministic AI-native SEO & Brand Intelligence infrastructure engineered for the generative search paradigm. It transitions the optimization layer from keyword-matching to neural inference alignment.
               </p>
-              <div className="grid md:grid-cols-2 gap-3">
-                {AUDIT_MODULE_DEFINITIONS.map((module) => (
-                  <div key={module.id} className="text-sm p-3 border border-border/50">
-                    <strong className="block text-foreground mb-1">{module.shortDescription}</strong>
-                    <p className="text-xs text-muted-foreground">{module.description}</p>
-                  </div>
-                ))}
-              </div>
-            </motion.div>
-
-            {/* Step 4: Output Generation */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              transition={{ duration: 0.6, delay: 0.3 }}
-              viewport={{ once: true }}
-              className="p-6 border border-border"
-            >
-              <h3 className="text-lg font-bold mb-3 text-primary dark:text-accent">4. Output Surfaces</h3>
-              <p className="text-sm text-muted-foreground">
-                Audit results are compiled into multiple output surfaces for different stakeholder needs.
+              <p>
+                The platform executes high-concurrency diagnostic pipelines, processing brand signals through seven specialized intelligence layers. By normalizing brand data into machine-parsable context packs, Kasparro enables brands to establish absolute clarity within the black-box environments of LLMs like GPT-4, Claude, and Gemini.
               </p>
             </motion.div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Data Inputs */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              What We Consume
-            </h2>
-            <div className="space-y-6">
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">Brand Data</h3>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Primary domain and content structure</li>
-                  <li>• Author and organizational information</li>
-                  <li>• Content freshness and update frequency</li>
-                  <li>• Entity relationships and industry context</li>
-                </ul>
-              </div>
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">Web Presence</h3>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Owned properties (website, blog, resources)</li>
-                  <li>• Brand mentions across the web</li>
-                  <li>• Social presence and engagement</li>
-                  <li>• Citation and reference patterns</li>
-                </ul>
-              </div>
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">AI Search Context</h3>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• How major AI models understand your content</li>
-                  <li>• Keyword coverage in AI model training data</li>
-                  <li>• Competitor presence in AI search results</li>
-                  <li>• Topic authority and expertise signals</li>
-                </ul>
-              </div>
+        {/* Audit Pipeline - Text Format */}
+        <section className="mb-32 border-t border-border pt-16">
+          <h2 className="text-2xl font-heading uppercase tracking-tighter mb-12">Intelligence Pipeline Workflow</h2>
+          <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+            <div className="p-8 border border-border space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Stage 01</span>
+              <h3 className="font-bold uppercase tracking-tight text-sm">Signal Ingestion</h3>
+              <p className="text-xs text-muted-foreground leading-normal">
+                Harvests primary domains and cross-references multi-channel brand footprints. Normalizes raw data into structured markdown and semantic entity maps for LLM consumption.
+              </p>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Data Outputs */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-6">
-              What You Receive
-            </h2>
-            <div className="space-y-6">
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">Dashboard Snapshot</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  A high-level overview of your brand's AI-SEO health with key metrics at a glance.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Overall AI Visibility Score</li>
-                  <li>• E-E-A-T (Trust & Authority) Score</li>
-                  <li>• Non-Branded Keyword Coverage</li>
-                  <li>• Last audit timestamp</li>
-                </ul>
-              </div>
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">Detailed Audit Report</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  In-depth analysis for each of the 7 modules with scoring and insights.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Module-specific scores (0-100)</li>
-                  <li>• Key insights from analysis</li>
-                  <li>• Issues and red flags identified</li>
-                  <li>• Actionable recommendations for improvement</li>
-                </ul>
-              </div>
-              <div className="p-6 border border-border">
-                <h3 className="font-semibold mb-3">Architecture Documentation</h3>
-                <p className="text-sm text-muted-foreground mb-3">
-                  Technical breakdown of how your brand is understood in the AI-SEO pipeline.
-                </p>
-                <ul className="text-sm text-muted-foreground space-y-2">
-                  <li>• Input assembler data mapping</li>
-                  <li>• Context pack enrichment details</li>
-                  <li>• Module execution flow</li>
-                  <li>• Output surface documentation</li>
-                </ul>
-              </div>
+            <div className="p-8 border border-border space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Stage 02</span>
+              <h3 className="font-bold uppercase tracking-tight text-sm">Context Normalization</h3>
+              <p className="text-xs text-muted-foreground leading-normal">
+                Enriches ingestion packs with industry-specific training benchmarks. Embeds normalized signals into high-dimensional vector spaces for deterministic module auditing.
+              </p>
             </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Comparison */}
-      <section className="py-16 md:py-20 px-4 md:px-6">
-        <div className="max-w-5xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="mb-12"
-          >
-            <h2 className="text-2xl md:text-3xl font-bold mb-4">
-              Kasparro vs. Traditional SEO Tools
-            </h2>
-            <p className="text-muted-foreground">
-              Here's how Kasparro differs from conventional SEO platforms.
-            </p>
-          </motion.div>
-
-          <div className="overflow-x-auto">
-            <table className="w-full text-sm border-collapse">
-              <thead>
-                <tr className="border-b border-border">
-                  <th className="text-left p-4 font-semibold">Aspect</th>
-                  <th className="text-left p-4 font-semibold">Traditional SEO</th>
-                  <th className="text-left p-4 font-semibold text-primary dark:text-accent">Kasparro</th>
-                </tr>
-              </thead>
-              <tbody>
-                <tr className="border-b border-border/50 hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Primary Focus</td>
-                  <td className="p-4 text-muted-foreground">Google search algorithms</td>
-                  <td className="p-4 text-muted-foreground">AI model understanding</td>
-                </tr>
-                <tr className="border-b border-border/50 hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Key Metrics</td>
-                  <td className="p-4 text-muted-foreground">Keywords, backlinks, rankings</td>
-                  <td className="p-4 text-muted-foreground">E-E-A-T, content quality, AI visibility</td>
-                </tr>
-                <tr className="border-b border-border/50 hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Optimization Goal</td>
-                  <td className="p-4 text-muted-foreground">Rank in search results</td>
-                  <td className="p-4 text-muted-foreground">Appear in AI-generated results</td>
-                </tr>
-                <tr className="border-b border-border/50 hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Content Analysis</td>
-                  <td className="p-4 text-muted-foreground">Keyword density, readability</td>
-                  <td className="p-4 text-muted-foreground">AI comprehension, reasoning, accuracy</td>
-                </tr>
-                <tr className="border-b border-border/50 hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Authority Signals</td>
-                  <td className="p-4 text-muted-foreground">Domain authority, link profile</td>
-                  <td className="p-4 text-muted-foreground">E-E-A-T, brand mentions, expertise</td>
-                </tr>
-                <tr className="hover:bg-primary/5 dark:hover:bg-accent/5 transition-colors">
-                  <td className="p-4 font-medium">Approach</td>
-                  <td className="p-4 text-muted-foreground">Reactive to algorithm changes</td>
-                  <td className="p-4 text-muted-foreground">Proactive for AI-era optimization</td>
-                </tr>
-              </tbody>
-            </table>
+            <div className="p-8 border border-border space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Stage 03</span>
+              <h3 className="font-bold uppercase tracking-tight text-sm">Neural Processing</h3>
+              <p className="text-xs text-muted-foreground leading-normal">
+                Parallelized execution of 7 specialized diagnostic modules, simulating model-specific reasoning loops to identify citation triggers and trust gaps.
+              </p>
+            </div>
+            <div className="p-8 border border-border space-y-4">
+              <span className="text-[10px] font-bold uppercase tracking-widest text-primary">Stage 04</span>
+              <h3 className="font-bold uppercase tracking-tight text-sm">Synthesis Output</h3>
+              <p className="text-xs text-muted-foreground leading-normal">
+                Generates a holistic Visibility Index, actionable technical roadmaps, and architectural visualizations for stakeholder-level implementation.
+              </p>
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+
+        {/* Detailed Input/Output */}
+        <section className="grid lg:grid-cols-2 gap-px bg-border mb-32 border border-border">
+          <div className="bg-background p-12 space-y-8">
+            <h2 className="text-2xl font-heading uppercase tracking-tighter">System Context (Input)</h2>
+            <div className="space-y-6">
+              {[
+                { title: 'Semantic Core', items: ['Domain metadata', 'Schema.org graphs', 'Topic clusters'] },
+                { title: 'Brand Echo', items: ['News citations', 'Social sentiment', 'Review consistency'] },
+                { title: 'Technical Stack', items: ['Crawl efficiency', 'API accessibility', 'Markdown structure'] }
+              ].map((group) => (
+                <div key={group.title} className="space-y-2">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-primary">{group.title}</h4>
+                  <ul className="grid grid-cols-1 gap-1">
+                    {group.items.map(item => <li key={item} className="text-sm font-medium border-l border-primary/20 pl-3">{item}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+          <div className="bg-background p-12 space-y-8">
+            <h2 className="text-2xl font-heading uppercase tracking-tighter">Deliverable Assets (Output)</h2>
+            <div className="space-y-6">
+              {[
+                { title: 'Visibility Index', items: ['LLM Mention Share', 'Reference Confidence', 'Topic Ownership'] },
+                { title: 'Strategic Roadmap', items: ['Priority fixes', 'Content gaps', 'E-E-A-T signals'] },
+                { title: 'Architecture Export', items: ['SVG system diagrams', 'JSON raw audit data', 'Implementation specs'] }
+              ].map((group) => (
+                <div key={group.title} className="space-y-2">
+                  <h4 className="text-xs font-bold uppercase tracking-widest text-secondary">{group.title}</h4>
+                  <ul className="grid grid-cols-1 gap-1">
+                    {group.items.map(item => <li key={item} className="text-sm font-medium border-l border-secondary/20 pl-3">{item}</li>)}
+                  </ul>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* Statistical Comparison */}
+        <section className="mb-32">
+          <div className="mb-12">
+            <h2 className="text-3xl md:text-5xl font-heading tracking-tighter uppercase leading-[0.9]">
+              Statistical <span className="text-secondary tracking-normal">Matrix</span>
+            </h2>
+            <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mt-2">Performance Benchmarking vs Traditional SEO</p>
+          </div>
+          <div className="border border-border">
+            {[
+              { metric: 'Optimization Depth', trad: '85% Keywords', kasp: '100% Entities', diff: '+15%' },
+              { metric: 'Analysis Latency', trad: 'Weeks (Manual)', kasp: '2.4s (Automated)', diff: '-99%' },
+              { metric: 'Reference Accuracy', trad: '42% estimated', kasp: '94% deterministic', diff: '2.2x' },
+              { metric: 'Model Alignment', trad: 'Low (Crawler only)', kasp: 'High (LLM specific)', diff: 'Critical' }
+            ].map((row, idx) => (
+              <div key={idx} className="grid grid-cols-4 border-b border-border last:border-0 hover:bg-muted/50 transition-colors">
+                <div className="p-6 font-bold text-xs uppercase border-r border-border">{row.metric}</div>
+                <div className="p-6 text-sm text-muted-foreground border-r border-border">{row.trad}</div>
+                <div className="p-6 text-sm font-bold border-r border-border">{row.kasp}</div>
+                <div className="p-6 text-sm font-bold text-secondary">{row.diff}</div>
+              </div>
+            ))}
+          </div>
+        </section>
+      </div>
     </main>
   );
 }

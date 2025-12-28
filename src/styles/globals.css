@@ -6,68 +6,122 @@
   :root {
     /* Light mode colors */
     --background: #ebf4f5;
-    --foreground: #1a1d29;
-    --card: 0 0% 100%;
-    --card-foreground: #1a1d29;
-    --popover: 0 0% 100%;
-    --popover-foreground: #1a1d29;
-    --muted: 214 20% 90%;
-    --muted-foreground: 214 10% 40%;
-    --accent: 0 0% 9.0%;
-    --accent-foreground: 0 0% 98%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 0 0% 98%;
-    --border: 214 15% 90%;
-    --input: 214 15% 95%;
-    --ring: 214 20% 50%;
+    --foreground: #08203e;
+    --card: #ffffff;
+    --card-foreground: #08203e;
+    --popover: #ffffff;
+    --popover-foreground: #08203e;
     --primary: 214 41% 56%;
-    --primary-foreground: 0 0% 100%;
-    --secondary: 214 24% 73%;
-    --secondary-foreground: #1a1d29;
+    /* #9bb2e5 equivalent */
+    --primary-foreground: #ebf4f5;
+    --secondary: #698cbf;
+    --secondary-foreground: #08203e;
+    --muted: #dce7e8;
+    --muted-foreground: #4b5563;
+    --accent: #9bb2e5;
+    --accent-foreground: #08203e;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: #ebf4f5;
+    --border: #ccd7d8;
+    --input: #ccd7d8;
+    --ring: #9bb2e5;
+    --radius: 0px;
+
     /* Gradient colors */
     --gradient-start: #9bb2e5;
     --gradient-end: #698cbf;
-    --radius: 0;
+
+    --font-heading: var(--font-bungee);
+    --font-sans: var(--font-bricolage);
   }
 
   .dark {
-    --background: #1a1d29;
+    --background: #08203e;
     --foreground: #ebf4f5;
-    --card: #252936;
+    --card: #0a2a4d;
     --card-foreground: #ebf4f5;
-    --popover: #252936;
+    --popover: #0a2a4d;
     --popover-foreground: #ebf4f5;
-    --muted: #2d3142;
-    --muted-foreground: #94a3b8;
-    --accent: #9bb2e5;
-    --accent-foreground: #1a1d29;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 0 0% 98%;
-    --border: #2d3142;
-    --input: #252936;
-    --ring: #9bb2e5;
     --primary: #9bb2e5;
-    --primary-foreground: #1a1d29;
+    --primary-foreground: #08203e;
     --secondary: #698cbf;
     --secondary-foreground: #ebf4f5;
-    /* Gradient colors */
-    --gradient-start: #9bb2e5;
-    --gradient-end: #698cbf;
+    --muted: #0d3463;
+    --muted-foreground: #94a3b8;
+    --accent: #9bb2e5;
+    --accent-foreground: #08203e;
+    --destructive: 0 62.8% 30.6%;
+    --destructive-foreground: #ebf4f5;
+    --border: #1a3f6d;
+    --input: #1a3f6d;
+    --ring: #9bb2e5;
   }
 }
 
 @layer base {
+  * {
+    @apply border-border;
+    font-style: normal !important;
+    /* Force remove italics unless explicitly needed */
+  }
+
   html {
     scroll-behavior: smooth;
   }
-  
+
   body {
     @apply bg-background text-foreground;
+    font-family: var(--font-sans), sans-serif;
+    font-weight: 400;
   }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  .font-heading {
+    font-family: var(--font-heading), display;
+    font-weight: normal;
+    @apply tracking-tighter uppercase;
+  }
+
+  /* Reset excessive boldness */
+  .font-black {
+    font-weight: 800;
+  }
+}
+
+@layer components {
+  .custom-scrollbar::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-track {
+    @apply bg-background;
+  }
+
+  .custom-scrollbar::-webkit-scrollbar-thumb {
+    @apply bg-border hover:bg-muted-foreground transition-colors;
+  }
+}
+
+/* Fix button visibility */
+button,
+.button {
+  @apply transition-all duration-200 active:scale-95;
+}
+
+/* Remove blur globally for navbar if specified */
+.no-blur {
+  backdrop-filter: none !important;
 }
 
 /* Reduce motion for users who prefer it */
 @media (prefers-reduced-motion: reduce) {
+
   *,
   *::before,
   *::after {

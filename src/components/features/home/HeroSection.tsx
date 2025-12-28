@@ -13,66 +13,67 @@ export function HeroSection() {
     show: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
+        staggerChildren: 0.05,
       },
     },
   };
 
   const item = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0 },
+    hidden: { opacity: 0, scale: 0.95 },
+    show: { opacity: 1, scale: 1 },
   };
 
   return (
-    <section className="py-16 md:py-24 px-4 md:px-6">
-      <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12 items-start">
+    <section className="py-20 md:py-32 px-4 md:px-8">
+      <div className="max-w-7xl mx-auto grid lg:grid-cols-2 gap-16 items-center">
         {/* Left: Hero Content */}
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
+          initial={{ opacity: 0, x: -20 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
-          className="space-y-6"
+          className="max-w-xl"
         >
-          <h1 className="text-4xl md:text-5xl font-bold tracking-tight bg-gradient-to-r from-[#9bb2e5] to-[#698cbf] bg-clip-text text-transparent">
-            AI-Native SEO & Brand Intelligence
+          <h1 className="text-5xl md:text-5xl font-heading tracking-tighter leading-[0.9] mb-8 uppercase">
+            AI-native SEO & Brand Intelligence platform
           </h1>
-          <p className="text-lg text-muted-foreground leading-relaxed">
-            For the AI-first search era. Kasparro audits your brand for ChatGPT, Gemini, Perplexity, and beyond.
+          <p className="text-lg md:text-xl font-medium text-muted-foreground mb-10 leading-relaxed tracking-tight">
+            Comprehensive audits for the era of generative intelligence.
           </p>
-          <Button asChild size="lg" className="bg-gradient-to-r from-[#9bb2e5] to-[#698cbf] hover:opacity-90 text-foreground border-0">
-            <Link href={ROUTES.DASHBOARD}>Run Audit</Link>
+          <Button asChild size="lg" className="h-14 px-10 text-sm font-bold uppercase tracking-widest bg-foreground text-background hover:bg-primary dark:hover:bg-accent transition-all rounded-none border-0">
+            <Link href={ROUTES.DASHBOARD}>Run AI-SEO Audit</Link>
           </Button>
         </motion.div>
 
-        {/* Right: Core Modules Grid */}
-        <motion.div
-          variants={container}
-          initial="hidden"
-          animate="show"
-          className="grid grid-cols-2 gap-4"
-        >
-          {AUDIT_MODULE_DEFINITIONS.map((module) => {
-            const IconComponent = (Icons as any)[module.icon];
-            return (
-              <motion.div
-                key={module.id}
-                variants={item}
-                className="group p-4 border border-border hover:border-primary/50 dark:hover:border-accent/50 transition-all duration-300 hover:shadow-md"
-              >
-                <div className="flex items-start gap-3 mb-2">
-                  {IconComponent && (
-                    <div className="p-2 bg-gradient-to-br from-[#9bb2e5]/20 to-[#698cbf]/20 group-hover:from-[#9bb2e5]/30 group-hover:to-[#698cbf]/30 transition-colors">
-                      <IconComponent className="w-4 h-4 text-primary dark:text-accent" />
-                    </div>
-                  )}
-                  <h3 className="font-semibold text-sm group-hover:text-primary dark:group-hover:text-accent transition-colors">
-                    {module.shortDescription}
-                  </h3>
-                </div>
-              </motion.div>
-            );
-          })}
-        </motion.div>
+        {/* Right: Core Modules Section */}
+        <div className="relative">
+          <div className="absolute -inset-4 bg-gradient-to-tr from-primary/5 to-secondary/5 blur-3xl -z-10" />
+          <motion.div
+            variants={container}
+            initial="hidden"
+            animate="show"
+            className="grid grid-cols-2 sm:grid-cols-3 gap-3"
+          >
+            {AUDIT_MODULE_DEFINITIONS.map((module, index) => {
+              const IconComponent = (Icons as any)[module.icon];
+              return (
+                <motion.div
+                  key={module.id}
+                  variants={item}
+                  className={index === 6 ? "sm:col-span-3 lg:col-span-1" : ""}
+                >
+                  <div className="h-full p-4 border border-border bg-background/50 backdrop-blur-sm group hover:border-primary transition-colors flex flex-col gap-3">
+                    {IconComponent && (
+                      <IconComponent className="w-5 h-5 text-primary group-hover:scale-110 transition-transform" />
+                    )}
+                    <h3 className="font-bold text-[10px] sm:text-xs uppercase tracking-widest leading-tight">
+                      {module.name}
+                    </h3>
+                  </div>
+                </motion.div>
+              );
+            })}
+          </motion.div>
+        </div>
       </div>
     </section>
   );

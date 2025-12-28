@@ -2,13 +2,36 @@
 
 import Link from 'next/link';
 import { ROUTES } from '@/lib/constants';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { cn } from '@/lib/utils';
 import { usePathname } from 'next/navigation';
+import { motion, AnimatePresence } from 'framer-motion';
+import { Sun, Moon, Menu, X } from 'lucide-react';
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [isDark, setIsDark] = useState(false);
   const pathname = usePathname();
+
+  // Hide header on /app routes
+  if (pathname?.startsWith('/app')) return null;
+
+  useEffect(() => {
+    const isDarkMode = document.documentElement.classList.contains('dark');
+    setIsDark(isDarkMode);
+  }, []);
+
+  const toggleTheme = () => {
+    const newIsDark = !isDark;
+    setIsDark(newIsDark);
+    if (newIsDark) {
+      document.documentElement.classList.add('dark');
+      localStorage.setItem('theme', 'dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+      localStorage.setItem('theme', 'light');
+    }
+  };
 
   const navItems = [
     { label: 'Platform', href: ROUTES.PLATFORM },
@@ -17,79 +40,86 @@ export function Header() {
   ];
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b border-border bg-background transition-colors">
-      <div className="container mx-auto px-4 md:px-6 py-4">
-        {/* Mobile Header */}
-        <div className="flex md:hidden items-center justify-between">
-          <Link 
-            href={ROUTES.HOME} 
-            className="text-2xl font-bold bg-gradient-to-r from-[#9bb2e5] to-[#698cbf] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-          >
-            KASPARRO
-          </Link>
+    <header className="w-full bg-background border-b border-border z-50 transition-colors">
+      <div className="container mx-auto px-4 py-8 flex flex-col items-center gap-6">
+        {/* Logo */}
+        <Link
+          href={ROUTES.HOME}
+          className="text-4xl md:text-5xl font-heading tracking-tighter hover:text-primary transition-colors text-foreground"
+        >
+          KASPARRO
+        </Link>
+
+        {/* Navigation Container - Sharp Corners, Opaque */}
+        <nav className="flex items-center gap-1 bg-muted p-1 border border-border shadow-sm">
+          {navItems.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              className={cn(
+                "px-6 py-2 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-background/50",
+                pathname === item.href
+                  ? "bg-foreground text-background"
+                  : "text-muted-foreground"
+              )}
+            >
+              {item.label}
+            </Link>
+          ))}
+
+          {/* Theme Toggle in Header */}
           <button
-            onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className="p-2 hover:bg-muted transition-colors"
-            aria-label="Toggle menu"
+            onClick={toggleTheme}
+            className="px-4 py-2 text-muted-foreground hover:bg-background/50 border-l border-border transition-all"
+            aria-label="Toggle theme"
           >
-            <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
-            </svg>
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
           </button>
+        </nav>
+
+        {/* Mobile Toggle (Simple) */}
+        <button
+          className="md:hidden p-2 text-muted-foreground"
+          onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+        >
+          {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+        </button>
+
+        {/* Mobile Menu */}
+        <AnimatePresence>
           {mobileMenuOpen && (
-            <nav className="absolute top-full left-0 right-0 bg-background border-b border-border p-4 space-y-3 shadow-lg">
+            <motion.div
+              initial={{ height: 0, opacity: 0 }}
+              animate={{ height: 'auto', opacity: 1 }}
+              exit={{ height: 0, opacity: 0 }}
+              className="md:hidden w-full overflow-hidden flex flex-col gap-2 bg-muted p-4 border border-border"
+            >
               {navItems.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "block text-sm font-medium transition-colors",
-                    pathname === item.href
-                      ? "text-primary dark:text-accent"
-                      : "text-muted-foreground hover:text-primary dark:hover:text-accent"
+                    "w-full px-4 py-3 text-xs font-bold uppercase tracking-widest border border-transparent",
+                    pathname === item.href ? "bg-foreground text-background" : "hover:border-border"
                   )}
                   onClick={() => setMobileMenuOpen(false)}
                 >
                   {item.label}
                 </Link>
               ))}
-            </nav>
-          )}
-        </div>
-
-        {/* Desktop Header */}
-        <div className="hidden md:flex items-center justify-between">
-          {/* Left spacer */}
-          <div className="flex-1" />
-          
-          {/* Logo - Centered */}
-          <div className="flex-1 flex justify-center">
-            <Link 
-              href={ROUTES.HOME} 
-              className="text-3xl font-bold bg-gradient-to-r from-[#9bb2e5] to-[#698cbf] bg-clip-text text-transparent hover:opacity-80 transition-opacity"
-            >
-              KASPARRO
-            </Link>
-          </div>
-
-          {/* Navigation - Right side, aligned with logo */}
-          <nav className="flex-1 flex justify-end gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={cn(
-                  "text-sm font-medium transition-colors",
-                  pathname === item.href
-                    ? "text-primary dark:text-accent"
-                    : "text-muted-foreground hover:text-primary dark:hover:text-accent"
-                )}
+              <button
+                onClick={() => {
+                  toggleTheme();
+                  setMobileMenuOpen(false);
+                }}
+                className="w-full px-4 py-3 text-xs font-bold uppercase tracking-widest border border-border flex items-center justify-between"
               >
-                {item.label}
-              </Link>
-            ))}
-          </nav>
-        </div>
+                <span>THEME</span>
+                {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+              </button>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </div>
     </header>
   );

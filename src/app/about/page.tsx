@@ -1,196 +1,99 @@
-/**
- * About Page - Company Information
- * URL: /about
- * 
- * Displays mission, philosophy, and vision of Kasparro
- */
-
 'use client';
 
 import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   return (
-    <main className="w-full">
-      {/* Hero */}
-      <section className="py-16 md:py-24 px-4 md:px-6 border-b border-border bg-gradient-to-b from-primary/5 to-transparent dark:from-accent/5">
-        <div className="max-w-4xl mx-auto">
+    <main className="w-full bg-background transition-colors pt-20">
+      <div className="container mx-auto px-4 md:px-8 max-w-7xl">
+        {/* Page Header */}
+        <section className="mb-32">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="space-y-4"
+            className="space-y-6 max-w-3xl"
           >
-            <h1 className="text-4xl md:text-5xl font-bold">
-              About Kasparro
+            <h1 className="text-5xl md:text-8xl font-heading tracking-tighter uppercase leading-[0.85]">
+              Neural <span className="text-primary tracking-normal">Clarity</span>
             </h1>
-            <p className="text-lg text-muted-foreground">
-              Building the future of AI-native search intelligence.
+            <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.3em]">Corporate Philosophy & Founders</p>
+          </motion.div>
+        </section>
+
+        {/* Founder Credibility */}
+        <section className="mb-32 grid lg:grid-cols-2 gap-24 items-center">
+          <div className="space-y-8">
+            <h2 className="text-3xl font-heading uppercase tracking-tighter">Engineered with <span className="text-secondary tracking-normal">Precision</span></h2>
+            <div className="space-y-4 text-sm font-medium leading-relaxed text-muted-foreground">
+              <p>
+                Kasparro was founded by a collective of systems engineers and search architects who identified the inevitable transition from crawl-based indexing to neural reasoning.
+              </p>
+              <p>
+                Our expertise in large-scale data infrastructure and machine learning allows us to dismantle the "black box" of AI discovery. We don't guess how LLMs perceive brands; we build deterministic testing frameworks to audit them.
+              </p>
+              <p>
+                The platform represents thousands of hours of model benchmarking and technical validation, ensuring that every recommendation is rooted in empirical evidence and model-specific logic.
+              </p>
+            </div>
+          </div>
+          <div className="grid grid-cols-2 gap-4">
+            <div className="aspect-square bg-muted/30 border border-border p-8 flex flex-col justify-end">
+              <span className="text-[40px] font-heading text-primary leading-none">15+</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest mt-4">Years in Systems Engineering</span>
+            </div>
+            <div className="aspect-square bg-muted/30 border border-border p-8 flex flex-col justify-end">
+              <span className="text-[40px] font-heading text-secondary leading-none">8.5k</span>
+              <span className="text-[10px] font-bold uppercase tracking-widest mt-4">Validated Model Signatures</span>
+            </div>
+          </div>
+        </section>
+
+        {/* Three Pillars: Mission, Philosophy, Vision */}
+        <section className="grid md:grid-cols-3 gap-px bg-border mb-32 border border-border">
+          {/* Mission */}
+          <div className="bg-background p-10 space-y-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">01. Mission</span>
+            <h3 className="text-xl font-heading uppercase tracking-tight">The Neural Edge</h3>
+            <p className="text-xs font-medium leading-relaxed text-muted-foreground">
+              Our mission is to provide global brands with absolute transparency into the neural networks that govern modern commerce. We bridge the gap between human intent and machine comprehension.
             </p>
-          </motion.div>
-        </div>
-      </section>
+          </div>
 
-      {/* Mission Section */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-4xl mx-auto">
+          {/* Philosophy */}
+          <div className="bg-background p-10 space-y-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">02. Philosophy</span>
+            <h3 className="text-xl font-heading uppercase tracking-tight">Technical Determinism</h3>
+            <p className="text-xs font-medium leading-relaxed text-muted-foreground">
+              We operate on the principle of technical determinism. Every insight delivered by Kasparro must be reproducible, verifiable, and aligned with model-specific diagnostic outputs.
+            </p>
+          </div>
+
+          {/* Vision */}
+          <div className="bg-background p-10 space-y-6">
+            <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-primary">03. Vision</span>
+            <h3 className="text-xl font-heading uppercase tracking-tight">Deterministic SEO</h3>
+            <p className="text-xs font-medium leading-relaxed text-muted-foreground">
+              We envision a future where brand visibility is no longer a heuristic gamble. In the agentic era, visibility is an engineered outcome of high-quality, contexts-rich structured knowledge.
+            </p>
+          </div>
+        </section>
+
+        {/* Commitment */}
+        <section className="mb-32 text-center max-w-2xl mx-auto py-20 pb-40">
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
+            initial={{ opacity: 0, scale: 0.98 }}
+            whileInView={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
           >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Mission</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                To empower brands to thrive in the AI-first search era by providing transparent, actionable intelligence about how AI models understand their content.
-              </p>
-              <p className="text-muted-foreground leading-relaxed">
-                We believe that as search evolves from traditional keyword matching to AI reasoning and comprehension, brands need new tools to understand and optimize for this fundamental shift. Kasparro bridges this gap by offering the first comprehensive platform designed specifically for AI-native SEO.
-              </p>
-            </div>
-
-            <div className="grid md:grid-cols-3 gap-6 mt-8">
-              {[
-                {
-                  title: 'Transparency',
-                  description: 'Clear visibility into how AI models perceive and rank your content',
-                },
-                {
-                  title: 'Actionability',
-                  description: 'Concrete recommendations based on data-driven AI analysis',
-                },
-                {
-                  title: 'Proactivity',
-                  description: 'Stay ahead of industry changes with forward-thinking optimization',
-                },
-              ].map((item) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.6 }}
-                  viewport={{ once: true }}
-                  className="p-6 border border-border"
-                >
-                  <h3 className="font-bold text-foreground mb-2">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
+            <h2 className="text-sm font-bold uppercase tracking-[0.4em] text-muted-foreground mb-8">Architectural Commitment</h2>
+            <p className="text-lg font-bold leading-relaxed">
+              "We don't build tools for search engines. We build interfaces for intelligence. Kasparro is the operating system for the AI-first age."
+            </p>
+            <div className="mt-12 h-[1px] w-20 bg-primary mx-auto" />
           </motion.div>
-        </div>
-      </section>
-
-      {/* Philosophy Section */}
-      <section className="py-16 md:py-20 px-4 md:px-6 border-b border-border">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Our Philosophy</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-6">
-                We approach product design with a focus on system thinking and data-driven decision making.
-              </p>
-            </div>
-
-            <div className="space-y-6">
-              {[
-                {
-                  title: 'Modular Architecture',
-                  description:
-                    'The 7 core audit modules are designed independently, allowing for specialized deep-dive analysis while maintaining system coherence.',
-                },
-                {
-                  title: 'Data-Driven Design',
-                  description:
-                    'Every feature, recommendation, and insight is backed by structured data and rigorous analysis, not assumptions or trends.',
-                },
-                {
-                  title: 'Clarity Over Complexity',
-                  description:
-                    'We simplify complex AI concepts into actionable, understandable metrics that non-technical users can grasp immediately.',
-                },
-                {
-                  title: 'Continuous Evolution',
-                  description:
-                    'As AI search rapidly evolves, our platform updates to reflect new signals, new models, and emerging best practices.',
-                },
-              ].map((item, idx) => (
-                <motion.div
-                  key={item.title}
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="p-6 border border-border"
-                >
-                  <h3 className="font-bold text-foreground mb-2 text-lg">{item.title}</h3>
-                  <p className="text-sm text-muted-foreground">{item.description}</p>
-                </motion.div>
-              ))}
-            </div>
-          </motion.div>
-        </div>
-      </section>
-
-      {/* Vision Section */}
-      <section className="py-16 md:py-20 px-4 md:px-6">
-        <div className="max-w-4xl mx-auto">
-          <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6 }}
-            viewport={{ once: true }}
-            className="space-y-6"
-          >
-            <div>
-              <h2 className="text-3xl md:text-4xl font-bold mb-6">Vision for AI-First Search</h2>
-              <p className="text-lg text-muted-foreground leading-relaxed mb-8">
-                The search landscape is fundamentally shifting. We envision a world where:
-              </p>
-            </div>
-
-            <div className="space-y-4">
-              {[
-                'Brands prioritize E-E-A-T signals and authentic expertise over keyword stuffing',
-                'Content is optimized for AI comprehension and reasoning, not just crawler indexing',
-                'Search visibility extends beyond traditional SERPs to include AI-generated results and citations',
-                'Brand intelligence is a core strategic function, not a sidebar SEO task',
-                'Organizations understand their AI-SEO performance as clearly as they understand traditional search metrics',
-              ].map((point, idx) => (
-                <motion.div
-                  key={idx}
-                  initial={{ opacity: 0, x: 20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ duration: 0.6, delay: idx * 0.1 }}
-                  viewport={{ once: true }}
-                  className="flex gap-4 p-4 border border-border/50 bg-gradient-to-r from-[#9bb2e5]/10 to-[#698cbf]/10 dark:from-[#9bb2e5]/10 dark:to-[#698cbf]/5"
-                >
-                  <div className="text-primary dark:text-accent shrink-0">
-                    <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
-                    </svg>
-                  </div>
-                  <p className="text-foreground">{point}</p>
-                </motion.div>
-              ))}
-            </div>
-
-            <div className="mt-12 p-8 border border-primary/50 dark:border-accent/50 bg-gradient-to-r from-[#9bb2e5]/10 to-[#698cbf]/10 dark:from-[#9bb2e5]/10 dark:to-[#698cbf]/5">
-              <p className="text-center text-lg italic text-foreground">
-                Kasparro is built by engineers who understand both traditional SEO and modern AI. We're committed to helping brands navigate this era of search transformation with clarity, confidence, and data-driven strategy.
-              </p>
-            </div>
-          </motion.div>
-        </div>
-      </section>
+        </section>
+      </div>
     </main>
   );
 }

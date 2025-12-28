@@ -1,23 +1,17 @@
-# Kasparro Frontend
+# Kasparro | AI-SEO Command Center
 
-A modern, AI-native SEO platform frontend built with Next.js, TypeScript, and Tailwind CSS. Features a polished dark/light mode design system with smooth Framer Motion animations and responsive layouts optimized for all devices.
+Kasparro is a high-fidelity audit platform designed for the neural-web epoch. It assembles fragmented brand signals into a unified context, processing them through 7 parallel intelligence modules to quantify and optimize AI-readiness.
 
-**Live Demo**: [Deployed on Vercel](https://kasparro-frontend.vercel.app) 
+**Project Status**: High-Fidelity UI Revamp Complete.
 
 ---
 
-## Table of Contents
+## Technical Index
 
-- [Overview](#overview)
-- [Theme & Design System](#theme--design-system)
-- [Architecture & System Design](#architecture--system-design)
-- [Project Structure](#project-structure)
-- [Data Modeling](#data-modeling)
-- [Component Architecture](#component-architecture)
-- [State Management](#state-management)
-- [Routes & Features](#routes--features)
-- [Engineering Decisions](#engineering-decisions)
-- [Future Enhancements](#future-enhancements)
+- [Neural Architecture](#neural-architecture)
+- [Design Philosophy](#design-philosophy)
+- [Command Center Modules](#the-7-intelligence-modules)
+- [Engineering Stack](#tech-stack)
 
 ---
 

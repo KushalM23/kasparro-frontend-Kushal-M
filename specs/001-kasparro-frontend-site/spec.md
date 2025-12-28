@@ -2,7 +2,7 @@
 
 **Feature Branch**: `001-kasparro-frontend-site`  
 **Created**: December 28, 2025  
-**Status**: Ready  
+**Status**: Draft  
 **Input**: Frontend engineering assignment for Kasparro - an AI-native SEO & Brand Intelligence platform for AI-first search era (ChatGPT, Gemini, Perplexity). Build two product surfaces: Public Marketing Website (/, /platform, /about) and Product Dashboard Mock (/app/dashboard, /app/audit, /app/architecture).
 
 ---
@@ -43,7 +43,7 @@ A first-time visitor lands on the Kasparro home page and needs to understand wha
 2. **Given** a visitor is on the home page, **When** they scroll past the hero, **Then** they see an explanation of why AI-SEO differs from traditional SEO
 3. **Given** a visitor is on the home page, **When** they explore further, **Then** they see a core modules overview section showing the 7 audit modules
 4. **Given** a visitor is on the home page, **When** they view the pipeline section, **Then** they see how Kasparro works (pipeline view: Input → Processing → Output)
-5. **Given** a visitor is on the home page, **When** they are ready to take action, **Then** they see a CTA to "Run AI-SEO Audit" that routes to /app/audit
+5. **Given** a visitor is on the home page, **When** they are ready to take action, **Then** they see a CTA to "Run AI-SEO Audit" that routes to a mocked flow
 6. **Given** a visitor is on the home page, **When** they scroll to the bottom, **Then** they see a footer with navigation and company information
 
 ---
@@ -320,11 +320,11 @@ All decisions should be justified in the README.
 
 ## Assumptions
 
-- The 7 audit modules are defined as: (1) AI Visibility Audit, (2) E-E-A-T Analysis, (3) Content Quality Audit, (4) Technical AI Readiness, (5) Brand Mention Tracking, (6) Competitor Benchmarking, (7) Keyword Coverage Audit
-- Mock data for dashboard and audit pages will use representative but fictional brand data with at least 2 brands, stored in `/public/audit-data/`
+- The 7 audit modules will be represented with descriptive placeholder names; specific module details can be refined based on actual product specifications
+- Mock data for dashboard and audit pages will use representative but fictional brand data with at least 2 brands
 - Authentication and user accounts are out of scope; user is assumed to be logged in
 - The system diagram on architecture page can be static visual or structured text-based representation
-- No backend integration required; all data is mocked JSON in `/public/audit-data/`
+- No backend integration required; all data is mocked JSON
 - Marketing website and product dashboard share consistent branding and design language
 - shadcn/ui components may be used but must be customized to fit the design
 - Framer Motion animations should be subtle and purposeful only

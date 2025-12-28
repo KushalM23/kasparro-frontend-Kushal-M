@@ -1,0 +1,276 @@
+[
+  {
+    "id": "ai-visibility-2",
+    "moduleId": "ai-visibility",
+    "moduleName": "AI Visibility Audit",
+    "description": "Assess how visible your content is to AI search engines and models",
+    "score": 72,
+    "maxScore": 100,
+    "scorePercentage": 72,
+    "insights": [
+      {
+        "id": "ins-1-b2",
+        "title": "Good AI crawler access",
+        "description": "robots.txt allows major AI crawlers like GPTBot and CCBot",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-1-b2",
+        "title": "Limited structured data",
+        "description": "Only 40% of pages have structured data markup",
+        "severity": "high",
+        "affectedPages": 234,
+        "recommendation": "Implement Schema.org markup on product and blog pages"
+      },
+      {
+        "id": "iss-2-b2",
+        "title": "Missing AI crawl directives",
+        "description": "No specific AI crawler headers configured",
+        "severity": "medium",
+        "affectedPages": 234
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-1-b2",
+        "title": "Implement comprehensive schema markup",
+        "description": "Add Schema.org markup to all product and content pages",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "eeat-analysis-2",
+    "moduleId": "eeat-analysis",
+    "moduleName": "E-E-A-T Analysis",
+    "description": "Evaluate Experience, Expertise, Authoritativeness, and Trustworthiness",
+    "score": 76,
+    "maxScore": 100,
+    "scorePercentage": 76,
+    "insights": [
+      {
+        "id": "ins-2-b2",
+        "title": "Good trust signals",
+        "description": "Multiple trust badges and security certifications visible",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-3-b2",
+        "title": "Weak author credentials",
+        "description": "Author bio pages lack detailed credentials and experience",
+        "severity": "high",
+        "affectedPages": 45
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-2-b2",
+        "title": "Enhance author credibility",
+        "description": "Create detailed author profiles with relevant certifications and experience",
+        "priority": "high",
+        "estimatedImpact": "medium",
+        "implementationEffort": "easy"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "content-quality-2",
+    "moduleId": "content-quality",
+    "moduleName": "Content Quality Audit",
+    "description": "Analyze readability, depth, and content freshness",
+    "score": 74,
+    "maxScore": 100,
+    "scorePercentage": 74,
+    "insights": [
+      {
+        "id": "ins-3-b2",
+        "title": "Readable content structure",
+        "description": "Average Flesch reading ease of 65, suitable for general audience",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-4-b2",
+        "title": "Shallow topic coverage",
+        "description": "Average content depth is 1,200 words, below competitor average of 2,100",
+        "severity": "high",
+        "affectedPages": 156
+      },
+      {
+        "id": "iss-5-b2",
+        "title": "Outdated content",
+        "description": "78 pages have no updates in the past 12 months",
+        "severity": "medium",
+        "affectedPages": 78
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-3-b2",
+        "title": "Expand content depth",
+        "description": "Expand existing articles to 2,000+ words with comprehensive coverage",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "technical-readiness-2",
+    "moduleId": "technical-ai-readiness",
+    "moduleName": "Technical AI Readiness",
+    "description": "Check crawlability, performance, and mobile optimization",
+    "score": 81,
+    "maxScore": 100,
+    "scorePercentage": 81,
+    "insights": [
+      {
+        "id": "ins-4-b2",
+        "title": "Good page performance",
+        "description": "Average page load time of 1.8 seconds",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-6-b2",
+        "title": "Slow initial render",
+        "description": "Largest Contentful Paint averaging 2.1 seconds",
+        "severity": "medium",
+        "affectedPages": 89
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-4-b2",
+        "title": "Optimize image serving",
+        "description": "Implement lazy loading and modern image formats (WebP)",
+        "priority": "medium",
+        "estimatedImpact": "medium",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "brand-mention-2",
+    "moduleId": "brand-mention-tracking",
+    "moduleName": "Brand Mention Tracking",
+    "description": "Monitor where your brand is mentioned across the web",
+    "score": 65,
+    "maxScore": 100,
+    "scorePercentage": 65,
+    "insights": [
+      {
+        "id": "ins-5-b2",
+        "title": "Strong social media presence",
+        "description": "7,500 brand mentions on social platforms",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-7-b2",
+        "title": "Low press coverage",
+        "description": "Only 5 mentions in major publications in past 6 months",
+        "severity": "high",
+        "affectedPages": 1
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-5-b2",
+        "title": "Increase media outreach",
+        "description": "Launch targeted PR campaign for design and tech publications",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "competitor-bench-2",
+    "moduleId": "competitor-benchmarking",
+    "moduleName": "Competitor Benchmarking",
+    "description": "Compare your AI-SEO performance with competitors",
+    "score": 70,
+    "maxScore": 100,
+    "scorePercentage": 70,
+    "insights": [
+      {
+        "id": "ins-6-b2",
+        "title": "Competitive content quality",
+        "description": "Content quality slightly above average competitor",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-8-b2",
+        "title": "Lagging in technical performance",
+        "description": "Core Web Vitals 20% worse than top competitor",
+        "severity": "high",
+        "affectedPages": 234
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-6-b2",
+        "title": "Invest in performance optimization",
+        "description": "Implement advanced caching and CDN strategies",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  },
+  {
+    "id": "keyword-coverage-2",
+    "moduleId": "keyword-coverage",
+    "moduleName": "Keyword Coverage Audit",
+    "description": "Analyze keyword diversity and topical coverage",
+    "score": 68,
+    "maxScore": 100,
+    "scorePercentage": 68,
+    "insights": [
+      {
+        "id": "ins-7-b2",
+        "title": "Good design keyword focus",
+        "description": "Strong rankings for 89 design-related keywords",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-9-b2",
+        "title": "Narrow keyword scope",
+        "description": "Limited coverage outside primary design vertical",
+        "severity": "high",
+        "affectedPages": 167
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-7-b2",
+        "title": "Expand into adjacent verticals",
+        "description": "Create content for branding, marketing, and strategy keywords",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-14T11:00:00Z"
+  }
+]

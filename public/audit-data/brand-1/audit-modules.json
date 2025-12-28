@@ -1,0 +1,286 @@
+[
+  {
+    "id": "ai-visibility-1",
+    "moduleId": "ai-visibility",
+    "moduleName": "AI Visibility Audit",
+    "description": "Assess how visible your content is to AI search engines and models",
+    "score": 78,
+    "maxScore": 100,
+    "scorePercentage": 78,
+    "insights": [
+      {
+        "id": "ins-1",
+        "title": "Strong robots.txt configuration",
+        "description": "Your robots.txt properly allows AI crawlers while protecting sensitive areas",
+        "type": "positive"
+      },
+      {
+        "id": "ins-2",
+        "title": "Good structured data coverage",
+        "description": "65% of pages have structured data markup, enabling rich AI understanding",
+        "type": "positive"
+      },
+      {
+        "id": "ins-3",
+        "title": "Moderate metadata optimization",
+        "description": "Meta descriptions are present but could be more descriptive for AI parsing",
+        "type": "neutral"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-1",
+        "title": "Missing OpenAI crawl headers",
+        "description": "Consider adding headers to control OpenAI's web crawler access",
+        "severity": "medium",
+        "affectedPages": 156,
+        "recommendation": "Add X-Robots-Tag: ai-crawl-no or ai-crawl-yes headers to control indexing"
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-1",
+        "title": "Expand structured data implementation",
+        "description": "Add Schema.org markup to remaining 35% of pages",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "medium"
+      },
+      {
+        "id": "rec-2",
+        "title": "Create AI-optimized sitemap",
+        "description": "Add priorities and last-modified timestamps for AI crawlers",
+        "priority": "medium",
+        "estimatedImpact": "medium",
+        "implementationEffort": "easy"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "eeat-analysis-1",
+    "moduleId": "eeat-analysis",
+    "moduleName": "E-E-A-T Analysis",
+    "description": "Evaluate Experience, Expertise, Authoritativeness, and Trustworthiness",
+    "score": 82,
+    "maxScore": 100,
+    "scorePercentage": 82,
+    "insights": [
+      {
+        "id": "ins-4",
+        "title": "Strong author authority signals",
+        "description": "Articles have clear author attribution with relevant credentials",
+        "type": "positive"
+      },
+      {
+        "id": "ins-5",
+        "title": "Good HTTPS and security signals",
+        "description": "Full SSL/TLS implementation with security headers present",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-2",
+        "title": "Limited external citations",
+        "description": "Only 23 external expert citations across all content",
+        "severity": "high",
+        "affectedPages": 89
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-3",
+        "title": "Increase external expert citations",
+        "description": "Link to peer-reviewed studies and recognized experts to boost authority",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "content-quality-1",
+    "moduleId": "content-quality",
+    "moduleName": "Content Quality Audit",
+    "description": "Analyze readability, depth, and content freshness",
+    "score": 79,
+    "maxScore": 100,
+    "scorePercentage": 79,
+    "insights": [
+      {
+        "id": "ins-6",
+        "title": "Good content length distribution",
+        "description": "Average content length of 1,850 words exceeds industry standard",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-3",
+        "title": "45 pages outdated (6+ months)",
+        "description": "Content last updated more than 6 months ago",
+        "severity": "medium",
+        "affectedPages": 45
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-4",
+        "title": "Establish content refresh schedule",
+        "description": "Update high-traffic content quarterly to maintain freshness signals",
+        "priority": "high",
+        "estimatedImpact": "medium",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "technical-readiness-1",
+    "moduleId": "technical-ai-readiness",
+    "moduleName": "Technical AI Readiness",
+    "description": "Check crawlability, performance, and mobile optimization",
+    "score": 85,
+    "maxScore": 100,
+    "scorePercentage": 85,
+    "insights": [
+      {
+        "id": "ins-7",
+        "title": "Excellent Core Web Vitals",
+        "description": "LCP: 1.2s, FID: 45ms, CLS: 0.08 - all in green range",
+        "type": "positive"
+      },
+      {
+        "id": "ins-8",
+        "title": "Perfect mobile responsiveness",
+        "description": "All pages pass mobile-friendly test",
+        "type": "positive"
+      }
+    ],
+    "issues": [],
+    "recommendations": [
+      {
+        "id": "rec-5",
+        "title": "Implement dynamic rendering",
+        "description": "Add server-side rendering for better AI crawler comprehension",
+        "priority": "medium",
+        "estimatedImpact": "medium",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "brand-mention-1",
+    "moduleId": "brand-mention-tracking",
+    "moduleName": "Brand Mention Tracking",
+    "description": "Monitor where your brand is mentioned across the web",
+    "score": 68,
+    "maxScore": 100,
+    "scorePercentage": 68,
+    "insights": [
+      {
+        "id": "ins-9",
+        "title": "Growing brand mentions",
+        "description": "23% increase in brand mentions over last quarter",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-4",
+        "title": "Low coverage in tech publications",
+        "description": "Only mentioned in 8 major tech industry publications",
+        "severity": "medium",
+        "affectedPages": 1
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-6",
+        "title": "Develop PR strategy",
+        "description": "Pitch thought leadership articles to top tech media outlets",
+        "priority": "medium",
+        "estimatedImpact": "high",
+        "implementationEffort": "hard"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "competitor-bench-1",
+    "moduleId": "competitor-benchmarking",
+    "moduleName": "Competitor Benchmarking",
+    "description": "Compare your AI-SEO performance with competitors",
+    "score": 73,
+    "maxScore": 100,
+    "scorePercentage": 73,
+    "insights": [
+      {
+        "id": "ins-10",
+        "title": "Above average E-E-A-T",
+        "description": "Your E-E-A-T score is 12% higher than average competitor",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-5",
+        "title": "Trailing in AI visibility",
+        "description": "Competitors have 15% better AI visibility scores on average",
+        "severity": "high",
+        "affectedPages": 156
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-7",
+        "title": "Increase AI-focused content",
+        "description": "Create content specifically optimized for AI search algorithms",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  },
+  {
+    "id": "keyword-coverage-1",
+    "moduleId": "keyword-coverage",
+    "moduleName": "Keyword Coverage Audit",
+    "description": "Analyze keyword diversity and topical coverage",
+    "score": 71,
+    "maxScore": 100,
+    "scorePercentage": 71,
+    "insights": [
+      {
+        "id": "ins-11",
+        "title": "Solid primary keyword coverage",
+        "description": "Strong positions for 127 primary keywords",
+        "type": "positive"
+      }
+    ],
+    "issues": [
+      {
+        "id": "iss-6",
+        "title": "Limited long-tail keyword coverage",
+        "description": "Only covering 34 long-tail keyword variations",
+        "severity": "high",
+        "affectedPages": 89
+      }
+    ],
+    "recommendations": [
+      {
+        "id": "rec-8",
+        "title": "Expand long-tail keyword strategy",
+        "description": "Create targeted content for 200+ long-tail variations",
+        "priority": "high",
+        "estimatedImpact": "high",
+        "implementationEffort": "medium"
+      }
+    ],
+    "lastUpdated": "2024-12-15T09:30:00Z"
+  }
+]

@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import {
   Select,
   SelectContent,
@@ -18,7 +19,12 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ selectedBrand, brands, lastScanTime, onBrandChange }: DashboardHeaderProps) {
   return (
-    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10"
+    >
       <div className="space-y-1">
         <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/80">Command Center</span>
         <h1 className="text-3xl md:text-4xl tracking-tighter uppercase">
@@ -46,6 +52,6 @@ export function DashboardHeader({ selectedBrand, brands, lastScanTime, onBrandCh
           </SelectContent>
         </Select>
       </div>
-    </div>
+    </motion.div>
   );
 }

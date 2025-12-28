@@ -15,7 +15,7 @@ export function HeroSection() {
       transition={{ duration: 0.6 }}
       className="max-w-xl text-left"
     >
-      <h1 className="text-5xl md:text-4xl font-heading tracking-tighter leading-[0.9] mb-8 uppercase">
+      <h1 className="text-5xl md:text-3xl font-heading tracking-tighter leading-[0.9] mb-8 uppercase">
         AI-native SEO & Brand Intelligence platform
       </h1>
       <p className="text-lg md:text-xl font-medium text-muted-foreground mb-10 leading-relaxed tracking-tight">

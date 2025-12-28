@@ -42,7 +42,12 @@ export function Header() {
   ];
 
   return (
-    <header className="w-full bg-background border-b border-border z-50 transition-colors">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="w-full bg-background border-b border-border z-50 transition-colors"
+    >
       <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link
@@ -123,6 +128,6 @@ export function Header() {
           )}
         </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }

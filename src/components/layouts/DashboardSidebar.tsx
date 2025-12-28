@@ -1,5 +1,6 @@
 'use client';
 
+import { motion } from 'framer-motion';
 import Link from 'next/link';
 import { ROUTES } from '@/lib/constants';
 import { cn } from '@/lib/utils';
@@ -16,7 +17,12 @@ export function DashboardSidebar() {
   ];
 
   return (
-    <aside className="w-64 border-r border-border bg-background flex flex-col p-6 transition-colors hidden md:flex">
+    <motion.aside
+      initial={{ opacity: 0, x: -20 }}
+      animate={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.5 }}
+      className="w-64 border-r border-border bg-background flex flex-col p-6 transition-colors hidden md:flex"
+    >
       <Link
         href={ROUTES.HOME}
         className="mb-8 text-xl font-bold tracking-tighter hover:text-primary transition-colors text-foreground"
@@ -55,6 +61,6 @@ export function DashboardSidebar() {
           Back to Home
         </Link>
       </div>
-    </aside>
+    </motion.aside>
   );
 }

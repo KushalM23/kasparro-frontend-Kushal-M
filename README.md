@@ -2,17 +2,6 @@
 
 Kasparro is a high-fidelity audit platform designed for the neural-web epoch. It assembles fragmented brand signals into a unified context, processing them through 7 parallel intelligence modules to quantify and optimize AI-readiness.
 
-**Project Status**: High-Fidelity UI Revamp Complete.
-
----
-
-## Technical Index
-
-- [Neural Architecture](#neural-architecture)
-- [Design Philosophy](#design-philosophy)
-- [Command Center Modules](#the-7-intelligence-modules)
-- [Engineering Stack](#tech-stack)
-
 ---
 
 ## Overview
@@ -130,26 +119,32 @@ src/
 │   │   │
 │   │   ├── dashboard/                # Dashboard features
 │   │   │   ├── BrandSelector.tsx     # Multi-brand selector
-│   │   │   ├── AiVisibilityCard.tsx  # Metric display
-│   │   │   ├── EeatScoreCard.tsx
-│   │   │   ├── KeywordCoverageCard.tsx
-│   │   │   ├── LastAuditTimestamp.tsx
-│   │   │   └── MetricCard.tsx        # Generic metric container
+│   │   │   ├── MetricsGrid.tsx       # Metric display with Re-Audit button
+│   │   │   ├── AuditStatus.tsx       # Empty states & loading
+│   │   │   └── DashboardHeader.tsx   # Header with brand selector
 │   │   │
-│   │   ├── audit/                    # Audit page features
-│   │   │   ├── ModuleSidebar.tsx     # 7 module buttons
-│   │   │   ├── ModuleDetail.tsx      # Selected module details
-│   │   │   ├── ScoreDisplay.tsx      # Module score
-│   │   │   ├── InsightsList.tsx      # Positive findings
-│   │   │   ├── IssuesList.tsx        # Flagged issues
-│   │   │   └── RecommendationsList.tsx
+│   │   ├── audit/                    # Audit page features (Modular)
+│   │   │   ├── ModuleSidebar.tsx     # 7 module navigation
+│   │   │   ├── AuditModuleContent.tsx # Main module container
+│   │   │   ├── ScoreDisplay.tsx      # Premium score visualization
+│   │   │   ├── InsightsList.tsx      # Grid-based insights
+│   │   │   ├── IssuesList.tsx        # Bordered issue cards
+│   │   │   ├── RecommendationsList.tsx # Prioritized actions
+│   │   │   └── AuditEmptyState.tsx   # No data states
 │   │   │
-│   │   ├── architecture/             # Architecture page features
+│   │   ├── architecture/             # Architecture page features (Modular)
 │   │   │   ├── SystemDiagram.tsx     # Full pipeline visualization
-│   │   │   ├── InputAssemblerNode.tsx
-│   │   │   ├── ContextPackNode.tsx
-│   │   │   ├── ModuleNode.tsx        # Generic module representation
-│   │   │   └── OutputNode.tsx
+│   │   │   ├── InputAssemblerNode.tsx # Step 1: Data collection
+│   │   │   ├── ContextPackNode.tsx   # Step 2: Normalization
+│   │   │   ├── IntelligenceLayerNode.tsx # Step 3: Processing (highlighted)
+│   │   │   ├── OutputNode.tsx        # Step 4: Reporting
+│   │   │   └── ModuleNode.tsx        # Generic module card
+│   │   │
+│   │   ├── platform/                 # Platform page features
+│   │   │   ├── PipelineFlow.tsx
+│   │   │   ├── DataInputs.tsx
+│   │   │   ├── Outputs.tsx
+│   │   │   └── Comparison.tsx
 │   │   │
 │   │   └── about/                    # About page features
 │   │       ├── Mission.tsx
@@ -534,23 +529,31 @@ All functionality tested via Playwright E2E automation:
 
 ### Assumptions Made
 
-1. **Static Home Page**
-   - Home page content is static (no JSON)
-   - Reduces complexity for MVP
-   - Future: Make homepage dynamic
+1. **Purposeful Animations**
+   - Home page uses Framer Motion for entrance animations
+   - All animations are purposeful, not excessive
+   - Enhances UX without sacrificing performance
 
 2. **No Real Audit Processing**
-   - Audit scores/insights are mocked
+   - Audit scores/insights are mocked from JSON
    - Real platform would run AI modules
    - Demonstrates data presentation layer only
+   - Re-Audit simulates 2-second processing time
+
+3. **Multi-Brand Support**
+   - Dashboard supports switching between brands
+   - Each brand has its own audit data
+   - Re-Audit functionality updates metrics per brand
 
 ### Tradeoffs Made
 
 | Decision | Benefit | Tradeoff |
 |----------|---------|----------|
 | **Zustand** for state | Simple, performant | Not as verbose as Redux |
-| **Mocked data** | Fast development | No real AI processing |
-| **shadcn/ui** | Consistent, accessible | Less unique visual identity |
-| **No animations** (mostly) | Lightweight, fast | Less engaging feel |
-| **Static home page** | Simple to build | Less dynamic than possible |
-| **Single Zustand store** | Clarity | Could split for modularity |
+| **Mocked data** | Fast development, demo-ready | No real AI processing |
+| **Modular components** | Reusable, maintainable | More files to manage |
+| **Custom design system** | Unique brand identity | More initial setup than pure shadcn |
+| **Framer Motion** | Premium feel, smooth UX | Slight bundle size increase |
+| **Re-Audit functionality** | Better UX for testing | Simulated delay (2s) |
+| **Static home content** | Simple, fast | Less dynamic than possible |
+| **High-fidelity design** | Professional appearance | Longer initial development |

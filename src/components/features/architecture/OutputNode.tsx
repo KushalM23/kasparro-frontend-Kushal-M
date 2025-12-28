@@ -1,23 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Database } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
 export function OutputNode() {
   return (
-    <Card className="border-2 border-green-500/50 bg-green-50">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base flex items-center gap-2">
-          <Database className="w-5 h-5 text-green-600" />
-          Output Surfaces
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="text-sm">
-        <ul className="space-y-1 text-muted-foreground">
-          <li>• Numeric scores</li>
-          <li>• Insights & findings</li>
-          <li>• Issues & severity</li>
-          <li>• Recommendations</li>
-        </ul>
-      </CardContent>
-    </Card>
+    <div className="p-8 border border-border space-y-6 relative hover:bg-muted/50 transition-colors">
+      <div className="flex justify-between items-start">
+        <Icons.Layout className="w-6 h-6 text-primary" />
+        <span className="text-[10px] font-bold text-muted-foreground">04</span>
+      </div>
+      <div className="space-y-2">
+        <h3 className="font-heading uppercase tracking-tight text-lg">Output Surface</h3>
+        <p className="text-xs font-medium leading-relaxed text-muted-foreground">Metric synthesis and reporting.</p>
+      </div>
+    </div>
   );
 }

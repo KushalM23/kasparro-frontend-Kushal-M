@@ -1,38 +1,37 @@
-/**
- * 404 Not Found Page
- */
+'use client';
 
 import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/lib/constants';
+import { motion } from 'framer-motion';
 
 export default function NotFound() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-background to-muted/50 px-4">
-      <div className="max-w-md text-center">
-        <h1 className="text-6xl font-bold text-primary mb-4">404</h1>
-        <h2 className="text-2xl font-bold mb-3">Page Not Found</h2>
-        <p className="text-muted-foreground mb-8">
-          The page you're looking for doesn't exist. Let's get you back on track.
-        </p>
-        
-        <div className="space-y-3">
-          <Link href={ROUTES.HOME} className="block">
-            <Button className="w-full">Back to Home</Button>
-          </Link>
-          <Link href={ROUTES.DASHBOARD} className="block">
-            <Button variant="outline" className="w-full">
-              Go to Dashboard
-            </Button>
-          </Link>
-        </div>
-
-        <div className="mt-12 text-center">
-          <p className="text-xs text-muted-foreground">
-            Need help? Contact support or check our documentation.
+    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        className="max-w-md text-center space-y-8"
+      >
+        <div className="space-y-4">
+          <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">Null Reference</span>
+          <h1 className="text-8xl font-heading tracking-tighter uppercase leading-none text-foreground">
+            404
+          </h1>
+          <p className="text-sm font-medium text-muted-foreground uppercase tracking-widest">
+            The requested neural path does not exist.
           </p>
         </div>
-      </div>
+
+        <div className="flex flex-col gap-2">
+          <Button asChild className="h-14 px-10 text-xs uppercase tracking-widest rounded-none border-0 bg-primary text-primary-foreground hover:bg-primary/80">
+            <Link href={ROUTES.HOME}>Neural Home</Link>
+          </Button>
+          <Button variant="outline" asChild className="h-14 px-10 text-xs uppercase tracking-widest rounded-none border border-border bg-transparent hover:bg-muted">
+            <Link href={ROUTES.DASHBOARD}>Return to Command Center</Link>
+          </Button>
+        </div>
+      </motion.div>
     </div>
   );
 }

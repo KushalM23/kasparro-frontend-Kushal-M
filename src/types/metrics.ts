@@ -5,15 +5,15 @@
 
 export interface DashboardMetrics {
   brandId: string;
-  aiVisibilityScore: number;
+  aiVisibility: number;
   eeatScore: number;
-  keywordCoverageScore: number;
+  keywordCoverage: number;
   technicalReadinessScore: number;
   contentQualityScore: number;
   competitorBenchmarkScore: number;
   brandMentionScore: number;
   averageScore: number;
-  lastAuditDate: string;
+  lastAudit: string;
   recommendedActions: number;
   criticalIssues: number;
 }

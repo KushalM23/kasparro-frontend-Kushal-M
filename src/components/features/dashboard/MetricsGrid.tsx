@@ -12,9 +12,10 @@ interface MetricsGridProps {
         keywordCoverage: number;
         averageScore: number;
     };
+    onReAudit?: () => void;
 }
 
-export function MetricsGrid({ metrics }: MetricsGridProps) {
+export function MetricsGrid({ metrics, onReAudit }: MetricsGridProps) {
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -73,9 +74,19 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
                     <h3 className="text-2xl uppercase tracking-tight">Full Audit Insights Available</h3>
                     <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Explore detailed findings and specific recommendations to improve your brand visibility.</p>
                 </div>
-                <Button asChild className="rounded-none h-14 px-10 font-bold uppercase tracking-widest text-xs border border-foreground hover:bg-foreground hover:text-primary-foreground bg-transparent text-foreground transition-all">
-                    <Link href={ROUTES.AUDIT}>View Full Report &rarr;</Link>
-                </Button>
+                <div className="flex flex-col sm:flex-row gap-3">
+                    {onReAudit && (
+                        <Button
+                            onClick={onReAudit}
+                            className="rounded-none h-14 px-10 font-bold uppercase tracking-widest text-xs bg-primary text-primary-foreground hover:bg-primary/80 transition-all"
+                        >
+                            Re-Audit Brand
+                        </Button>
+                    )}
+                    <Button asChild className="rounded-none h-14 px-10 font-bold uppercase tracking-widest text-xs border border-foreground hover:bg-foreground hover:text-primary-foreground bg-transparent text-foreground transition-all">
+                        <Link href={ROUTES.AUDIT}>View Full Report &rarr;</Link>
+                    </Button>
+                </div>
             </motion.div>
         </motion.div>
     );

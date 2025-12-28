@@ -1,23 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Network } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
 export function InputAssemblerNode() {
   return (
-    <Card className="border-2 border-blue-500/50 bg-blue-50">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base flex items-center gap-2">
-          <Network className="w-5 h-5 text-blue-600" />
-          Input Assembler
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="text-sm">
-        <ul className="space-y-1 text-muted-foreground">
-          <li>• Domain structure</li>
-          <li>• Content & metadata</li>
-          <li>• Technical signals</li>
-          <li>• Authority data</li>
-        </ul>
-      </CardContent>
-    </Card>
+    <div className="p-8 border border-border space-y-6 relative hover:bg-muted/50 transition-colors">
+      <div className="flex justify-between items-start">
+        <Icons.Database className="w-6 h-6 text-primary" />
+        <span className="text-[10px] font-bold text-muted-foreground">01</span>
+      </div>
+      <div className="space-y-2">
+        <h3 className="font-heading uppercase tracking-tight text-lg">Input Assembler</h3>
+        <p className="text-xs font-medium leading-relaxed text-muted-foreground">Fragmented brand data collection.</p>
+      </div>
+    </div>
   );
 }

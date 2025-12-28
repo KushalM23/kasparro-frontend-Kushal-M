@@ -1,6 +1,3 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { CheckCircle2 } from 'lucide-react';
-
 interface Insight {
   title: string;
   description: string;
@@ -11,37 +8,26 @@ interface InsightsListProps {
 }
 
 export function InsightsList({ insights }: InsightsListProps) {
-  if (!insights || insights.length === 0) {
-    return (
-      <Card>
-        <CardHeader>
-          <CardTitle className="text-lg">Insights</CardTitle>
-        </CardHeader>
-        <CardContent>
-          <p className="text-sm text-muted-foreground">No insights available</p>
-        </CardContent>
-      </Card>
-    );
-  }
-
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle className="text-lg">Insights</CardTitle>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        {insights.map((insight, index) => (
-          <div key={index} className="flex gap-3 pb-4 border-b last:border-0">
-            <CheckCircle2 className="w-5 h-5 text-green-600 flex-shrink-0 mt-0.5" />
-            <div>
-              <h4 className="font-medium text-sm">{insight.title}</h4>
-              <p className="text-xs text-muted-foreground mt-1">
-                {insight.description}
-              </p>
+    <section className="space-y-4">
+      <div className="flex items-center gap-3">
+        <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/70">Strategic Insights</h2>
+        <div className="h-[1px] flex-1 bg-border/40" />
+      </div>
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border divide-x divide-y md:divide-y-0 divide-border">
+        {insights.map((insight, idx) => (
+          <div key={idx} className="p-4 bg-muted/5 space-y-2">
+            <h4 className="text-[10px] font-bold uppercase tracking-wider text-primary">Insight 0{idx + 1}</h4>
+            <div className="space-y-1">
+              <h5 className="text-[11px] font-bold uppercase tracking-tight text-foreground">{insight.title}</h5>
+              <p className="text-xs text-muted-foreground leading-tight font-medium">{insight.description}</p>
             </div>
           </div>
         ))}
-      </CardContent>
-    </Card>
+        {insights.length === 0 && (
+          <p className="p-4 text-xs font-bold uppercase tracking-widest text-muted-foreground/50">No insights available.</p>
+        )}
+      </div>
+    </section>
   );
 }

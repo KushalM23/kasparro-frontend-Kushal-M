@@ -35,7 +35,7 @@ export interface AuditModule {
   description: string;
   score: number;
   maxScore: number;
-  scorPercentage: number;
+  scorePercentage: number;
   insights: Insight[];
   issues: Issue[];
   recommendations: Recommendation[];

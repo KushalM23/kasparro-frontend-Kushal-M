@@ -1,18 +1,16 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Package } from 'lucide-react';
+import * as Icons from 'lucide-react';
 
 export function ContextPackNode() {
   return (
-    <Card className="border-2 border-purple-500/50 bg-purple-50">
-      <CardHeader className="pb-2">
-        <CardTitle className="text-base flex items-center gap-2">
-          <Package className="w-5 h-5 text-purple-600" />
-          Context Pack
-        </CardTitle>
-      </CardHeader>
-      <CardContent className="text-sm text-muted-foreground">
-        <p>Unified representation of site for AI processing</p>
-      </CardContent>
-    </Card>
+    <div className="p-8 border border-border space-y-6 relative hover:bg-muted/50 transition-colors">
+      <div className="flex justify-between items-start">
+        <Icons.Cpu className="w-6 h-6 text-primary" />
+        <span className="text-[10px] font-bold text-muted-foreground">02</span>
+      </div>
+      <div className="space-y-2">
+        <h3 className="font-heading uppercase tracking-tight text-lg">Context Pack</h3>
+        <p className="text-xs font-medium leading-relaxed text-muted-foreground">Normalization and entity linking.</p>
+      </div>
+    </div>
   );
 }

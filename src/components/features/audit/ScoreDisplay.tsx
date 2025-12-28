@@ -1,26 +1,14 @@
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 interface ScoreDisplayProps {
   score: number;
-  moduleName: string;
 }
 
-export function ScoreDisplay({ score, moduleName }: ScoreDisplayProps) {
+export function ScoreDisplay({ score }: ScoreDisplayProps) {
   return (
-    <Card className="border-primary/50 bg-gradient-to-br from-primary/5 to-primary/10">
-      <CardHeader>
-        <CardTitle className="text-lg">{moduleName}</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <div className="text-6xl font-bold text-primary mb-2">{score}</div>
-        <p className="text-sm text-muted-foreground">/100</p>
-        <div className="mt-4 w-full bg-muted h-2 overflow-hidden">
-          <div
-            className="bg-primary h-full transition-all"
-            style={{ width: `${score}%` }}
-          />
-        </div>
-      </CardContent>
-    </Card>
+    <div className="flex items-center gap-4 bg-muted/20 border border-border px-6 py-4">
+      <div className="text-right">
+        <span className="text-[9px] font-bold uppercase tracking-widest text-muted-foreground block">Layer Score</span>
+        <div className="text-3xl font-heading tracking-tighter text-primary">{score}</div>
+      </div>
+    </div>
   );
 }

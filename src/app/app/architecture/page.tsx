@@ -5,6 +5,10 @@ import { AUDIT_MODULE_DEFINITIONS } from '@/data/modules';
 import * as Icons from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
+import { InputAssemblerNode } from '@/components/features/architecture/InputAssemblerNode';
+import { ContextPackNode } from '@/components/features/architecture/ContextPackNode';
+import { IntelligenceLayerNode } from '@/components/features/architecture/IntelligenceLayerNode';
+import { OutputNode } from '@/components/features/architecture/OutputNode';
 
 export default function ArchitecturePage() {
   const [selectedModule, setSelectedModule] = useState(AUDIT_MODULE_DEFINITIONS[0]);
@@ -35,37 +39,30 @@ export default function ArchitecturePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-4 gap-2">
-          {[
-            { tag: '01', title: 'Input Assembler', desc: 'Fragmented brand data collection.', icon: Icons.Database },
-            { tag: '02', title: 'Context Pack', desc: 'Normalization and entity linking.', icon: Icons.Cpu },
-            { tag: '03', title: 'Intelligence Layer', desc: 'Parallel execution of 7 modules.', icon: Icons.Zap, active: true },
-            { tag: '04', title: 'Output Surface', desc: 'Metric synthesis and reporting.', icon: Icons.Layout }
-          ].map((step, idx) => (
-            <motion.div
-              key={step.title}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: idx * 0.1 }}
-              className={cn(
-                "p-8 border border-border space-y-6 relative group transition-colors",
-                step.active ? "bg-primary text-primary-foreground border-primary" : "hover:bg-muted/50"
-              )}
-            >
-              <div className="flex justify-between items-start">
-                <step.icon className={cn("w-6 h-6", step.active ? "text-primary-foreground" : "text-primary")} />
-                <span className={cn("text-[10px] font-bold", step.active ? "text-primary-foreground/50" : "text-muted-foreground")}>{step.tag}</span>
-              </div>
-              <div className="space-y-2">
-                <h3 className="font-heading uppercase tracking-tight text-lg">{step.title}</h3>
-                <p className={cn("text-xs font-medium leading-relaxed", step.active ? "text-primary-foreground/80" : "text-muted-foreground")}>{step.desc}</p>
-              </div>
-              {idx < 3 && (
-                <div className="hidden md:block absolute -right-1 top-1/2 -translate-y-1/2 z-10">
-                  <Icons.ChevronRight className={cn("w-4 h-4", step.active ? "text-primary" : "text-border")} />
-                </div>
-              )}
-            </motion.div>
-          ))}
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.1 }} className="relative">
+            <InputAssemblerNode />
+            <div className="hidden md:block absolute -right-1 top-1/2 -translate-y-1/2 z-10">
+              <Icons.ChevronRight className="w-4 h-4 text-border" />
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }} className="relative">
+            <ContextPackNode />
+            <div className="hidden md:block absolute -right-1 top-1/2 -translate-y-1/2 z-10">
+              <Icons.ChevronRight className="w-4 h-4 text-border" />
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.3 }} className="relative">
+            <IntelligenceLayerNode />
+            <div className="hidden md:block absolute -right-1 top-1/2 -translate-y-1/2 z-10">
+              <Icons.ChevronRight className="w-4 h-4 text-primary" />
+            </div>
+          </motion.div>
+
+          <motion.div initial={{ opacity: 0, x: -20 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.4 }} className="relative">
+            <OutputNode />
+          </motion.div>
         </div>
       </section>
 

@@ -7,13 +7,7 @@ import { DashboardHeader } from '@/components/layouts/DashboardHeader';
 import { AuditStatus } from '@/components/features/dashboard/AuditStatus';
 import { MetricsGrid } from '@/components/features/dashboard/MetricsGrid';
 
-interface DashboardMetrics {
-  aiVisibility: number;
-  eeatScore: number;
-  keywordCoverage: number;
-  lastAudit: string;
-  averageScore: number;
-}
+import { DashboardMetrics } from '@/types/metrics';
 
 export default function DashboardPage() {
   const { selectedBrand, setSelectedBrand, brands, setBrands } = useBrandStore();
@@ -31,11 +25,18 @@ export default function DashboardPage() {
       setLastScanTime(new Date().toLocaleString());
     } catch (e) {
       setMetrics({
+        brandId: brandId,
         aiVisibility: 78,
         eeatScore: 82,
-        keywordCoverage: 65,
+        keywordCoverage: 71,
+        technicalReadinessScore: 85,
+        contentQualityScore: 79,
+        competitorBenchmarkScore: 73,
+        brandMentionScore: 68,
+        averageScore: 76.6,
         lastAudit: new Date().toISOString().split('T')[0],
-        averageScore: 75
+        recommendedActions: 12,
+        criticalIssues: 2
       });
     }
   }, []);
@@ -116,7 +117,7 @@ export default function DashboardPage() {
         ) : !metrics ? (
           <AuditStatus type="first-time" onRunAudit={handleRunAudit} />
         ) : (
-          <MetricsGrid metrics={metrics} />
+          <MetricsGrid metrics={metrics} onReAudit={handleRunAudit} />
         )}
       </AnimatePresence>
     </div>

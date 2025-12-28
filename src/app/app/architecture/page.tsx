@@ -14,7 +14,7 @@ export default function ArchitecturePage() {
   const [selectedModule, setSelectedModule] = useState(AUDIT_MODULE_DEFINITIONS[0]);
 
   return (
-    <div className="container mx-auto px-8 py-16 max-w-7xl space-y-24">
+    <div className="container mx-auto px-4 md:px-6 lg:px-8 py-8 md:py-12 lg:py-16 max-w-7xl space-y-16 md:space-y-24">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}
@@ -23,18 +23,18 @@ export default function ArchitecturePage() {
         className="space-y-4"
       >
         <span className="text-[10px] font-bold uppercase tracking-[0.4em] text-primary">System Infrastructure</span>
-        <h1 className="text-5xl md:text-7xl font-heading tracking-tighter uppercase">
+        <h1 className="text-4xl md:text-5xl lg:text-7xl font-heading tracking-tighter uppercase">
           Neural <span className="text-primary">Architecture</span>
         </h1>
-        <p className="text-sm md:text-lg text-muted-foreground max-w-2xl font-medium leading-relaxed">
+        <p className="text-xs md:text-sm lg:text-lg text-muted-foreground max-w-2xl font-medium leading-relaxed">
           The Kasparro engine processes brand signals through a multi-stage deterministic pipeline before arriving at AI-readiness metrics.
         </p>
       </motion.div>
 
       {/* Pipeline Visualization */}
-      <section className="space-y-12">
+      <section className="space-y-8 md:space-y-12">
         <div className="flex items-center gap-4">
-          <h2 className="text-xl font-heading uppercase tracking-tighter">Processing Pipeline</h2>
+          <h2 className="text-lg md:text-xl font-heading uppercase tracking-tighter">Processing Pipeline</h2>
           <div className="h-[1px] flex-1 bg-border" />
         </div>
 

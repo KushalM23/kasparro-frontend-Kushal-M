@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useCallback } from 'react';
 import { useBrandStore } from '@/stores/brandStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DashboardHeader } from '@/components/layouts/DashboardHeader';
@@ -23,39 +23,7 @@ export default function DashboardPage() {
   const [auditedBrands, setAuditedBrands] = useState<string[]>([]);
   const [lastScanTime, setLastScanTime] = useState<string | null>(null);
 
-  useEffect(() => {
-    const saved = localStorage.getItem('kasparro_audited_brands');
-    if (saved) setAuditedBrands(JSON.parse(saved));
-  }, []);
-
-  useEffect(() => {
-    const fetchBrands = async () => {
-      try {
-        const response = await fetch('/audit-data/brands.json');
-        const data = await response.json();
-        setBrands(Array.isArray(data) ? data : (data.brands || []));
-      } catch (error) {
-        console.error('Failed to load brands:', error);
-      } finally {
-        setLoading(false);
-      }
-    };
-    fetchBrands();
-  }, [setBrands]);
-
-  const handleBrandChange = (brandId: string) => {
-    const brand = brands.find(b => b.id === brandId);
-    if (brand) {
-      setSelectedBrand(brand);
-      if (auditedBrands.includes(brandId)) {
-        loadMetrics(brandId);
-      } else {
-        setMetrics(null);
-      }
-    }
-  };
-
-  const loadMetrics = async (brandId: string) => {
+  const loadMetrics = useCallback(async (brandId: string) => {
     try {
       const response = await fetch(`/audit-data/${brandId}/dashboard.json`);
       const data = await response.json();
@@ -69,6 +37,44 @@ export default function DashboardPage() {
         lastAudit: new Date().toISOString().split('T')[0],
         averageScore: 75
       });
+    }
+  }, []);
+
+  useEffect(() => {
+    const saved = localStorage.getItem('kasparro_audited_brands');
+    if (saved) setAuditedBrands(JSON.parse(saved));
+  }, []);
+
+  useEffect(() => {
+    const fetchBrands = async () => {
+      try {
+        const response = await fetch('/audit-data/brands.json');
+        const data = await response.json();
+        const brandsList = Array.isArray(data) ? data : (data.brands || []);
+        setBrands(brandsList);
+
+        // If a brand is already selected and it's in auditedBrands, load metrics
+        if (selectedBrand && auditedBrands.includes(selectedBrand.id)) {
+          loadMetrics(selectedBrand.id);
+        }
+      } catch (error) {
+        console.error('Failed to load brands:', error);
+      } finally {
+        setLoading(false);
+      }
+    };
+    fetchBrands();
+  }, [setBrands, selectedBrand, auditedBrands, loadMetrics]);
+
+  const handleBrandChange = (brandId: string) => {
+    const brand = brands.find(b => b.id === brandId);
+    if (brand) {
+      setSelectedBrand(brand);
+      if (auditedBrands.includes(brandId)) {
+        loadMetrics(brandId);
+      } else {
+        setMetrics(null);
+      }
     }
   };
 
@@ -94,7 +100,7 @@ export default function DashboardPage() {
   }
 
   return (
-    <div className="container mx-auto px-4 md:px-8 py-12 max-w-6xl">
+    <div className="container mx-auto px-4 md:px-8 py-8 max-w-6xl">
       <DashboardHeader
         selectedBrand={selectedBrand}
         brands={brands}

@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export default function AboutPage() {
   return (
-    <main className="w-full bg-background transition-colors pt-20 pb-12">
+    <main className="w-full bg-background transition-colors pt-12 pb-12">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Page Header */}
         <motion.div

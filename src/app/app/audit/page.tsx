@@ -80,6 +80,7 @@ export default function AuditPage() {
           <AuditModuleContent
             module={currentModule || null}
             moduleDefinition={moduleDefinition}
+            brandName={selectedBrand?.name || ''}
           />
         </AnimatePresence>
       </main>

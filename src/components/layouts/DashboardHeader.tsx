@@ -18,10 +18,10 @@ interface DashboardHeaderProps {
 
 export function DashboardHeader({ selectedBrand, brands, lastScanTime, onBrandChange }: DashboardHeaderProps) {
   return (
-    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-16">
-      <div className="space-y-2">
-        <span className="text-xs font-bold uppercase tracking-[0.2em] text-muted-foreground/80">Command Center</span>
-        <h1 className="text-4xl md:text-6xl tracking-tighter uppercase">
+    <div className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10">
+      <div className="space-y-1">
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/80">Command Center</span>
+        <h1 className="text-3xl md:text-4xl tracking-tighter uppercase">
           {selectedBrand ? selectedBrand.name : 'Select BRAND'}
         </h1>
         {lastScanTime && (

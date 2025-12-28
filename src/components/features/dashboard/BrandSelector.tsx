@@ -33,7 +33,7 @@ export function BrandSelector() {
   }, []);
 
   if (loading) {
-    return <div className="w-48 h-10 bg-muted rounded-md animate-pulse" />;
+    return <div className="w-48 h-10 bg-muted animate-pulse" />;
   }
 
   return (

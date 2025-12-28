@@ -1,6 +1,6 @@
 # Kasparro Frontend
 
-A frontend application for the AI-first search era, built with Next.js, TypeScript, and Tailwind CSS.
+A modern, AI-native SEO platform frontend built with Next.js, TypeScript, and Tailwind CSS. Features a polished dark/light mode design system with smooth Framer Motion animations and responsive layouts optimized for all devices.
 
 **Live Demo**: [Deployed on Vercel](https://kasparro-frontend.vercel.app) 
 
@@ -9,6 +9,7 @@ A frontend application for the AI-first search era, built with Next.js, TypeScri
 ## Table of Contents
 
 - [Overview](#overview)
+- [Theme & Design System](#theme--design-system)
 - [Architecture & System Design](#architecture--system-design)
 - [Project Structure](#project-structure)
 - [Data Modeling](#data-modeling)
@@ -16,9 +17,6 @@ A frontend application for the AI-first search era, built with Next.js, TypeScri
 - [State Management](#state-management)
 - [Routes & Features](#routes--features)
 - [Engineering Decisions](#engineering-decisions)
-- [Setup & Development](#setup--development)
-- [Testing](#testing)
-- [Assumptions & Tradeoffs](#assumptions--tradeoffs)
 - [Future Enhancements](#future-enhancements)
 
 ---
@@ -42,7 +40,29 @@ Kasparro is an AI-native SEO platform designed for the modern era of AI-driven s
 
 ---
 
-## Architecture & System Design
+## Theme & Design System
+
+### Color Palette
+
+**Light Mode**
+```css
+--background: #ebf4f5 (near white)
+--foreground: Dark text
+--primary: #9bb2e5 (primary blue)
+--secondary: #698cbf (secondary blue)
+```
+
+**Dark Mode**
+```css
+--background: #08203e (deep navy)
+--foreground: #ebf4f5 (off-white)
+--primary: #9bb2e5 (lighter on dark)
+--secondary: #698cbf (lighter on dark)
+```
+
+All colors use CSS custom properties for zero-cost theme switching.
+
+---
 
 ### Core Design Philosophy
 

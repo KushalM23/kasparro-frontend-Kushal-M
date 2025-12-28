@@ -6,11 +6,11 @@ export function ModuleSkeleton() {
       {/* Score display skeleton */}
       <Card>
         <CardHeader className="pb-3">
-          <div className="h-6 bg-muted rounded w-32 animate-pulse" />
+          <div className="h-6 bg-muted w-32 animate-pulse" />
         </CardHeader>
         <CardContent className="space-y-4">
-          <div className="h-16 bg-muted rounded w-24 animate-pulse" />
-          <div className="h-2 bg-muted rounded w-full animate-pulse" />
+          <div className="h-16 bg-muted w-24 animate-pulse" />
+          <div className="h-2 bg-muted w-full animate-pulse" />
         </CardContent>
       </Card>
 
@@ -19,11 +19,11 @@ export function ModuleSkeleton() {
         {Array.from({ length: 2 }).map((_, i) => (
           <Card key={i}>
             <CardHeader className="pb-3">
-              <div className="h-5 bg-muted rounded w-20 animate-pulse" />
+              <div className="h-5 bg-muted w-20 animate-pulse" />
             </CardHeader>
             <CardContent className="space-y-3">
               {Array.from({ length: 3 }).map((_, j) => (
-                <div key={j} className="h-4 bg-muted rounded w-full animate-pulse" />
+                <div key={j} className="h-4 bg-muted w-full animate-pulse" />
               ))}
             </CardContent>
           </Card>

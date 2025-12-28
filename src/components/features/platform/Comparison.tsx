@@ -1,7 +1,5 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-import { Badge } from '@/components/ui/badge';
 
 export function Comparison() {
   return (
@@ -50,7 +48,7 @@ export function Comparison() {
           </table>
         </div>
 
-        <div className="mt-12 p-6 bg-background border rounded-lg">
+        <div className="mt-12 p-6 bg-background border">
           <p className="text-center text-muted-foreground">
             As search evolves, brands need to understand both ranking algorithms and AI reasoning. Kasparro provides visibility into the AI side of the equation.
           </p>

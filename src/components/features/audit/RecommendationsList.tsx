@@ -58,10 +58,10 @@ export function RecommendationsList({
                 {rec.description}
               </p>
               <div className="flex gap-2 text-xs">
-                <span className={`px-2 py-1 rounded-sm ${getScaleColor(rec.impact)}`}>
+                <span className={`px-2 py-1 ${getScaleColor(rec.impact)}`}>
                   Impact: {rec.impact}
                 </span>
-                <span className={`px-2 py-1 rounded-sm ${getScaleColor(rec.effort)}`}>
+                <span className={`px-2 py-1 ${getScaleColor(rec.effort)}`}>
                   Effort: {rec.effort}
                 </span>
               </div>

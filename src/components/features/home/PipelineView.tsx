@@ -1,55 +1,51 @@
 'use client';
 
-import { Card, CardContent } from '@/components/ui/card';
 import { ArrowRight } from 'lucide-react';
+import { motion } from 'framer-motion';
 
 export function PipelineView() {
+  const steps = [
+    {
+      title: 'Input',
+      description: 'Brand domain & content structure',
+    },
+    {
+      title: 'Processing',
+      description: 'Run 7 specialized AI audit modules',
+    },
+    {
+      title: 'Output',
+      description: 'Scores, insights & recommendations',
+    },
+  ];
+
   return (
-    <section className="py-20 md:py-32 px-4 md:px-6 bg-muted/50">
-      <div className="max-w-4xl mx-auto">
-        <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">
-          How Kasparro Works
-        </h2>
-
-        <div className="flex flex-col md:flex-row items-center justify-between gap-4 md:gap-0">
-          {/* Input */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">🔗</div>
-              <h3 className="font-bold">Input</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Brand domain & content structure
-              </p>
-            </CardContent>
-          </Card>
-
-          <ArrowRight className="w-5 h-5 text-muted-foreground hidden md:block" />
-
-          {/* Processing */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">⚙️</div>
-              <h3 className="font-bold">Processing</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Run 7 specialized AI modules
-              </p>
-            </CardContent>
-          </Card>
-
-          <ArrowRight className="w-5 h-5 text-muted-foreground hidden md:block" />
-
-          {/* Output */}
-          <Card className="w-full md:w-48 flex-shrink-0">
-            <CardContent className="pt-6 text-center">
-              <div className="text-2xl font-bold mb-2">📊</div>
-              <h3 className="font-bold">Output</h3>
-              <p className="text-xs text-muted-foreground mt-2">
-                Scores, insights & recommendations
-              </p>
-            </CardContent>
-          </Card>
-        </div>
+    <motion.div
+      initial={{ opacity: 0, x: -20 }}
+      whileInView={{ opacity: 1, x: 0 }}
+      transition={{ duration: 0.6 }}
+      viewport={{ once: true }}
+      className="space-y-6"
+    >
+      <h3 className="text-2xl font-bold">The Kasparro Pipeline</h3>
+      <div className="flex flex-col gap-6">
+        {steps.map((step, index) => (
+          <div key={step.title} className="flex items-start gap-4">
+            <div className="flex flex-col items-center">
+              <div className="w-10 h-10 border-2 border-primary dark:border-accent flex items-center justify-center bg-gradient-to-br from-[#9bb2e5]/10 to-[#698cbf]/10">
+                <span className="text-sm font-bold text-primary dark:text-accent">{index + 1}</span>
+              </div>
+              {index < steps.length - 1 && (
+                <div className="w-0.5 h-12 bg-border mt-2" />
+              )}
+            </div>
+            <div className="flex-1 pt-2">
+              <h4 className="font-semibold mb-1">{step.title}</h4>
+              <p className="text-sm text-muted-foreground">{step.description}</p>
+            </div>
+          </div>
+        ))}
       </div>
-    </section>
+    </motion.div>
   );
 }

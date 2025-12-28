@@ -1,7 +1,5 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
-
 export function DataInputs() {
   const inputs = [
     { title: 'Domain Structure', desc: 'Site architecture, URL patterns, navigation' },
@@ -19,18 +17,14 @@ export function DataInputs() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {inputs.map((input) => (
-            <Card key={input.title}>
-              <CardHeader>
-                <CardTitle className="text-lg">{input.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{input.desc}</p>
-              </CardContent>
-            </Card>
+            <div key={input.title} className="p-6 border border-border">
+              <h3 className="text-lg font-bold mb-3">{input.title}</h3>
+              <p className="text-muted-foreground">{input.desc}</p>
+            </div>
           ))}
         </div>
 
-        <div className="mt-12 p-6 bg-background border rounded-lg">
+        <div className="mt-12 p-6 bg-background border">
           <p className="text-center text-muted-foreground">
             We analyze your entire digital presence to understand how AI models crawl, parse, and understand your content.
           </p>

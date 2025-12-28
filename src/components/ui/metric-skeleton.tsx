@@ -13,8 +13,8 @@ export function MetricSkeleton({ count = 1 }: MetricSkeletonProps) {
             <div className="h-5 bg-muted rounded w-24 animate-pulse" />
           </CardHeader>
           <CardContent className="space-y-2">
-            <div className="h-10 bg-muted rounded w-20 animate-pulse" />
-            <div className="h-4 bg-muted rounded w-full animate-pulse" />
+            <div className="h-10 bg-muted w-20 animate-pulse" />
+            <div className="h-4 bg-muted w-full animate-pulse" />
           </CardContent>
         </Card>
       ))}

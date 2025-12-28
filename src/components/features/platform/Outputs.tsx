@@ -1,6 +1,5 @@
 'use client';
 
-import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 
 export function Outputs() {
   const outputs = [
@@ -31,18 +30,14 @@ export function Outputs() {
 
         <div className="grid md:grid-cols-2 gap-6">
           {outputs.map((output) => (
-            <Card key={output.title} className="border-primary/50 bg-primary/5">
-              <CardHeader>
-                <CardTitle className="text-lg">{output.title}</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-muted-foreground">{output.desc}</p>
-              </CardContent>
-            </Card>
+            <div key={output.title} className="p-6 border border-primary/50 dark:border-accent/50 bg-gradient-to-r from-[#9bb2e5]/10 to-[#698cbf]/10 dark:from-[#9bb2e5]/10 dark:to-[#698cbf]/5">
+              <h3 className="text-lg font-bold mb-3">{output.title}</h3>
+              <p className="text-muted-foreground">{output.desc}</p>
+            </div>
           ))}
         </div>
 
-        <div className="mt-12 p-6 bg-background border rounded-lg">
+        <div className="mt-12 p-6 bg-background border">
           <p className="text-center text-muted-foreground">
             All data is presented in an intuitive dashboard where you can drill into any module for detailed analysis.
           </p>

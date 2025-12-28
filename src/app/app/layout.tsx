@@ -1,11 +1,13 @@
 /**
  * App Layout - Shared dashboard layout for /app routes
  * 
- * Provides two-column layout with sidebar navigation and header for all dashboard pages
+ * Provides two-column layout with sidebar navigation for all dashboard pages
  */
 
+'use client';
+
 import { DashboardSidebar } from '@/components/layouts/DashboardSidebar';
-import { DashboardHeader } from '@/components/layouts/DashboardHeader';
+import { motion } from 'framer-motion';
 
 export default function AppLayout({
   children,
@@ -13,14 +15,18 @@ export default function AppLayout({
   children: React.ReactNode;
 }) {
   return (
-    <div className="flex h-screen">
+    <motion.div 
+      initial={{ opacity: 0 }}
+      animate={{ opacity: 1 }}
+      transition={{ duration: 0.4 }}
+      className="flex h-screen bg-background text-foreground transition-colors"
+    >
       <DashboardSidebar />
       <div className="flex-1 flex flex-col overflow-hidden">
-        <DashboardHeader />
-        <main className="flex-1 overflow-auto bg-white">
+        <main className="flex-1 overflow-auto bg-background">
           {children}
         </main>
       </div>
-    </div>
+    </motion.div>
   );
 }

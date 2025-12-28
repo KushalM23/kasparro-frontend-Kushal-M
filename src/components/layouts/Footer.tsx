@@ -1,79 +1,91 @@
 'use client';
 
 import Link from 'next/link';
-import { ROUTES } from '@/lib/constants';
 
 export function Footer() {
-  const currentYear = new Date().getFullYear();
-
   return (
-    <footer className="border-t bg-muted/50">
-      <div className="container mx-auto max-w-7xl px-4 md:px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-          {/* About */}
-          <div>
-            <h3 className="font-bold text-sm mb-4">Kasparro</h3>
-            <p className="text-xs text-muted-foreground">
-              AI-native SEO & Brand Intelligence for the AI-first search era.
-            </p>
+    <footer className="border-t border-border bg-background pt-16 pb-4 mt-auto overflow-hidden">
+      <div className="container mx-auto px-4 md:px-6 max-w-[1400px]">
+        {/* Main Footer Content */}
+        <div className="flex flex-col md:flex-row justify-between gap-8 md:gap-12 mb-8">
+          {/* Navigation Links */}
+          <div className="flex flex-col gap-2">
+            <Link 
+              href="/" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              HOME →
+            </Link>
+            <Link 
+              href="/platform" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              PLATFORM →
+            </Link>
+            <Link 
+              href="/about" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              ABOUT →
+            </Link>
+            <Link 
+              href="/app/dashboard" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              OUR PRODUCT →
+            </Link>
           </div>
 
-          {/* Product */}
-          <div>
-            <h3 className="font-bold text-sm mb-4">Product</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href={ROUTES.PLATFORM} className="text-xs text-muted-foreground hover:text-foreground">
-                  Platform
-                </Link>
-              </li>
-              <li>
-                <Link href={ROUTES.AUDIT} className="text-xs text-muted-foreground hover:text-foreground">
-                  Run Audit
-                </Link>
-              </li>
-            </ul>
-          </div>
-
-          {/* Company */}
-          <div>
-            <h3 className="font-bold text-sm mb-4">Company</h3>
-            <ul className="space-y-2">
-              <li>
-                <Link href={ROUTES.ABOUT} className="text-xs text-muted-foreground hover:text-foreground">
-                  About
-                </Link>
-              </li>
-              <li>
-                <Link href={ROUTES.ARCHITECTURE} className="text-xs text-muted-foreground hover:text-foreground">
-                  Architecture
-                </Link>
-              </li>
-            </ul>
+          {/* Social Links */}
+          <div className="flex flex-col gap-2">
+            <a 
+              href="https://linkedin.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              LINKEDIN →
+            </a>
+            <a 
+              href="https://github.com" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              GITHUB →
+            </a>
+            <a 
+              href="mailto:contact@kasparro.com" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              CONTACT US →
+            </a>
           </div>
 
           {/* Legal */}
-          <div>
-            <h3 className="font-bold text-sm mb-4">Legal</h3>
-            <ul className="space-y-2">
-              <li>
-                <a href="#" className="text-xs text-muted-foreground hover:text-foreground">
-                  Privacy
-                </a>
-              </li>
-              <li>
-                <a href="#" className="text-xs text-muted-foreground hover:text-foreground">
-                  Terms
-                </a>
-              </li>
-            </ul>
+          <div className="flex flex-col gap-2">
+            <Link 
+              href="/terms" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              TERMS & CONDITIONS →
+            </Link>
+            <Link 
+              href="/privacy" 
+              className="text-xs font-semibold uppercase tracking-wide text-foreground hover:text-primary dark:hover:text-accent transition-colors cursor-pointer inline-block"
+            >
+              PRIVACY POLICY →
+            </Link>
           </div>
         </div>
 
-        {/* Divider */}
-        <div className="border-t pt-8">
-          <p className="text-xs text-muted-foreground text-center">
-            © {currentYear} Kasparro. All rights reserved.
+        {/* Brand Section */}
+        <div className="flex justify-between items-end pt-8 border-t border-border">
+          <div className="text-2xl font-bold bg-gradient-to-r from-[#9bb2e5] to-[#698cbf] bg-clip-text text-transparent">
+            KASPARRO
+          </div>
+          <p className="text-xs text-muted-foreground uppercase tracking-wide mb-0">
+            © 2025 KASPARRO INC.
           </p>
         </div>
       </div>

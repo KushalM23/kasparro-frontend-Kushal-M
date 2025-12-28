@@ -6,19 +6,19 @@
  */
 
 import { HeroSection } from '@/components/features/home/HeroSection';
-import { AiSeoSection } from '@/components/features/home/AiSeoSection';
-import { ModulesOverview } from '@/components/features/home/ModulesOverview';
 import { PipelineView } from '@/components/features/home/PipelineView';
-import { CtaSection } from '@/components/features/home/CtaSection';
+import { ComparisonSection } from '@/components/features/home/ComparisonSection';
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-white">
+    <main className="w-full">
       <HeroSection />
-      <AiSeoSection />
-      <ModulesOverview />
-      <PipelineView />
-      <CtaSection />
+      <section className="py-16 md:py-24 px-4 md:px-6">
+        <div className="max-w-7xl mx-auto grid md:grid-cols-2 gap-12">
+          <PipelineView />
+          <ComparisonSection />
+        </div>
+      </section>
     </main>
   );
 }

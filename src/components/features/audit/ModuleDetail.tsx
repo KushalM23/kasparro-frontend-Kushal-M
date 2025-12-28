@@ -24,7 +24,7 @@ interface ModuleDetailProps {
 export function ModuleDetail({ module }: ModuleDetailProps) {
   return (
     <div className="space-y-6">
-      <ScoreDisplay score={module.score} moduleName={module.name} />
+      <ScoreDisplay score={module.score} />
       <div className="grid md:grid-cols-2 gap-6">
         <InsightsList insights={module.insights} />
         <IssuesList issues={module.issues} />

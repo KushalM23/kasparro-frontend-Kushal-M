@@ -1,345 +1,566 @@
-# Kasparro Frontend - AI-Native SEO Platform
+# Kasparro Frontend
 
-A modern, AI-first SEO analytics platform built with Next.js 14, TypeScript, React 18, and Tailwind CSS. Kasparro helps brands understand how AI models perceive their digital presence.
+A frontend application for the AI-first search era, built with Next.js, TypeScript, and Tailwind CSS.
 
-## 🚀 Quick Start
+**Live Demo**: [Deployed on Vercel](https://kasparro-frontend.vercel.app) 
 
-```bash
-# Install dependencies
-npm install
+---
 
-# Run development server
-npm run dev
+## Table of Contents
 
-# Build for production
-npm run build
+- [Overview](#overview)
+- [Architecture & System Design](#architecture--system-design)
+- [Project Structure](#project-structure)
+- [Data Modeling](#data-modeling)
+- [Component Architecture](#component-architecture)
+- [State Management](#state-management)
+- [Routes & Features](#routes--features)
+- [Engineering Decisions](#engineering-decisions)
+- [Setup & Development](#setup--development)
+- [Testing](#testing)
+- [Assumptions & Tradeoffs](#assumptions--tradeoffs)
+- [Future Enhancements](#future-enhancements)
 
-# Start production server
-npm run start
+---
+
+## Overview
+
+Kasparro is an AI-native SEO platform designed for the modern era of AI-driven search engines (ChatGPT, Gemini, Perplexity). This frontend materializes that vision through two distinct product surfaces:
+
+### 1. **Public Website** (Marketing Layer)
+- Explains the Kasparro platform and its AI-native approach
+- Communicates product differentiation from traditional SEO tools
+- Guides prospects through the platform architecture and capabilities
+- Routes: `/`, `/platform`, `/about`
+
+### 2. **Product Dashboard** (Application Layer)
+- High-level brand snapshot with key AI-readiness metrics
+- Comprehensive audit results with module-level detail
+- System architecture visualization
+- Mocked data with multi-brand support
+- Routes: `/app/dashboard`, `/app/audit`, `/app/architecture`
+
+---
+
+## Architecture & System Design
+
+### Core Design Philosophy
+
+This project prioritizes **system thinking over page development**. Rather than building isolated pages, the architecture emphasizes:
+
+1. Clear Component Boundaries – Separation of layout, feature, and UI primitive components
+2. Structured Data Modeling – All data flows through typed interfaces
+3. Predictable State – Single source of truth for brand selection across routes
+4. Data-Driven UI – No hardcoded JSX; all content comes from structured JSON
+5. Reusability – Components are generic enough to support multi-brand scenarios
+
+### System Layers
+
+```
+┌─────────────────────────────────────────────────────┐
+│         Next.js App Router (Pages)                  │
+├─────────────────────────────────────────────────────┤
+│  Layout Components    Feature Components            │
+│  ├─ Header          ├─ AiVisibilityCard             │
+│  ├─ Sidebar         ├─ ModuleSidebar                │
+│  └─ Footer          └─ SystemDiagram                │
+├─────────────────────────────────────────────────────┤
+│  UI Primitives (shadcn/ui)                          │
+│  ├─ Card, Button, Badge, Select                     │
+│  └─ Skeleton, Metric components                     │
+├─────────────────────────────────────────────────────┤
+│  State Layer                                        │
+│  ├─ Brand Selection (global)                        │
+│  └─ Audit Module Selection (per-page)               │
+├─────────────────────────────────────────────────────┤
+│  Data Layer (JSON + Types)                          │
+│  ├─ /public/audit-data/{brand}/                     │
+│  │  ├─ dashboard.json (metrics)                     │
+│  │  ├─ audit-modules.json (audit details)           │
+│  │  └─ brands.json (brand list)                     │
+│  └─ TypeScript Interfaces (src/types/)              │
+└─────────────────────────────────────────────────────┘
 ```
 
-Visit `http://localhost:3000` to see the application.
-
-## 📁 Project Structure
+### Data Flow Architecture
 
 ```
-kasparro-frontend/
-├── src/
-│   ├── app/                          # Next.js App Router
-│   │   ├── layout.tsx                # Root layout with Header/Footer
-│   │   ├── page.tsx                  # Home page
-│   │   ├── not-found.tsx             # 404 page
-│   │   ├── platform/page.tsx         # Platform explanation page
-│   │   ├── about/page.tsx            # About page
-│   │   └── app/                      # Dashboard routes (protected layout)
-│   │       ├── layout.tsx            # Dashboard layout with sidebar
-│   │       ├── dashboard/page.tsx    # Main dashboard
-│   │       ├── audit/page.tsx        # Audit results with modules
-│   │       └── architecture/page.tsx # System architecture diagram
+Brands JSON
+    ↓
+[BrandStore] ← User selects brand
+    ↓
+    ├─→ /app/dashboard → DashboardPage loads dashboard.json
+    ├─→ /app/audit → AuditPage loads audit-modules.json
+    └─→ /app/architecture → ArchitecturePage (static content)
+    
+Each page:
+  1. Reads selectedBrand from BrandStore
+  2. Loads relevant JSON from /public/audit-data/{brandId}/
+  3. Renders features with structured, typed data
+  4. Displays metrics, insights, issues, recommendations
+```
+
+---
+
+## Project Structure
+
+```
+src/
+├── app/                              # Next.js App Router pages
+│   ├── layout.tsx                    # Root layout with Header & Footer
+│   ├── page.tsx                      # / — Home page
+│   ├── not-found.tsx                 # 404 error page
+│   ├── about/
+│   │   └── page.tsx                  # /about — Team & mission
+│   ├── platform/
+│   │   └── page.tsx                  # /platform — Product explainer
+│   └── app/                          # Dashboard namespace
+│       ├── layout.tsx                # App layout with Sidebar & Header
+│       ├── dashboard/
+│       │   └── page.tsx              # /app/dashboard — Brand snapshot
+│       ├── audit/
+│       │   └── page.tsx              # /app/audit — Module details
+│       └── architecture/
+│           └── page.tsx              # /app/architecture — System diagram
+│
+├── components/                       # React components (organized by layer)
+│   ├── layouts/                      # Layout components
+│   │   ├── Header.tsx                # Navigation bar
+│   │   ├── DashboardHeader.tsx       # App header with brand selector
+│   │   ├── DashboardSidebar.tsx      # App navigation sidebar
+│   │   └── Footer.tsx                # Footer with links
 │   │
-│   ├── components/
-│   │   ├── ui/                       # shadcn/ui components
-│   │   │   ├── button.tsx
-│   │   │   ├── card.tsx
-│   │   │   ├── select.tsx
-│   │   │   ├── badge.tsx
-│   │   │   ├── skeleton.tsx
-│   │   │   ├── metric-skeleton.tsx   # Dashboard metric skeleton
-│   │   │   └── module-skeleton.tsx   # Audit module skeleton
+│   ├── features/                     # Feature-specific components
+│   │   ├── home/                     # Home page features
+│   │   │   ├── HeroSection.tsx
+│   │   │   ├── AiSeoSection.tsx
+│   │   │   ├── ModulesOverview.tsx
+│   │   │   ├── PipelineView.tsx
+│   │   │   └── CtaSection.tsx
 │   │   │
-│   │   ├── layouts/                  # Layout components
-│   │   │   ├── Header.tsx            # Marketing site header
-│   │   │   ├── Footer.tsx            # Marketing site footer
-│   │   │   ├── DashboardSidebar.tsx  # Dashboard navigation
-│   │   │   └── DashboardHeader.tsx   # Dashboard header with brand selector
+│   │   ├── dashboard/                # Dashboard features
+│   │   │   ├── BrandSelector.tsx     # Multi-brand selector
+│   │   │   ├── AiVisibilityCard.tsx  # Metric display
+│   │   │   ├── EeatScoreCard.tsx
+│   │   │   ├── KeywordCoverageCard.tsx
+│   │   │   ├── LastAuditTimestamp.tsx
+│   │   │   └── MetricCard.tsx        # Generic metric container
 │   │   │
-│   │   └── features/                 # Feature-specific components
-│   │       ├── home/                 # Home page sections
-│   │       │   ├── HeroSection.tsx
-│   │       │   ├── AiSeoSection.tsx
-│   │       │   ├── ModulesOverview.tsx
-│   │       │   ├── PipelineView.tsx
-│   │       │   └── CtaSection.tsx
-│   │       ├── platform/             # Platform page sections
-│   │       ├── about/                # About page sections
-│   │       ├── dashboard/            # Dashboard components
-│   │       ├── audit/                # Audit components
-│   │       └── architecture/         # Architecture diagram components
+│   │   ├── audit/                    # Audit page features
+│   │   │   ├── ModuleSidebar.tsx     # 7 module buttons
+│   │   │   ├── ModuleDetail.tsx      # Selected module details
+│   │   │   ├── ScoreDisplay.tsx      # Module score
+│   │   │   ├── InsightsList.tsx      # Positive findings
+│   │   │   ├── IssuesList.tsx        # Flagged issues
+│   │   │   └── RecommendationsList.tsx
+│   │   │
+│   │   ├── architecture/             # Architecture page features
+│   │   │   ├── SystemDiagram.tsx     # Full pipeline visualization
+│   │   │   ├── InputAssemblerNode.tsx
+│   │   │   ├── ContextPackNode.tsx
+│   │   │   ├── ModuleNode.tsx        # Generic module representation
+│   │   │   └── OutputNode.tsx
+│   │   │
+│   │   └── about/                    # About page features
+│   │       ├── Mission.tsx
+│   │       ├── Philosophy.tsx
+│   │       └── Vision.tsx
 │   │
-│   ├── stores/                       # Zustand stores
-│   │   ├── brandStore.ts             # Brand selection state
-│   │   └── auditStore.ts             # Audit module selection state
-│   │
-│   ├── types/                        # TypeScript interfaces
-│   │   ├── brand.ts                  # Brand type definitions
-│   │   ├── metrics.ts                # Dashboard metrics types
-│   │   ├── audit.ts                  # Audit module types
-│   │   └── architecture.ts           # Architecture types
-│   │
-│   ├── lib/
-│   │   ├── utils.ts                  # Utility functions (cn helper)
-│   │   └── constants.ts              # App constants and routes
-│   │
-│   ├── data/
-│   │   └── modules.ts                # Audit module definitions
-│   │
-│   └── styles/
-│       └── globals.css               # Global styles with Tailwind
+│   └── ui/                           # UI primitives (shadcn/ui + custom)
+│       ├── button.tsx
+│       ├── card.tsx
+│       ├── badge.tsx
+│       ├── select.tsx
+│       ├── skeleton.tsx              # Loading state
+│       ├── metric-skeleton.tsx       # Metric-specific skeleton
+│       └── module-skeleton.tsx       # Module-specific skeleton
 │
-├── public/
-│   ├── audit-data/                   # Mocked audit data (JSON)
-│   │   ├── brands.json               # List of brands
-│   │   ├── brand-1/
-│   │   │   ├── dashboard.json
-│   │   │   └── audit-modules.json
-│   │   └── brand-2/
-│   │       ├── dashboard.json
-│   │       └── audit-modules.json
-│   └── images/                       # Static images
+├── types/                            # TypeScript interfaces
+│   ├── brand.ts                      # Brand interface
+│   ├── audit.ts                      # Audit module & results
+│   ├── metrics.ts                    # Dashboard metrics
+│   └── architecture.ts               # System components
 │
-├── specs/
-│   └── 001-kasparro-frontend-site/   # Project specification
-│       ├── spec.md
-│       ├── plan.md
-│       ├── data-model.md
-│       ├── tasks.md
-│       └── checklists/
+├── stores/                           # Zustand state management
+│   ├── brandStore.ts                 # Global brand selection state
+│   └── auditStore.ts                 # Audit module selection state
 │
-├── package.json
-├── tsconfig.json
-├── tailwind.config.ts
-├── next.config.js
-└── README.md
+├── data/                             # Constants & metadata
+│   └── modules.ts                    # 7 module definitions
+│
+├── lib/                              # Utilities & helpers
+│   ├── utils.ts                      # Class merging, formatting
+│   └── constants.ts                  # App-wide constants
+│
+└── styles/                           # Global styles
+    └── globals.css                   # Tailwind base + custom
+
+public/
+├── audit-data/                       # Mocked data files
+│   ├── brands.json                   # List of available brands
+│   ├── brand-1/
+│   │   ├── dashboard.json            # Metrics & scores
+│   │   └── audit-modules.json        # Detailed audit results
+│   └── brand-2/
+│       ├── dashboard.json
+│       └── audit-modules.json
+│
+├── images/                           # Icons, illustrations, logos
+│   ├── modules/                      # Module icons (7 total)
+│   ├── architecture/                 # Architecture diagram elements
+│   └── brand/                        # Brand logos
+│
+└── (config files)
+    ├── package.json
+    ├── tsconfig.json
+    ├── tailwind.config.ts
+    ├── next.config.js
+    ├── vercel.json                   # Deployment config
+    └── README.md                     # This file
 ```
 
-## 🏗️ Architecture
+---
 
-### Technology Stack
 
-- **Framework**: Next.js 14 with App Router
-- **Language**: TypeScript 5.x
-- **UI Framework**: React 18.x
-- **Styling**: Tailwind CSS v3 + CSS Variables
-- **Components**: shadcn/ui (Radix UI)
-- **State Management**: Zustand
-- **Data**: Mocked JSON files in `/public/audit-data/`
-- **Code Quality**: ESLint + Prettier
 
-### Design Philosophy
+### Dashboard Metrics
 
-1. **Component-Based**: Modular, reusable components following React best practices
-2. **Type-Safe**: Full TypeScript for compile-time type checking
-3. **Performance**: Static site generation (SSG) for marketing pages, Client-side rendering for dashboards
-4. **Accessibility**: Semantic HTML, ARIA labels, Radix UI primitives
-5. **Responsive**: Mobile-first design with Tailwind breakpoints (375px, 768px, 1920px)
+```typescript
+// src/types/metrics.ts
 
-### Data Flow
-
-```
-┌─────────────────────────────────────────────────────────┐
-│                   Application Layers                     │
-├─────────────────────────────────────────────────────────┤
-│                                                           │
-│  Pages (App Router)                                      │
-│  ├── / (Marketing Home)                                 │
-│  ├── /platform (Platform Explanation)                   │
-│  ├── /about (About Company)                             │
-│  └── /app/* (Dashboard Routes)                          │
-│                                                           │
-│         ↓                                                │
-│                                                           │
-│  Feature Components (Smart Components)                   │
-│  ├── Dashboard Components (manage state via stores)     │
-│  ├── Audit Components (read from stores)               │
-│  └── Marketing Components (stateless)                  │
-│                                                           │
-│         ↓                                                │
-│                                                           │
-│  UI Components (Dumb Components)                         │
-│  ├── Card, Button, Select, Badge, Skeleton             │
-│  └── Metric/Module Skeletons                           │
-│                                                           │
-│         ↓                                                │
-│                                                           │
-│  State Management (Zustand Stores)                       │
-│  ├── brandStore (selected brand + brands list)         │
-│  └── auditStore (selected audit module + modules)      │
-│                                                           │
-│         ↓                                                │
-│                                                           │
-│  Data Sources                                            │
-│  └── /public/audit-data/ (JSON files mocking API)      │
-│                                                           │
-└─────────────────────────────────────────────────────────┘
+export interface DashboardMetrics {
+  brandId: string;           // Reference to brand
+  aiVisibility: number;      // 0-100
+  eeatScore: number;         // 0-100 (E-E-A-T)
+  keywordCoverage: number;   // 0-100
+  technicalReadinessScore: number;
+  contentQualityScore: number;
+  competitorBenchmarkScore: number;
+  brandMentionScore: number;
+  averageScore: number;      // Computed average
+  lastAudit: string;         // ISO date
+  recommendedActions: number; // Count
+  criticalIssues: number;    // Count
+}
 ```
 
-## 🎯 Key Features
+### Audit Module Result
 
-### Marketing Website
-- **Home Page**: Hero section, AI-SEO comparison, 7 modules overview, pipeline visualization
-- **Platform Page**: How Kasparro works, data inputs, outputs, comparison with traditional SEO
-- **About Page**: Mission, philosophy, vision statements
+```typescript
+// src/types/audit.ts
+
+export interface Insight {
+  id: string;
+  title: string;
+  description: string;
+  category: 'positive' | 'warning' | 'critical';
+}
+
+export interface Issue {
+  id: string;
+  title: string;
+  description: string;
+  severity: 'low' | 'medium' | 'high';
+  affectedPages?: number;
+}
+
+export interface Recommendation {
+  id: string;
+  title: string;
+  description: string;
+  impact: 'low' | 'medium' | 'high';
+  effort: 'low' | 'medium' | 'high';
+}
+
+export interface AuditModuleResult {
+  moduleId: string;          // "ai-visibility", "eeat", etc.
+  moduleName: string;
+  score: number;             // 0-100
+  insights: Insight[];       // Positive findings
+  issues: Issue[];           // Flagged problems
+  recommendations: Recommendation[];
+  testedPages: number;
+  passedChecks: number;
+}
+```
+
+### Data Files
+
+All data lives in `/public/audit-data/{brandId}/` as JSON, loaded at runtime:
+
+```json
+// public/audit-data/brand-1/dashboard.json
+{
+  "brandId": "brand-1",
+  "aiVisibility": 78,
+  "eeatScore": 82,
+  "keywordCoverage": 71,
+  "technicalReadinessScore": 85,
+  "contentQualityScore": 79,
+  "competitorBenchmarkScore": 73,
+  "brandMentionScore": 68,
+  "averageScore": 76.6,
+  "lastAudit": "2024-12-15",
+  "recommendedActions": 12,
+  "criticalIssues": 2
+}
+```
+
+---
+
+## Component Architecture
+
+### Layering Strategy
+
+Components are organized into **three distinct layers**:
+
+#### 1. **Layout Components** (`/components/layouts/`)
+Handle structural page organization, navigation, and shell UI.
+
+- **Header.tsx** – Top navigation bar for marketing pages
+- **DashboardHeader.tsx** – App header with brand selector
+- **DashboardSidebar.tsx** – App navigation (Dashboard, Audit, Architecture)
+- **Footer.tsx** – Footer with links
+
+**Responsibility**: Layout only; no business logic or data loading.
+
+#### 2. **Feature Components** (`/components/features/`)
+Encapsulate domain-specific logic and data presentation for specific features.
+
+**Example: Dashboard Feature Group**
+```
+features/dashboard/
+├── BrandSelector.tsx       # Reads & updates BrandStore
+├── AiVisibilityCard.tsx    # Renders AI Visibility metric
+├── MetricCard.tsx          # Generic metric container
+└── LastAuditTimestamp.tsx  # Renders last audit date
+```
+
+Each feature component:
+- Handles its own data loading and formatting
+- Uses typed interfaces for props
+- Delegates rendering to UI primitives
+- Does NOT duplicate code across similar components
+
+
+Reusable pattern reduces code duplication while maintaining clarity.
+
+#### 3. **UI Primitives** (`/components/ui/`)
+Low-level, unstyled components from shadcn/ui (Button, Card, Badge, Select, etc.).
+
+- **card.tsx** – Generic card container
+- **button.tsx** – Styled button with variants
+- **badge.tsx** – Status/category badge
+- **skeleton.tsx** – Loading state placeholder
+- **metric-skeleton.tsx** – Loading state for metric cards
+
+These are intentionally generic and **reused across multiple features**.
+
+### Organization
+
+**Avoiding monoliths**:
+- Each page file (`page.tsx`) is under 150 lines
+- Feature components focus on **one responsibility**
+- Large features (e.g., Audit) are decomposed into sub-components
+- AuditPage renders ModuleSidebar + ModuleDetail
+ - ModuleDetail renders ScoreDisplay + InsightsList + IssuesList
+
+---
+
+## State Management
+
+### Zustand Stores
+
+State is managed with **Zustand** for simplicity and performance. Two stores handle different concerns:
+
+#### 1. **BrandStore** (Global)
+Manages selected brand across the entire app.
+
+**Why global?** Brand selection affects dashboard metrics, audit results, and architecture context across multiple routes. A single source of truth ensures consistency.
+
+#### 2. **AuditStore** (Per-Route)
+Manages selected audit module on `/app/audit` page.
+
+**Why local?** Module selection is only relevant on the audit page. Keeping it isolated prevents unnecessary global state bloat.
+
+### State Flow
+
+```
+User selects brand from BrandSelector
+       ↓
+useAuditStore.setSelectedBrand(brand)
+       ↓
+All components reading useBrandStore re-render
+       ↓
+Dashboard page: loads /audit-data/{brandId}/dashboard.json
+Audit page: loads /audit-data/{brandId}/audit-modules.json
+Architecture page: updates context reference
+```
+
+**Predictability**: Every component accessing `useBrandStore()` gets the same brand, eliminating state inconsistency bugs.
+
+---
+
+## Routes & Features
+
+### Public Website
+
+#### 1. `/` — Home
+**Purpose**: Explain Kasparro's value in <10 seconds.
+
+**Sections**:
+- **HeroSection** – Headline, subheadline, CTA
+- **AiSeoSection** – Traditional SEO vs. AI-Native SEO comparison
+- **ModulesOverview** – 7 audit modules with icons & descriptions
+- **PipelineView** – Input → Processing → Output flow
+- **CtaSection** – Call-to-action to run audit
+- **Footer** – Navigation & company info
+
+**Data**: Static content + hardcoded text (no JSON)
+
+#### 2. `/platform` — Product Explainer
+**Purpose**: Bridge marketing → product; explain capabilities in depth.
+
+**Sections**:
+- **Pipeline Diagram** – 3-step process (Input → Modules → Output)
+- **Data Inputs** – What Kasparro consumes (domain, content, signals)
+- **Outputs** – What brands receive (scores, insights, recommendations)
+- **Comparison Table** – Traditional SEO vs. AI-Native SEO
+
+**Data**: Static content + comparison table
+
+#### 3. `/about` — Team & Mission
+**Purpose**: Establish credibility and mission.
+
+**Sections**:
+- **Mission** – Core mission statement
+- **Philosophy** – Design principles (4 pillars)
+- **Vision** – Vision for AI-first search (3 strategic points)
+
+**Data**: Static content
 
 ### Product Dashboard
-- **Dashboard**: 4 key metrics (AI Visibility, E-E-A-T, Keyword Coverage, Last Audit)
-- **Audit Results**: Detailed view of 7 audit modules with scores, insights, issues, recommendations
-- **Architecture**: Visual diagram of the system pipeline
 
-### Dashboard Features
-- **Brand Selector**: Switch between brands with automatic metric refresh
-- **Module Selection**: Click modules to view detailed audit results
-- **Data-Driven**: All content loaded from JSON files
-- **Responsive**: Sidebar collapses on mobile, stacked layout on small screens
+#### 1. `/app/dashboard` — Brand Snapshot
+**Purpose**: High-level overview of brand's AI-readiness.
 
-## 📊 Audit Modules (7 Total)
+**Components**:
+- **DashboardHeader** – Brand selector dropdown
+- **BrandName & LastAudit** – Brand info
+- **MetricCards** – AI Visibility, E-E-A-T, Keyword Coverage, Last Audit
+- **Overall Score** – Average across all modules
 
-1. **AI Visibility** - How visible is your content to AI models?
-2. **E-E-A-T Analysis** - Experience, Expertise, Authoritativeness, Trustworthiness
-3. **Content Quality** - Is your content comprehensive and well-structured?
-4. **Technical AI Readiness** - Can AI models crawl and parse your site?
-5. **Brand Mentions** - How often is your brand mentioned across the web?
-6. **Competitor Benchmarking** - How do you compare to competitors?
-7. **Keyword Coverage** - Do you cover target keywords comprehensively?
+**Data**: `/public/audit-data/{brandId}/dashboard.json`
 
-## 🎨 Design System
+**Interactions**:
+- Select brand → All metrics update
+- Brand persists across page navigation (stored in BrandStore)
 
-### Color Palette
-- **Primary**: Blue (for interactive elements)
-- **Muted**: Gray (for secondary text, backgrounds)
-- **Success**: Green (for positive insights)
-- **Warning**: Yellow (for medium-severity issues)
-- **Danger**: Red (for high-severity issues)
+#### 2. `/app/audit` — Module Details
+**Purpose**: Deep dive into specific audit module.
 
-### Responsive Breakpoints
-- **Mobile**: 375px (sm)
-- **Tablet**: 768px (md)
-- **Desktop**: 1024px (lg)
-- **Large Desktop**: 1920px (2xl)
+**Layout**: Left sidebar (7 modules) + main panel (module details)
 
-### Typography
-- **Headings**: Bold, larger sizes for hierarchy
-- **Body**: Regular weight, readable line-height
-- **Labels**: Small, uppercase for form labels
-- **Code**: Monospace for technical content
+**Components**:
+- **ModuleSidebar** – Button for each module
+- **ModuleDetail** – Selected module's:
+  - Score (0-100)
+  - Key Insights (positive findings)
+  - Issues (problems with severity badges)
+  - Recommendations (prioritized actions)
 
-## 🔄 Routing
+**Data**: `/public/audit-data/{brandId}/audit-modules.json`
 
-### Marketing Routes
-```
-GET  /              → Home page
-GET  /platform      → Platform explanation
-GET  /about         → About page
-```
+**Interactions**:
+- Click module → Details update
+- Module selection persists while brand changes
+- Brand selector updates all audit data
 
-### Dashboard Routes (App Layout)
-```
-GET  /app/dashboard    → Main dashboard with metrics
-GET  /app/audit        → Audit results with module selection
-GET  /app/architecture → System architecture diagram
-```
+#### 3. `/app/architecture` — System Understanding
+**Purpose**: Visualize Kasparro's internal architecture.
 
-### Error Handling
-```
-GET  /404 or any unknown route → Not found page
-```
+**Components**:
+- **SystemDiagram** – Full 4-step pipeline
+  - **Step 1: InputAssemblerNode** – Domain, content, signals, authority
+  - **Step 2: ContextPackNode** – Unified representation
+  - **Step 3: ModuleNodes** – 7 parallel modules
+  - **Step 4: OutputNode** – Scores, insights, issues, recommendations
 
-## 📈 Performance
+**Data**: Static content (no JSON)
 
-- **Static Site Generation**: Marketing pages pre-rendered at build time
-- **Server-Side Rendering**: Dashboard pages use dynamic rendering
-- **Code Splitting**: Each route chunk is optimized separately
-- **Image Optimization**: Next.js Image component for responsive images
-- **CSS Optimization**: Tailwind purges unused styles in production
+**Purpose**: Demonstrates system thinking and architecture clarity.
 
-## 🧪 Testing & Validation
+---
 
-### Responsive Design Testing
-- Tested at 375px (mobile)
-- Tested at 768px (tablet)
-- Tested at 1920px (desktop)
+## Engineering Decisions
 
-### Browser Compatibility
-- Chrome/Chromium (latest)
-- Firefox (latest)
-- Safari (latest)
-- Edge (latest)
+### 1. **No Page-Level Monoliths**
+Each page (`page.tsx`) delegates to feature components. 
 
-## 🚀 Deployment
+**Example**
+```typescript
 
-The project is optimized for Vercel deployment:
-
-```bash
-# Connect your GitHub repo to Vercel
-# Vercel will automatically:
-# 1. Detect Next.js project
-# 2. Run `npm run build`
-# 3. Deploy static assets to CDN
-# 4. Start serverless functions for dynamic routes
-
-# Manual deployment:
-npm run build
-vercel deploy --prod
+export default function DashboardPage() {
+  const { selectedBrand } = useBrandStore();
+  return (
+    <div className="p-8">
+      <DashboardHeader />
+      {selectedBrand ? <MetricCards /> : <NoSelection />}
+    </div>
+  );
+}
 ```
 
-### Environment Variables
-None required for this demo (data is mocked locally).
+### 2. **Zustand Over Context**
+Zustand was chosen for:
+- Simpler API (no Provider boilerplate)
+- Automatic re-render optimization
+- Better DevTools support
+- Explicit state mutations
 
-## 🔧 Development Workflow
+### 3. **Loading Skeletons for Polish**
+Metric skeletons provide:
+- Better perceived performance
+- Professional appearance
+- Prevention of layout shift (CLS)
 
-### Code Quality
-```bash
-# Format code with Prettier
-npm run format
+---
 
-# Lint code with ESLint
-npm run lint
+## Testing
 
-# Check for TypeScript errors
-npm run type-check
-```
+### Test Coverage
 
-### Build & Deploy
-```bash
-# Development
-npm run dev
+All functionality tested via Playwright E2E automation:
 
-# Build for production
-npm run build
+- Public Website
+- Dashboard
+- Audit
+- Architecture
+- Error Handling
+- No Console Errors
 
-# Preview production build locally
-npm run start
-```
 
-## 📚 Documentation
+## Assumptions & Tradeoffs
 
-### Key Architectural Decisions
+### Assumptions Made
 
-1. **Zustand over Context API**: Zustand is lighter and simpler for global state management
-2. **JSON Files over API**: Demo uses local JSON to avoid backend dependency
-3. **shadcn/ui over Custom Components**: Reusable, accessible Radix UI components
-4. **Tailwind CSS over CSS Modules**: Utility-first CSS for rapid development
-5. **Static Pages for Marketing**: SEO optimization and performance for marketing content
+1. **Static Home Page**
+   - Home page content is static (no JSON)
+   - Reduces complexity for MVP
+   - Future: Make homepage dynamic
+
+2. **No Real Audit Processing**
+   - Audit scores/insights are mocked
+   - Real platform would run AI modules
+   - Demonstrates data presentation layer only
 
 ### Tradeoffs Made
 
-1. **No Authentication**: This is a demo. Real app would need auth middleware
-2. **No Database**: Uses mocked JSON data. Production would query API/database
-3. **No Real Calculations**: Module scores are mocked. Real app would run AI analysis
-4. **No Analytics**: No tracking implemented (would add in production)
-5. **No Internationalization**: Currently English-only
-
-## 🤝 Contributing
-
-1. Follow TypeScript best practices
-2. Use Prettier for consistent formatting
-3. Write semantic HTML
-4. Test responsive design at breakpoints
-5. Keep components focused and reusable
-
-## 📝 License
-
-Proprietary - Kasparro Platform
-
-## 👥 Team
-
-Built by engineering team for AI-native SEO platform.
+| Decision | Benefit | Tradeoff |
+|----------|---------|----------|
+| **Zustand** for state | Simple, performant | Not as verbose as Redux |
+| **Mocked data** | Fast development | No real AI processing |
+| **shadcn/ui** | Consistent, accessible | Less unique visual identity |
+| **No animations** (mostly) | Lightweight, fast | Less engaging feel |
+| **Static home page** | Simple to build | Less dynamic than possible |
+| **Single Zustand store** | Clarity | Could split for modularity |

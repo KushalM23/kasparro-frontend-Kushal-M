@@ -42,40 +42,45 @@ export function Header() {
   ];
 
   return (
-    <header className="w-full bg-background border-b border-border z-50 transition-colors">
-      <div className="container mx-auto px-4 py-8 flex flex-col items-center gap-6">
+    <motion.header
+      initial={{ opacity: 0, y: -20 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.6 }}
+      className="w-full bg-background border-b border-border z-50 transition-colors"
+    >
+      <div className="container mx-auto px-4 py-4 flex items-center justify-between">
         {/* Logo */}
         <Link
           href={ROUTES.HOME}
-          className="text-4xl md:text-5xl font-heading tracking-tighter hover:text-primary transition-colors text-foreground"
+          className="text-2xl md:text-3xl font-heading tracking-tighter hover:text-primary transition-colors text-foreground"
         >
           KASPARRO
         </Link>
 
-        {/* Navigation Container - Sharp Corners, Opaque */}
-        <nav className="flex items-center gap-1 bg-muted p-1 border border-border shadow-sm">
+        {/* Navigation Container - Horizontal Layout */}
+        <nav className="hidden md:flex items-center gap-1 bg-primary p-1 border border-border">
           {navItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
-                "px-6 py-2 text-[10px] font-bold uppercase tracking-widest transition-all hover:bg-background/50",
+                "px-4 py-1.5 text-[10px] font-bold uppercase tracking-[0.2em] transition-all hover:bg-background/10",
                 pathname === item.href
-                  ? "bg-foreground text-background"
-                  : "text-muted-foreground"
+                  ? "bg-primary-foreground text-primary"
+                  : "text-primary-foreground/90"
               )}
             >
               {item.label}
             </Link>
           ))}
 
-          {/* Theme Toggle in Header */}
+          {/* Theme Toggle */}
           <button
             onClick={toggleTheme}
-            className="px-4 py-2 text-muted-foreground hover:bg-background/50 border-l border-border transition-all"
+            className="px-3 py-1.5 text-primary-foreground hover:bg-background/10 border-l border-primary-foreground/20 transition-all flex items-center justify-center"
             aria-label="Toggle theme"
           >
-            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+            {isDark ? <Sun className="w-3.5 h-3.5 fill-current" /> : <Moon className="w-3.5 h-3.5 fill-current" />}
           </button>
         </nav>
 
@@ -123,6 +128,6 @@ export function Header() {
           )}
         </AnimatePresence>
       </div>
-    </header>
+    </motion.header>
   );
 }

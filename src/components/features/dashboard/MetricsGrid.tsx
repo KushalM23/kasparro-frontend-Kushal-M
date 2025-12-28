@@ -15,11 +15,26 @@ interface MetricsGridProps {
 }
 
 export function MetricsGrid({ metrics }: MetricsGridProps) {
+    const container = {
+        hidden: { opacity: 0 },
+        show: {
+            opacity: 1,
+            transition: {
+                staggerChildren: 0.1,
+            },
+        },
+    };
+
+    const item = {
+        hidden: { opacity: 0, scale: 0.95 },
+        show: { opacity: 1, scale: 1 },
+    };
+
     const stats = [
-        { label: 'AI Visibility', value: metrics.aiVisibility, desc: 'Model Mention Prob' },
-        { label: 'E-E-A-T Score', value: metrics.eeatScore, desc: 'Trust Integrity' },
-        { label: 'Keyword Coverage', value: `${metrics.keywordCoverage}%`, desc: 'Entity Reach' },
-        { label: 'Overall Index', value: Math.round(metrics.averageScore), desc: 'Aggregated Performance', highlight: true }
+        { label: 'AI Visibility', value: metrics.aiVisibility, desc: 'AI visibility trace' },
+        { label: 'E-E-A-T Score', value: metrics.eeatScore, desc: 'Trust & Authority' },
+        { label: 'Keyword Coverage', value: `${metrics.keywordCoverage}%`, desc: 'Keyword reach' },
+        { label: 'Overall Index', value: Math.round(metrics.averageScore), desc: 'Visibility Index', highlight: true }
     ];
 
     return (
@@ -29,28 +44,39 @@ export function MetricsGrid({ metrics }: MetricsGridProps) {
             animate={{ opacity: 1 }}
             className="space-y-8"
         >
-            <div className="grid md:grid-cols-4 gap-4">
+            <motion.div
+                variants={container}
+                initial="hidden"
+                animate="show"
+                className="grid md:grid-cols-4 gap-4"
+            >
                 {stats.map((stat) => (
-                    <div
+                    <motion.div
                         key={stat.label}
+                        variants={item}
                         className={`p-8 border ${stat.highlight ? 'border-primary bg-primary/5' : 'border-border'} flex flex-col gap-2`}
                     >
                         <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{stat.label}</span>
                         <span className={`text-5xl font-heading tracking-tighter ${stat.highlight ? 'text-primary' : ''}`}>{stat.value}</span>
                         <span className="text-[10px] font-bold uppercase tracking-tight text-muted-foreground/60">{stat.desc}</span>
-                    </div>
+                    </motion.div>
                 ))}
-            </div>
+            </motion.div>
 
-            <div className="border border-border p-12 flex flex-col md:flex-row items-center justify-between gap-8">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 }}
+                className="border border-border p-12 flex flex-col md:flex-row items-center justify-between gap-8"
+            >
                 <div className="space-y-2 text-center md:text-left">
-                    <h3 className="text-2xl font-heading uppercase tracking-tight">Granular Audit Surface Available</h3>
-                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Explore module-specific neural insights and architectural trust gaps.</p>
+                    <h3 className="text-2xl uppercase tracking-tight">Full Audit Insights Available</h3>
+                    <p className="text-xs text-muted-foreground font-medium uppercase tracking-wider">Explore detailed findings and specific recommendations to improve your brand visibility.</p>
                 </div>
-                <Button asChild className="rounded-none h-14 px-10 font-bold uppercase tracking-widest text-xs border border-foreground hover:bg-foreground hover:text-background bg-transparent text-foreground transition-all">
+                <Button asChild className="rounded-none h-14 px-10 font-bold uppercase tracking-widest text-xs border border-foreground hover:bg-foreground hover:text-primary-foreground bg-transparent text-foreground transition-all">
                     <Link href={ROUTES.AUDIT}>View Full Report &rarr;</Link>
                 </Button>
-            </div>
+            </motion.div>
         </motion.div>
     );
 }

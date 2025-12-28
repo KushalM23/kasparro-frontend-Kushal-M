@@ -34,30 +34,6 @@ Kasparro is an AI-native SEO platform designed for the modern era of AI-driven s
 
 ---
 
-## Theme & Design System
-
-### Color Palette
-
-**Light Mode**
-```css
---background: #ebf4f5 (near white)
---foreground: Dark text
---primary: #9bb2e5 (primary blue)
---secondary: #698cbf (secondary blue)
-```
-
-**Dark Mode**
-```css
---background: #08203e (deep navy)
---foreground: #ebf4f5 (off-white)
---primary: #9bb2e5 (lighter on dark)
---secondary: #698cbf (lighter on dark)
-```
-
-All colors use CSS custom properties for zero-cost theme switching.
-
----
-
 ### Core Design Philosophy
 
 This project prioritizes **system thinking over page development**. Rather than building isolated pages, the architecture emphasizes:

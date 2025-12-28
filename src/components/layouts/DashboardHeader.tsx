@@ -1,11 +1,57 @@
 'use client';
 
-export function DashboardHeader() {
+import { motion } from 'framer-motion';
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue,
+} from '@/components/ui/select';
+import { Brand } from '@/types/brand';
+
+interface DashboardHeaderProps {
+  selectedBrand: Brand | null;
+  brands: Brand[];
+  lastScanTime: string | null;
+  onBrandChange: (brandId: string) => void;
+}
+
+export function DashboardHeader({ selectedBrand, brands, lastScanTime, onBrandChange }: DashboardHeaderProps) {
   return (
-    <header className="border-b border-border bg-background p-4 md:p-6 transition-colors">
-      <div className="flex items-center justify-between">
-        <h1 className="text-xl md:text-2xl font-bold text-foreground">Dashboard</h1>
+    <motion.div
+      initial={{ opacity: 0, y: -10 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5 }}
+      className="flex flex-col md:flex-row md:items-end justify-between gap-8 mb-10"
+    >
+      <div className="space-y-1">
+        <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-muted-foreground/80">Command Center</span>
+        <h1 className="text-3xl md:text-4xl tracking-tighter uppercase">
+          {selectedBrand ? selectedBrand.name : 'Select BRAND'}
+        </h1>
+        {lastScanTime && (
+          <p className="text-xs font-bold uppercase tracking-widest text-primary">
+            Last Scanned: {lastScanTime}
+          </p>
+        )}
       </div>
-    </header>
+
+      <div className="flex items-center gap-4">
+        <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/60">Active Context:</span>
+        <Select value={selectedBrand?.id || ""} onValueChange={onBrandChange}>
+          <SelectTrigger className="w-[200px] rounded-none border-border bg-background h-10 font-bold text-xs uppercase tracking-wider">
+            <SelectValue placeholder="CHOOSE BRAND" />
+          </SelectTrigger>
+          <SelectContent className="rounded-none border-border">
+            {brands.map((brand) => (
+              <SelectItem key={brand.id} value={brand.id} className="text-xs font-bold uppercase tracking-wider rounded-none">
+                {brand.name}
+              </SelectItem>
+            ))}
+          </SelectContent>
+        </Select>
+      </div>
+    </motion.div>
   );
 }

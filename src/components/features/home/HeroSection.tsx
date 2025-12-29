@@ -4,9 +4,6 @@ import Link from 'next/link';
 import { Button } from '@/components/ui/button';
 import { ROUTES } from '@/lib/constants';
 import { motion } from 'framer-motion';
-import { AUDIT_MODULE_DEFINITIONS } from '@/data/modules';
-import * as Icons from 'lucide-react';
-
 export function HeroSection() {
   return (
     <motion.div

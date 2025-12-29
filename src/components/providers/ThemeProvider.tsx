@@ -4,7 +4,6 @@ import { useEffect, useState } from 'react';
 
 export function ThemeProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
-  const [isDark, setIsDark] = useState(false);
 
   useEffect(() => {
     setMounted(true);
@@ -12,7 +11,6 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
     const isDarkMode = savedTheme === 'dark' || (!savedTheme && prefersDark);
 
-    setIsDark(isDarkMode);
     if (isDarkMode) {
       document.documentElement.classList.add('dark');
     } else {
@@ -24,9 +22,5 @@ export function ThemeProvider({ children }: { children: React.ReactNode }) {
     return <>{children}</>;
   }
 
-  return (
-    <>
-      {children}
-    </>
-  );
+  return <>{children}</>;
 }

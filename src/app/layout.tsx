@@ -1,9 +1,8 @@
-import type { Metadata } from 'next';
+import type { Metadata, Viewport } from 'next';
 import '@/styles/globals.css';
 import { Header } from '@/components/layouts/Header';
 import { Footer } from '@/components/layouts/Footer';
 import { ThemeProvider } from '@/components/providers/ThemeProvider';
-
 import { Bricolage_Grotesque, Bungee } from 'next/font/google';
 
 const bricolage = Bricolage_Grotesque({
@@ -18,6 +17,11 @@ const bungee = Bungee({
   variable: '--font-bungee-display'
 });
 
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+};
+
 export const metadata: Metadata = {
   title: 'Kasparro - AI-Native SEO & Brand Intelligence',
   description: 'For the AI-first search era. AI-SEO audits, E-E-A-T analysis, and brand intelligence platform.',
@@ -29,7 +33,6 @@ export const metadata: Metadata = {
     'Content Quality',
     'Keyword Coverage',
   ],
-  viewport: 'width=device-width, initial-scale=1',
   openGraph: {
     title: 'Kasparro - AI-Native SEO & Brand Intelligence',
     description: 'For the AI-first search era',

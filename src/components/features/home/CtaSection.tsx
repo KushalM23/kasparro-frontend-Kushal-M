@@ -7,7 +7,7 @@ import { motion } from 'framer-motion';
 
 export function CtaSection() {
   return (
-    <section className="py-20 px-4 md:px-6 bg-gradient-to-r from-primary/5 via-secondary/5 to-transparent dark:from-accent/5 dark:via-secondary/10">
+    <section className="py-12 md:py-20 px-4 md:px-6 bg-gradient-to-r from-primary/5 via-secondary/5 to-transparent dark:from-accent/5 dark:via-secondary/10">
       <div className="max-w-3xl mx-auto text-center">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

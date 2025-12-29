@@ -14,7 +14,7 @@ export function InsightsList({ insights }: InsightsListProps) {
         <h2 className="text-xs font-bold uppercase tracking-widest text-foreground/70">Strategic Insights</h2>
         <div className="h-[1px] flex-1 bg-border/40" />
       </div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border divide-x divide-y md:divide-y-0 divide-border">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-0 border border-border divide-y md:divide-y-0 md:divide-x divide-border">
         {insights.map((insight, idx) => (
           <div key={idx} className="p-4 bg-muted/5 space-y-2">
             <h4 className="text-[10px] font-bold uppercase tracking-wider text-primary">Insight 0{idx + 1}</h4>

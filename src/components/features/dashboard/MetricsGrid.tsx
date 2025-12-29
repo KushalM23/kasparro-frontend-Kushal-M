@@ -5,7 +5,7 @@ import { Button } from '@/components/ui/button';
 import Link from 'next/link';
 import { ROUTES } from '@/lib/constants';
 
-interface MetricsGridProps {
+interface DashboardMetricsGridProps {
     metrics: {
         aiVisibility: number;
         eeatScore: number;
@@ -15,7 +15,7 @@ interface MetricsGridProps {
     onReAudit?: () => void;
 }
 
-export function MetricsGrid({ metrics, onReAudit }: MetricsGridProps) {
+export function DashboardMetricsGrid({ metrics, onReAudit }: DashboardMetricsGridProps) {
     const container = {
         hidden: { opacity: 0 },
         show: {
@@ -49,16 +49,16 @@ export function MetricsGrid({ metrics, onReAudit }: MetricsGridProps) {
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="grid md:grid-cols-4 gap-4"
+                className="grid grid-cols-2 md:grid-cols-4 gap-4"
             >
                 {stats.map((stat) => (
                     <motion.div
                         key={stat.label}
                         variants={item}
-                        className={`p-8 border ${stat.highlight ? 'border-primary bg-primary/5' : 'border-border'} flex flex-col gap-2`}
+                        className={`p-4 md:p-8 border ${stat.highlight ? 'border-primary bg-primary/5' : 'border-border'} flex flex-col gap-2`}
                     >
                         <span className="text-[10px] font-bold uppercase tracking-widest text-muted-foreground">{stat.label}</span>
-                        <span className={`text-5xl font-heading tracking-tighter ${stat.highlight ? 'text-primary' : ''}`}>{stat.value}</span>
+                        <span className={`text-3xl md:text-5xl font-heading tracking-tighter ${stat.highlight ? 'text-primary' : ''}`}>{stat.value}</span>
                         <span className="text-[10px] font-bold uppercase tracking-tight text-muted-foreground/60">{stat.desc}</span>
                     </motion.div>
                 ))}
@@ -68,7 +68,7 @@ export function MetricsGrid({ metrics, onReAudit }: MetricsGridProps) {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 }}
-                className="border border-border p-12 flex flex-col md:flex-row items-center justify-between gap-8"
+                className="border border-border p-6 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8"
             >
                 <div className="space-y-2 text-center md:text-left">
                     <h3 className="text-2xl uppercase tracking-tight">Full Audit Insights Available</h3>

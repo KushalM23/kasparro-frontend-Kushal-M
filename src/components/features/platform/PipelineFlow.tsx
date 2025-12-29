@@ -19,12 +19,12 @@ export function PipelineFlow() {
   };
 
   return (
-    <section className="mb-32 border-t border-border pt-16">
+    <section className="mb-16 md:mb-32 border-t border-border pt-8 md:pt-16">
       <motion.h2
         initial={{ opacity: 0, y: 10 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
-        className="text-2xl tracking-tighter mb-12"
+        className="text-2xl tracking-tighter mb-8 md:mb-12"
       >
         How Our Platform Analyzes Your Brand
       </motion.h2>
@@ -42,7 +42,7 @@ export function PipelineFlow() {
           { stage: 'Stage 03', title: 'Core Audit', desc: 'Your brand is analyzed through our 7 specialized modules, testing how accurately you are represented in major AI platforms.' },
           { stage: 'Stage 04', title: 'Actionable Report', desc: 'We generate a detailed report with prioritized recommendations and a Visibility Index to track your progress over time.' }
         ].map((step, idx) => (
-          <motion.div key={idx} variants={item} className="p-8 border border-border space-y-4 hover:border-primary transition-colors">
+          <motion.div key={idx} variants={item} className="p-6 md:p-8 border border-border space-y-4 hover:border-primary transition-colors">
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{step.stage}</span>
             <h3 className="tracking-tight text-sm uppercase font-bold">{step.title}</h3>
             <p className="text-xs text-muted-foreground leading-normal font-medium">

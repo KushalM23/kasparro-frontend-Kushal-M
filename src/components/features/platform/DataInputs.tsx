@@ -28,7 +28,7 @@ export function DataInputs() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="bg-background p-12 space-y-8"
+      className="bg-background p-6 md:p-12 space-y-8"
     >
       <h2 className="text-2xl uppercase tracking-tighter">System Context (Input)</h2>
       <motion.div

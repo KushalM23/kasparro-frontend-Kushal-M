@@ -3,12 +3,12 @@
 import { motion } from 'framer-motion';
 import { Button } from '@/components/ui/button';
 
-interface AuditStatusProps {
+interface AuditActionStateProps {
     type: 'no-brand' | 'auditing' | 'first-time';
     onRunAudit?: () => void;
 }
 
-export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
+export function AuditActionState({ type, onRunAudit }: AuditActionStateProps) {
     if (type === 'no-brand') {
         return (
             <motion.div
@@ -16,7 +16,7 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
                 initial={{ opacity: 0, y: 10 }}
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -10 }}
-                className="border border-border p-20 flex flex-col items-center justify-center text-center space-y-6"
+                className="border border-border p-8 md:p-20 flex flex-col items-center justify-center text-center space-y-6"
             >
                 <div className="w-16 h-[1px] bg-border" />
                 <p className="text-muted-foreground font-bold uppercase tracking-widest text-[11px]">No Brand Context Selected</p>
@@ -35,7 +35,7 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="border border-primary p-20 flex flex-col items-center justify-center text-center space-y-8 bg-primary/5"
+                className="border border-primary p-8 md:p-20 flex flex-col items-center justify-center text-center space-y-8 bg-primary/5"
             >
                 <div className="relative">
                     <div className="w-16 h-16 border-2 border-primary/20 border-t-primary animate-spin" />
@@ -56,7 +56,7 @@ export function AuditStatus({ type, onRunAudit }: AuditStatusProps) {
             key="first-time"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="border border-border p-20 flex flex-col items-center justify-center text-center space-y-8"
+            className="border border-border p-8 md:p-20 flex flex-col items-center justify-center text-center space-y-8"
         >
             <div className="space-y-4">
                 <h2 className="text-3xl tracking-tight uppercase">Run your first Kasparro Audit</h2>

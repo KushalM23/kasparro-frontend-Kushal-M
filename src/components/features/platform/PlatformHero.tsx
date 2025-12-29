@@ -4,8 +4,8 @@ import { motion } from 'framer-motion';
 
 export function PlatformHero() {
     return (
-        <section className="mb-32">
-            <div className="grid lg:grid-cols-2 gap-16 items-start">
+        <section className="mb-16 md:mb-32">
+            <div className="grid lg:grid-cols-2 gap-8 md:gap-16 items-start">
                 <motion.div
                     initial={{ opacity: 0, x: -20 }}
                     animate={{ opacity: 1, x: 0 }}

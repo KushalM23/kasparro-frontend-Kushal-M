@@ -17,7 +17,7 @@ interface AuditModuleContentProps {
     brandName: string;
 }
 
-import { ScoreDisplay } from './ScoreDisplay';
+import { ModuleScoreCard } from './ScoreDisplay';
 import { InsightsList } from './InsightsList';
 import { IssuesList } from './IssuesList';
 import { RecommendationsList } from './RecommendationsList';
@@ -69,7 +69,7 @@ export function AuditModuleContent({ module, moduleDefinition, brandName }: Audi
                         {module.description}
                     </p>
                 </div>
-                <ScoreDisplay score={module.score} />
+                <ModuleScoreCard score={module.score} />
             </div>
 
             {/* Insights */}

@@ -12,13 +12,13 @@ export function HeroSection() {
       transition={{ duration: 0.6 }}
       className="max-w-xl text-left"
     >
-      <h1 className="text-5xl md:text-3xl font-heading tracking-tighter leading-[0.9] mb-8 uppercase">
+      <h1 className="text-4xl md:text-6xl font-heading tracking-tighter leading-[0.9] mb-6 md:mb-8 uppercase">
         AI-native SEO & Brand Intelligence platform
       </h1>
-      <p className="text-lg md:text-xl font-medium text-muted-foreground mb-10 leading-relaxed tracking-tight">
+      <p className="text-base md:text-xl font-medium text-muted-foreground mb-8 md:mb-10 leading-relaxed tracking-tight">
         Optimize your brand's presence for the new era of AI search. We help you audit, understand, and improve how you appear in ChatGPT, Gemini, and Perplexity through 7 specialized analysis modules.
       </p>
-      <Button asChild size="lg" className="h-14 px-10 text-sm uppercase tracking-widest bg-primary text-primary-foreground hover:bg-primary/80 dark:hover:bg-accent transition-all rounded-none border-0">
+      <Button asChild size="lg" className="h-12 md:h-14 px-8 md:px-10 text-xs md:text-sm uppercase tracking-widest bg-primary text-primary-foreground hover:bg-primary/80 dark:hover:bg-accent transition-all rounded-none border-0">
         <Link href={ROUTES.DASHBOARD}>Run Audit</Link>
       </Button>
     </motion.div>

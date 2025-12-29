@@ -17,7 +17,7 @@ export function AuditEmptyState({ type }: AuditEmptyStateProps) {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5 }}
-                    className="text-center space-y-4 max-w-md border border-border p-12"
+                    className="text-center space-y-4 max-w-md border border-border p-8 md:p-12"
                 >
                     <span className="text-xs font-bold uppercase tracking-widest text-muted-foreground/80">Restriction</span>
                     <h2 className="text-2xl tracking-tight uppercase">Access Denied</h2>
@@ -36,7 +36,7 @@ export function AuditEmptyState({ type }: AuditEmptyStateProps) {
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
                 transition={{ duration: 0.5 }}
-                className="text-center space-y-6 max-w-md border border-border p-20"
+                className="text-center space-y-6 max-w-md border border-border p-8 md:p-20"
             >
                 <h2 className="text-2xl tracking-tight uppercase">No Audit Baseline</h2>
                 <p className="text-sm text-muted-foreground font-medium leading-relaxed">This brand has not been audited yet. Technical findings are currently unavailable.</p>

@@ -51,5 +51,3 @@ export const METRIC_RANGES = {
   MAX: 100,
 } as const;
 
-export type AuditModuleKey = (typeof AUDIT_MODULES)[keyof typeof AUDIT_MODULES];
-export type RouteKey = (typeof ROUTES)[keyof typeof ROUTES];

@@ -71,9 +71,3 @@ export function getModuleDefinition(
   return AUDIT_MODULE_DEFINITIONS.find((m) => m.id === id);
 }
 
-/**
- * Get all module definitions
- */
-export function getAllModuleDefinitions(): ModuleDefinition[] {
-  return AUDIT_MODULE_DEFINITIONS;
-}

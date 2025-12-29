@@ -106,7 +106,6 @@ src/
 │   ├── layouts/                      # Layout components
 │   │   ├── Header.tsx                # Navigation bar
 │   │   ├── DashboardHeader.tsx       # App header with brand selector
-│   │   ├── DashboardSidebar.tsx      # App navigation sidebar
 │   │   └── Footer.tsx                # Footer with links
 │   │
 │   ├── features/                     # Feature-specific components
@@ -136,7 +135,6 @@ src/
 │   │   │   ├── SystemDiagram.tsx     # Full pipeline visualization
 │   │   │   ├── InputAssemblerNode.tsx # Step 1: Data collection
 │   │   │   ├── ContextPackNode.tsx   # Step 2: Normalization
-│   │   │   ├── IntelligenceLayerNode.tsx # Step 3: Processing (highlighted)
 │   │   │   ├── OutputNode.tsx        # Step 4: Reporting
 │   │   │   └── ModuleNode.tsx        # Generic module card
 │   │   │
@@ -156,15 +154,12 @@ src/
 │       ├── card.tsx
 │       ├── badge.tsx
 │       ├── select.tsx
-│       ├── skeleton.tsx              # Loading state
-│       ├── metric-skeleton.tsx       # Metric-specific skeleton
-│       └── module-skeleton.tsx       # Module-specific skeleton
+│       └── skeleton.tsx              # Loading state
 │
 ├── types/                            # TypeScript interfaces
 │   ├── brand.ts                      # Brand interface
 │   ├── audit.ts                      # Audit module & results
-│   ├── metrics.ts                    # Dashboard metrics
-│   └── architecture.ts               # System components
+│   └── metrics.ts                    # Dashboard metrics
 │
 ├── stores/                           # Zustand state management
 │   ├── brandStore.ts                 # Global brand selection state

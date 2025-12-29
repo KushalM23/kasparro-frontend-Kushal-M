@@ -45,8 +45,7 @@ This project prioritizes **system thinking over page development**. Rather than 
 │  └─ Footer          └─ SystemDiagram                │
 ├─────────────────────────────────────────────────────┤
 │  UI Primitives (shadcn/ui)                          │
-│  ├─ Card, Button, Badge, Select                     │
-│  └─ Skeleton, Metric components                     │
+│  └─ Card, Button, Badge, Select                     │
 ├─────────────────────────────────────────────────────┤
 │  State Layer                                        │
 │  ├─ Brand Selection (global)                        │

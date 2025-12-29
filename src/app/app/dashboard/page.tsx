@@ -52,8 +52,8 @@ export default function DashboardPage() {
         const data = await response.json();
         const brandsList = Array.isArray(data) ? data : (data.brands || []);
         setBrands(brandsList);
-      } catch (error) {
-        console.error('Failed to load brands:', error);
+        } catch {
+        // Brand loading failed silently - empty state will be shown
       }
     };
     fetchBrands();

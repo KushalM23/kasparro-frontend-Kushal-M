@@ -22,7 +22,14 @@ export function RecommendationsList({ recommendations }: RecommendationsListProp
       <div className="space-y-4">
         {recommendations.map((rec, idx) => (
           <div key={idx} className="bg-primary/5 border-l-4 border-primary p-4 space-y-3">
-            <h4 className="text-xs font-bold uppercase tracking-widest text-primary">{rec.title}</h4>
+            <div className="flex justify-between items-start">
+              <h4 className="text-xs font-bold uppercase tracking-widest text-primary">{rec.title}</h4>
+              {rec.priority && (
+                <span className="text-[8px] font-bold uppercase tracking-tighter px-1.5 py-0.5 bg-primary text-primary-foreground">
+                  {rec.priority}
+                </span>
+              )}
+            </div>
             <p className="text-xs font-bold text-foreground leading-normal">{rec.description}</p>
             <div className="flex gap-4 pt-1">
               <span className="text-[10px] font-bold uppercase tracking-tighter text-muted-foreground/60">

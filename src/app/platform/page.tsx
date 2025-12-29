@@ -8,7 +8,7 @@ import { Comparison } from '@/components/features/platform/Comparison';
 
 export default function PlatformPage() {
   return (
-    <main className="w-full bg-background transition-colors pt-12 pb-12">
+    <main className="w-full bg-background transition-colors pt-8 md:pt-12 pb-8 md:pb-12">
       <div className="container mx-auto px-4 md:px-8 max-w-7xl">
         {/* Product Description */}
         <PlatformHero />
@@ -17,7 +17,7 @@ export default function PlatformPage() {
         <PipelineFlow />
 
         {/* Detailed Input/Output */}
-        <section className="grid lg:grid-cols-2 gap-px bg-border mb-32 border border-border overflow-hidden">
+        <section className="grid lg:grid-cols-2 gap-px bg-border mb-16 md:mb-32 border border-border overflow-hidden">
           <DataInputs />
           <Outputs />
         </section>

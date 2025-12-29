@@ -4,8 +4,8 @@ import { useEffect, useState, useCallback } from 'react';
 import { useBrandStore } from '@/stores/brandStore';
 import { motion, AnimatePresence } from 'framer-motion';
 import { DashboardHeader } from '@/components/layouts/DashboardHeader';
-import { AuditStatus } from '@/components/features/dashboard/AuditStatus';
-import { MetricsGrid } from '@/components/features/dashboard/MetricsGrid';
+import { AuditActionState } from '@/components/features/dashboard/AuditStatus';
+import { DashboardMetricsGrid } from '@/components/features/dashboard/MetricsGrid';
 
 import { DashboardMetrics } from '@/types/metrics';
 
@@ -15,14 +15,20 @@ export default function DashboardPage() {
   const [isAuditing, setIsAuditing] = useState(false);
   const [auditedBrands, setAuditedBrands] = useState<Set<string>>(new Set());
   const [lastScanTime, setLastScanTime] = useState<string>('');
+  const [error, setError] = useState<string | null>(null);
 
   const loadMetrics = useCallback(async (brandId: string) => {
+    setError(null);
     try {
       const response = await fetch(`/audit-data/${brandId}/dashboard.json`);
+      if (!response.ok) throw new Error('Failed to load metrics');
       const data = await response.json();
       setMetrics(data);
       setLastScanTime(new Date().toLocaleString());
     } catch (e) {
+      console.error('Failed to load metrics:', e);
+      setError('Unable to load dashboard metrics. Please try again later.');
+      // Fallback to default metrics if needed, but show error
       setMetrics({
         brandId: brandId,
         aiVisibility: 78,
@@ -49,11 +55,13 @@ export default function DashboardPage() {
     const fetchBrands = async () => {
       try {
         const response = await fetch('/audit-data/brands.json');
+        if (!response.ok) throw new Error('Failed to fetch brands');
         const data = await response.json();
         const brandsList = Array.isArray(data) ? data : (data.brands || []);
         setBrands(brandsList);
       } catch (error) {
         console.error('Failed to load brands:', error);
+        setError('Failed to load brands. Please refresh the page.');
       }
     };
     fetchBrands();
@@ -101,15 +109,22 @@ export default function DashboardPage() {
         onBrandChange={handleBrandChange}
       />
 
+      {error && (
+        <div className="mb-6 p-4 bg-destructive/10 border border-destructive/20 text-destructive text-xs font-bold uppercase tracking-widest flex justify-between items-center">
+          <span>{error}</span>
+          <button onClick={() => setError(null)} className="hover:opacity-70">Dismiss</button>
+        </div>
+      )}
+
       <AnimatePresence mode="wait">
         {!selectedBrand ? (
-          <AuditStatus type="no-brand" />
+          <AuditActionState type="no-brand" />
         ) : isAuditing ? (
-          <AuditStatus type="auditing" />
+          <AuditActionState type="auditing" />
         ) : !metrics ? (
-          <AuditStatus type="first-time" onRunAudit={handleRunAudit} />
+          <AuditActionState type="first-time" onRunAudit={handleRunAudit} />
         ) : (
-          <MetricsGrid metrics={metrics} onReAudit={handleRunAudit} />
+          <DashboardMetricsGrid metrics={metrics} onReAudit={handleRunAudit} />
         )}
       </AnimatePresence>
     </div>

@@ -10,9 +10,9 @@ export function AiSeoSection() {
         whileInView={{ opacity: 1 }}
         transition={{ duration: 0.6 }}
         viewport={{ once: true }}
-        className="text-left mb-8"
+        className="text-left mb-6 md:mb-8"
       >
-        <h2 className="text-3xl md:text-3.5xl font-heading mb-4 leading-[0.9] uppercase">
+        <h2 className="text-2xl md:text-4xl font-heading mb-4 leading-[0.9] uppercase">
           Traditional SEO vs AI-Native SEO
         </h2>
       </motion.div>
@@ -24,7 +24,7 @@ export function AiSeoSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="p-6 border border-border flex flex-col"
+          className="p-4 md:p-6 border border-border flex flex-col"
         >
           <h3 className="text-sm font-bold mb-6 uppercase tracking-widest border-b border-border pb-4">Traditional SEO</h3>
           <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">
@@ -53,7 +53,7 @@ export function AiSeoSection() {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.6 }}
           viewport={{ once: true }}
-          className="p-6 border border-primary/50 dark:border-accent/50 bg-primary/5 flex flex-col"
+          className="p-4 md:p-6 border border-primary/50 dark:border-accent/50 bg-primary/5 flex flex-col"
         >
           <h3 className="text-sm font-bold mb-6 text-primary dark:text-accent uppercase tracking-widest border-b border-primary/20 pb-4">Kasparro: AI-Native</h3>
           <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">

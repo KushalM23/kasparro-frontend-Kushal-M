@@ -80,6 +80,36 @@ Each page:
 
 ---
 
+## New Updates
+
+### 1. Component Naming & Consistency
+Standardized component naming conventions to better reflect their functional roles within the architecture:
+- `ScoreDisplay` &rarr; `ModuleScoreCard`: More accurately describes the visual representation of module scores.
+- `AuditStatus` &rarr; `AuditActionState`: Reflects that this component manages the different states of the audit lifecycle
+- `MetricsGrid` &rarr; `DashboardMetricsGrid`: Clarifies its specific use case within the dashboard context.
+
+### 2. Mobile Responsiveness & UX Optimization
+Refined the mobile experience to ensure the platform remains functional and visually appealing on smaller screens:
+- **Grid Layouts**: Updated the `DashboardMetricsGrid` to use a 2-column layout on mobile instead of a single column, maximizing screen utility.
+- **Comparison Table**: Fixed the `Comparison` component's grid logic to prevent text overlap and layout breaking on mobile devices.
+- **Space Management**: Reduced excessive vertical and horizontal paddings across all major sections (Hero, Pipeline, Empty States) to eliminate wasted space on mobile.
+- **Typography**: Adjusted responsive font sizes for headings and buttons to maintain hierarchy without overwhelming small viewports.
+
+### 3. Robust Error Handling & Data Resilience
+Implemented a more defensive data loading strategy to handle network failures and missing assets gracefully:
+- **Fetch Validation**: Added explicit checks for `response.ok` before processing JSON data.
+- **Error States**: Introduced local error states in `DashboardPage` and `AuditPage` to capture and display loading failures.
+- **User Feedback**: Added dismissible error banners to provide clear feedback when data cannot be retrieved.
+- **Fallback Mechanisms**: Ensured the UI remains stable even when specific data modules fail to load.
+
+### 4. Visual Polish & Information Hierarchy
+Enhanced the visual communication of audit findings:
+- **Severity-Based Styling**: The `IssuesList` now uses color-coded indicators (Red for Critical/High, Orange for Medium, Blue for Low) to help users prioritize fixes.
+- **Priority Badges**: Added visual badges to `RecommendationsList` to highlight the urgency of specific actions.
+- **Layout Refinement**: Improved border and divider logic in grid components to ensure a clean, professional look across all breakpoints.
+
+---
+
 ## Project Structure
 
 ```

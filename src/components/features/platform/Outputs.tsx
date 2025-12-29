@@ -28,7 +28,7 @@ export function Outputs() {
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true }}
-      className="bg-background p-12 space-y-8 text-left"
+      className="bg-background p-6 md:p-12 space-y-8 text-left"
     >
       <h2 className="text-2xl uppercase tracking-tighter">Deliverable Assets (Output)</h2>
       <motion.div

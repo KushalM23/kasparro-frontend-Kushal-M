@@ -19,13 +19,13 @@ export function PipelineView() {
   ];
 
   return (
-    <div className="space-y-8">
-      <div className="space-y-8">
-        <h2 className="text-3xl md:text-3.5xl font-heading tracking-tighter uppercase">How It <span className="text-primary tracking-normal">Works</span></h2>
+    <div className="space-y-6 md:space-y-8">
+      <div className="space-y-4 md:space-y-8">
+        <h2 className="text-2xl md:text-4xl font-heading tracking-tighter uppercase">How It <span className="text-primary tracking-normal">Works</span></h2>
         <p className="text-muted-foreground font-bold text-xs uppercase tracking-widest">Our Three-Step Process</p>
       </div>
 
-      <div className="relative space-y-8">
+      <div className="relative space-y-6 md:space-y-8">
         {/* Connection Line */}
         <div className="absolute left-6 top-0 bottom-0 w-[1px] bg-border/50" />
 

@@ -41,8 +41,8 @@ export default function AuditPage() {
         if (!selectedModule && data.length > 0) {
           setSelectedModule(data[0].moduleId as any);
         }
-      } catch (error) {
-        console.error('Failed to load audit data:', error);
+      } catch {
+        // Audit data loading failed silently - empty state will be shown
       } finally {
         setLoading(false);
       }

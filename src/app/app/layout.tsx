@@ -1,9 +1,5 @@
 'use client';
 
-import { usePathname } from 'next/navigation';
-import Link from 'next/link';
-import { cn } from '@/lib/utils';
-import { ROUTES } from '@/lib/constants';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useEffect, useState } from 'react';
 
@@ -12,19 +8,12 @@ export default function AppLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const pathname = usePathname();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     const timer = setTimeout(() => setIsLoading(false), 800);
     return () => clearTimeout(timer);
   }, []);
-
-  const tabs = [
-    { label: 'Dashboard', href: ROUTES.DASHBOARD },
-    { label: 'Audit', href: ROUTES.AUDIT },
-    { label: 'Architecture', href: ROUTES.ARCHITECTURE },
-  ];
 
   return (
     <div className="flex flex-col flex-1 bg-background transition-colors">

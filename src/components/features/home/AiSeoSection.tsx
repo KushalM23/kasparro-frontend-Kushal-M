@@ -30,19 +30,19 @@ export function AiSeoSection() {
           <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">
             <li className="flex gap-3">
               <span className="text-destructive shrink-0">×</span>
-              <span>Optimizes for legacy search engine crawlers</span>
+              <span>Optimizes for crawler indexing and keyword density</span>
             </li>
             <li className="flex gap-3">
               <span className="text-destructive shrink-0">×</span>
-              <span>Focuses on keyword density and manual backlinks</span>
+              <span>Relies on backlink volume and metadata hacks</span>
             </li>
             <li className="flex gap-3">
               <span className="text-destructive shrink-0">×</span>
-              <span>No visibility into how AI models understand your brand</span>
+              <span>Blind to neural weights and vector embeddings</span>
             </li>
             <li className="flex gap-3">
               <span className="text-destructive shrink-0">×</span>
-              <span>Reactive to unpredictable ranking algorithm updates</span>
+              <span>Reactive to opaque algorithm shifts</span>
             </li>
           </ul>
         </motion.div>
@@ -59,19 +59,19 @@ export function AiSeoSection() {
           <ul className="space-y-4 text-sm text-muted-foreground tracking-tight">
             <li className="flex gap-3">
               <span className="text-primary dark:text-accent shrink-0">✓</span>
-              <span>Optimizes for AI understanding and citation triggers</span>
+              <span>Engineers for vector relevance and citation probability</span>
             </li>
             <li className="flex gap-3">
               <span className="text-primary dark:text-accent shrink-0">✓</span>
-              <span>Prioritizes E-E-A-T and technical brand credibility</span>
+              <span>Prioritizes semantic authority and knowledge graph integrity</span>
             </li>
             <li className="flex gap-3">
               <span className="text-primary dark:text-accent shrink-0">✓</span>
-              <span>Direct insight into ChatGPT, Gemini, and Perplexity rankings</span>
+              <span>Direct telemetry into LLM response patterns</span>
             </li>
             <li className="flex gap-3">
               <span className="text-primary dark:text-accent shrink-0">✓</span>
-              <span>Proactive strategy designed for the AI-first search era</span>
+              <span>Proactive architecture for the generative web</span>
             </li>
           </ul>
         </motion.div>

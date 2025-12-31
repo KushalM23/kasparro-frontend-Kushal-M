@@ -26,7 +26,7 @@ export function PipelineFlow() {
         viewport={{ once: true }}
         className="text-2xl tracking-tighter mb-8 md:mb-12"
       >
-        How Our Platform Analyzes Your Brand
+        Neural Analysis Pipeline
       </motion.h2>
 
       <motion.div
@@ -37,10 +37,10 @@ export function PipelineFlow() {
         className="grid md:grid-cols-2 lg:grid-cols-4 gap-4"
       >
         {[
-          { stage: 'Stage 01', title: 'Data Collection', desc: 'We gather information from your primary domains and social channels to build a complete picture of your digital presence.' },
-          { stage: 'Stage 02', title: 'Context Mapping', desc: 'We organize your brand data into categories that AI models understand, ensuring that your core values and expertise are clearly identified.' },
-          { stage: 'Stage 03', title: 'Core Audit', desc: 'Your brand is analyzed through our 7 specialized modules, testing how accurately you are represented in major AI platforms.' },
-          { stage: 'Stage 04', title: 'Actionable Report', desc: 'We generate a detailed report with prioritized recommendations and a Visibility Index to track your progress over time.' }
+          { stage: 'Stage 01', title: 'Ingestion', desc: 'We gather information from your primary domains and social channels to build a complete picture of your digital presence.' },
+          { stage: 'Stage 02', title: 'Vectorization', desc: 'We organize your brand data into categories that AI models understand, ensuring that your core values and expertise are clearly identified.' },
+          { stage: 'Stage 03', title: 'Inference', desc: 'Your brand is analyzed through our 7 specialized modules, testing how accurately you are represented in major AI platforms.' },
+          { stage: 'Stage 04', title: 'Synthesis', desc: 'We generate a detailed report with prioritized recommendations and a Visibility Index to track your progress over time.' }
         ].map((step, idx) => (
           <motion.div key={idx} variants={item} className="p-6 md:p-8 border border-border space-y-4 hover:border-primary transition-colors">
             <span className="text-[10px] font-bold uppercase tracking-widest text-primary">{step.stage}</span>

@@ -27,10 +27,10 @@ export function Mission() {
           className="space-y-8 pt-4"
         >
           <p className="text-lg font-medium leading-relaxed tracking-tight text-foreground/90">
-            We exist to help brands navigate the shift from keyword-based search to neural model discovery. Our mission is to demystify how AI engines like ChatGPT, Gemini, and Claude perceive and suggest your brand.
+            We engineer the bridge between brand data and neural discovery. Our mission is to decode the probabilistic nature of AI engines like ChatGPT, Gemini, and Claude to reveal how they perceive and suggest your brand.
           </p>
           <p className="text-sm text-muted-foreground leading-relaxed font-medium">
-            In an era where search results are generated rather than indexed, transparency is the only way forward. We build the tools that allow organizations to see through the algorithmic black box and take control of their digital story.
+            In an era where search results are generated rather than indexed, observability is the only viable strategy. We build the tools that allow organizations to see through the algorithmic black box and take control of their digital story.
           </p>
           <div className="grid grid-cols-2 gap-4 mt-12">
             <div className="p-8 border border-border bg-muted/20">

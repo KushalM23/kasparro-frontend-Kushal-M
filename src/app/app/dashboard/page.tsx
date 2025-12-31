@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useCallback } from 'react';
 import { useBrandStore } from '@/stores/brandStore';
-import { motion, AnimatePresence } from 'framer-motion';
+import { AnimatePresence } from 'framer-motion';
 import { DashboardHeader } from '@/components/layouts/DashboardHeader';
 import { AuditActionState } from '@/components/features/dashboard/AuditStatus';
 import { DashboardMetricsGrid } from '@/components/features/dashboard/MetricsGrid';

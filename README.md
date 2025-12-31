@@ -82,31 +82,19 @@ Each page:
 
 ## New Updates
 
-### 1. Component Naming & Consistency
-Standardized component naming conventions to better reflect their functional roles within the architecture:
-- `ScoreDisplay` &rarr; `ModuleScoreCard`: More accurately describes the visual representation of module scores.
-- `AuditStatus` &rarr; `AuditActionState`: Reflects that this component manages the different states of the audit lifecycle
-- `MetricsGrid` &rarr; `DashboardMetricsGrid`: Clarifies its specific use case within the dashboard context.
+### 1. Technical Stack Alignment
+Downgraded to **Next.js 15** to align with current industry standards and ensure maximum stability, addressing feedback regarding the use of the latest version. Downgrading was the right choice as using the latest version did not provide any useful upside.
 
-### 2. Mobile Responsiveness & UX Optimization
-Refined the mobile experience to ensure the platform remains functional and visually appealing on smaller screens:
-- **Grid Layouts**: Updated the `DashboardMetricsGrid` to use a 2-column layout on mobile instead of a single column, maximizing screen utility.
-- **Comparison Table**: Fixed the `Comparison` component's grid logic to prevent text overlap and layout breaking on mobile devices.
-- **Space Management**: Reduced excessive vertical and horizontal paddings across all major sections (Hero, Pipeline, Empty States) to eliminate wasted space on mobile.
-- **Typography**: Adjusted responsive font sizes for headings and buttons to maintain hierarchy without overwhelming small viewports.
+### 2. Narrative Refinement (Founder-Engineer Tone)
+Updated the public website copy to reflect a more technical, systems-oriented perspective:
+- **Terminology Shift**: Replaced generic marketing terms with precise engineering concepts (e.g., "Neural Optimization", "Vectorization", "Deterministic Systems").
+- **Comparative Clarity**: Sharpened the distinction between "Traditional SEO"  and "Neural Optimization".
 
-### 3. Robust Error Handling & Data Resilience
-Implemented a more defensive data loading strategy to handle network failures and missing assets gracefully:
-- **Fetch Validation**: Added explicit checks for `response.ok` before processing JSON data.
-- **Error States**: Introduced local error states in `DashboardPage` and `AuditPage` to capture and display loading failures.
-- **User Feedback**: Added dismissible error banners to provide clear feedback when data cannot be retrieved.
-- **Fallback Mechanisms**: Ensured the UI remains stable even when specific data modules fail to load.
+### 3. Documentation Enhancements
+Expanded the README to demonstrate deeper system thinking:
+- **Tradeoffs Table**: Added explicit justification for technical choices, including the Next.js version decision.
+- **Future Roadmap**: Outlined the strategic technical direction for V2, including real-time LLM integration and historical data persistence.
 
-### 4. Visual Polish & Information Hierarchy
-Enhanced the visual communication of audit findings:
-- **Severity-Based Styling**: The `IssuesList` now uses color-coded indicators (Red for Critical/High, Orange for Medium, Blue for Low) to help users prioritize fixes.
-- **Priority Badges**: Added visual badges to `RecommendationsList` to highlight the urgency of specific actions.
-- **Layout Refinement**: Improved border and divider logic in grid components to ensure a clean, professional look across all breakpoints.
 
 ---
 
@@ -573,6 +561,7 @@ All functionality tested via Playwright E2E automation:
 
 | Decision | Benefit | Tradeoff |
 |----------|---------|----------|
+| **Next.js 15** | Stable, industry standard | Missing experimental v16 features |
 | **Zustand** for state | Simple, performant | Not as verbose as Redux |
 | **Mocked data** | Fast development, demo-ready | No real AI processing |
 | **Modular components** | Reusable, maintainable | More files to manage |
@@ -581,3 +570,14 @@ All functionality tested via Playwright E2E automation:
 | **Re-Audit functionality** | Better UX for testing | Simulated delay (2s) |
 | **Static home content** | Simple, fast | Less dynamic than possible |
 | **High-fidelity design** | Professional appearance | Longer initial development |
+
+## Future Roadmap
+
+While this V1 implementation focuses on the core architecture and frontend system design, the following enhancements are planned for future iterations:
+
+1.  **Real-Time AI Integration**: Replace mocked JSON data with live API endpoints connecting to OpenAI and Perplexity APIs for real-time audit generation.
+2.  **User Authentication**: Implement NextAuth.js for secure user sessions and personalized dashboard access.
+3.  **Historical Data Tracking**: Add time-series charts to visualize score improvements over time (currently snapshot-based).
+4.  **Export Functionality**: Allow users to export audit reports as PDF or CSV for stakeholder presentations.
+5.  **Advanced Competitor Analysis**: Expand the benchmarking module to support dynamic competitor selection and side-by-side comparison.
+

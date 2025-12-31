@@ -16,7 +16,7 @@ export function Vision() {
         >
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">03. The Vision</span>
           <h2 className="text-3xl md:text-5xl tracking-tighter uppercase leading-[0.9]">
-            Democratic access to <span className="text-primary italic">Intelligence</span>
+            Democratizing Neural <span className="text-primary italic">Intelligence</span>
           </h2>
         </motion.div>
 
@@ -28,11 +28,11 @@ export function Vision() {
           className="space-y-8 pt-4"
         >
           <p className="text-lg font-medium leading-relaxed tracking-tight text-foreground/90">
-            We envision a web where brands of all sizes can thrive in the AI era. A future where the relationship between creators and AI search engines is symbiotic, based on accuracy and value.
+            We envision a web where brands of all sizes can thrive in the AI era. A future where the relationship between creators and AI search engines is symbiotic, grounded in semantic accuracy and structured value.
           </p>
           <div className="space-y-6 text-sm text-muted-foreground leading-relaxed font-medium">
             <p>
-              As the internet shifts from websites to knowledge bases, Kasparro’s vision is to become the universal bridge for brand clarity. We are building the infrastructure that will power how information is discovered, verified, and cited in the next decade of digital interaction.
+              As the internet shifts from websites to knowledge bases, Kasparro’s vision is to become the universal interface for neural brand authority. We are building the infrastructure that will power how information is discovered, verified, and cited in the next decade of digital interaction.
             </p>
             <div className="p-12 border-2 border-primary/20 bg-primary/5 mt-12 relative overflow-hidden group">
               <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
@@ -40,7 +40,7 @@ export function Vision() {
               </div>
               <h4 className="text-2xl tracking-tight uppercase mb-4 text-foreground">The AI-First Standard</h4>
               <p className="text-sm text-muted-foreground leading-relaxed max-w-md">
-                We aren't just building a tool; we are setting the standard for how brands measure their influence in neural networks.
+                We aren&apos;t just building a tool; we are setting the standard for how brands measure their influence in neural networks.
               </p>
             </div>
           </div>

@@ -15,7 +15,7 @@ export function Philosophy() {
         >
           <span className="text-xs font-bold uppercase tracking-[0.2em] text-primary">02. Product Philosophy</span>
           <h2 className="text-3xl md:text-5xl tracking-tighter uppercase leading-[0.9]">
-            Systems engineering <span className="text-primary italic">not</span> guessing
+            Deterministic Systems, <span className="text-primary italic">Not</span> Stochastic Guesses
           </h2>
           <div className="grid grid-cols-2 gap-4 mt-12">
             <div className="p-8 border border-border bg-muted/20">
@@ -41,10 +41,10 @@ export function Philosophy() {
           </p>
           <div className="space-y-6 text-sm text-muted-foreground leading-relaxed font-medium">
             <p>
-              Founded by a team of distributed systems engineers and search experts, we believe that brand visibility should be treated as a technical data problem, not a creative guessing game.
+              Founded by a team of distributed systems engineers and search experts, we believe that brand visibility is a data engineering challenge, not a creative exercise.
             </p>
             <p>
-              Every insight in the Kasparro platform is backed by empirical testing across production-scale LLMs. We don't just "hope" for visibility; we verify the citation triggers and authoritative markers that matter to modern neural networks.
+              Every insight in the Kasparro platform is backed by empirical testing across production-scale LLMs. We don&apos;t optimize for hope; we engineer for probability, verifying the citation triggers and authoritative markers that matter to modern neural networks.
             </p>
           </div>
         </motion.div>

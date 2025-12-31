@@ -43,7 +43,7 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={`${bricolage.variable} ${bungee.variable} font-sans`}>
+      <body className={`${bricolage.variable} ${bungee.variable} font-sans`} suppressHydrationWarning>
         <ThemeProvider>
           <div className="flex flex-col min-h-screen bg-background text-foreground transition-colors">
             <Header />

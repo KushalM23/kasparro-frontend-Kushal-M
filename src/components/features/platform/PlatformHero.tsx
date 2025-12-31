@@ -13,9 +13,9 @@ export function PlatformHero() {
                     className="space-y-6"
                 >
                     <h1 className="text-4xl md:text-6xl tracking-tighter uppercase leading-[0.9]">
-                        How the <span className="text-primary tracking-normal">Platform</span> Works
+                        System <span className="text-primary tracking-normal">Architecture</span>
                     </h1>
-                    <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mb-4">Our Process & Technical Approach</p>
+                    <p className="text-muted-foreground font-bold text-xs uppercase tracking-[0.2em] mb-4">Data Pipeline & Processing Logic</p>
                 </motion.div>
                 <motion.div
                     initial={{ opacity: 0, x: 20 }}
@@ -24,10 +24,10 @@ export function PlatformHero() {
                     className="space-y-6"
                 >
                     <p className="text-lg font-medium leading-relaxed text-foreground/90">
-                        Kasparro is an AI-native SEO platform designed to help your brand thrive as search moves toward AI-first discovery. We've built an infrastructure that helps you understand how models like ChatGPT, Gemini, and Claude perceive your content.
+                        Kasparro is a neural observability platform designed to engineer your brand&apos;s survival as search moves toward AI-first discovery. We&apos;ve engineered a distributed infrastructure that decodes how models like ChatGPT, Gemini, and Claude perceive your content.
                     </p>
                     <p className="text-sm leading-relaxed text-muted-foreground">
-                        Our platform works through a clear, three-step process: gathering your brand data, analyzing it through seven specialized audit modules, and providing actionable insights. We help you take control of your visibility by ensuring AI models have the right context to represent your brand accurately.
+                        The architecture executes a three-stage pipeline: data ingestion, neural audit processing, and insight generation. We help you take control of your visibility by ensuring AI models have the right context to represent your brand accurately.
                     </p>
                 </motion.div>
             </div>

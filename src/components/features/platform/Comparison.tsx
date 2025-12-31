@@ -34,9 +34,9 @@ export function Comparison() {
         className="border border-border"
       >
         {[
-          { metric: 'Discovery Level', trad: 'Keyword Matching', kasp: 'Context & Intent', diff: 'Superior' },
-          { metric: 'Time to Insight', trad: 'Weeks of Manual Work', kasp: 'Real-time Analysis', diff: 'Immediate' },
-          { metric: 'Citation Trace', trad: 'Limited Estimation', kasp: 'Actual Model Tracking', diff: 'Data-Driven' },
+          { metric: 'Discovery Level', trad: 'Lexical Matching', kasp: 'Semantic Vectorization', diff: 'Superior' },
+          { metric: 'Time to Insight', trad: 'Lagging Indicators', kasp: 'Real-time Telemetry', diff: 'Immediate' },
+          { metric: 'Citation Trace', trad: 'Proxy Metrics', kasp: 'Direct Attribution', diff: 'Data-Driven' },
           { metric: 'Platform Support', trad: 'Search Engines only', kasp: 'GPT, Gemini, Perplexity', diff: 'Universal' }
         ].map((row, idx) => (
           <motion.div key={idx} variants={item} className="grid grid-cols-2 md:grid-cols-4 border-b border-border last:border-0 hover:bg-muted/50 transition-colors">

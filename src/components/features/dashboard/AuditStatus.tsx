@@ -61,7 +61,7 @@ export function AuditActionState({ type, onRunAudit }: AuditActionStateProps) {
             <div className="space-y-4">
                 <h2 className="text-3xl tracking-tight uppercase">Run your first Kasparro Audit</h2>
                 <p className="text-sm text-muted-foreground max-w-md mx-auto font-medium leading-relaxed">
-                    Establish a technical baseline for your brand's AI-era visibility. Initial scan takes approximately 2 seconds.
+                    Establish a technical baseline for your brand&apos;s AI-era visibility. Initial scan takes approximately 2 seconds.
                 </p>
             </div>
             <Button
